@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { site } from "../data/site";
 import { filters, projects } from "../data/projects";
 import ProjectCard from "../components/projects/ProjectCard";
+import { getText, UI } from "../i18n/config";
+import { useLocale } from "../i18n/useLocale";
 
 export default function HomePage() {
+  const locale = useLocale();
+  const ui = UI[locale];
   const [active, setActive] = useState("All");
 
   const visibleProjects = useMemo(() => {
@@ -22,11 +26,15 @@ export default function HomePage() {
           <div className="max-w-xl justify-self-end text-balance text-lg leading-relaxed text-zinc-700 md:text-xl">
             A minimal portfolio template for procedural 3D, product visuals, simulations and interactive visual systems. Big visuals first, explanations only where they help.
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/work" className="rounded-full bg-zinc-950 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white">
-                View projects
+              <Link to={`/${locale}/work`} className="rounded-full bg-zinc-950 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
+              >
+                {ui.viewProjects}
               </Link>
-              <a href={`mailto:${site.email}`} className="rounded-full border border-zinc-950/15 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-zinc-800">
-                Contact
+              <a 
+              href={`mailto:${site.email}`}
+              className="rounded-full border border-zinc-950/15 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-zinc-800"
+              >
+                {ui.contact}
               </a>
             </div>
           </div>
@@ -37,15 +45,15 @@ export default function HomePage() {
         <div className="mb-6 flex flex-wrap items-center gap-2">
           {filters.map((filter) => (
             <button
-              key={filter}
-              onClick={() => setActive(filter)}
+              key={filter.key}
+              onClick={() => setActive(filter.key)}
               className={`rounded-full border px-4 py-2 text-sm transition ${
-                active === filter
+                active === filter.key
                   ? "border-zinc-950 bg-zinc-950 text-white"
                   : "border-zinc-950/15 bg-white/30 text-zinc-700 hover:border-zinc-950/50"
               }`}
             >
-              {filter}
+              {getText(filter.label, locale)}
             </button>
           ))}
         </div>

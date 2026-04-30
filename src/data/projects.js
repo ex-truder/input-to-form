@@ -412,8 +412,24 @@ export const projects = [
 ];
 
 export const filters = [
-  "All",
-  ...Array.from(new Set(projects.map((project) => project.type))),
+  {
+    key: "all",
+    label: {
+      en: "All",
+      ru: "Все",
+    },
+  },
+  ...Array.from(
+    new Map(
+      projects.map((project) => [
+        project.typeKey,
+        {
+          key: project.typeKey,
+          label: project.type,
+        },
+      ])
+    ).values()
+  ),
 ];
 
 export function getProject(slug) {
