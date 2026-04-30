@@ -14,9 +14,11 @@ export const reusableProcess = [
 ];
 
 export const projects = [
-  {
-    slug: "glass-system",
-    title: "Glass System",
+  {    slug: "glass-system",
+    title: {
+      en: "Glass System",
+      ru: "Стеклянная система",
+    },
     type: "CG / Product",
     year: "2026",
     client: "Personal Study",
@@ -29,7 +31,11 @@ export const projects = [
       "Transparent product system, refractive forms and clean catalog-ready visuals.",
     subtitle: "A compact study of glass, refraction and calm product presence.",
     tools: ["Houdini", "Redshift", "Lookdev", "Product CG"],
-    cover: { type: "placeholder" },
+    cover: {
+      type: "image",
+      src: "/projects/glass-system/cover.jpg",
+      alt: "New Project cover image"
+    },
     hero: { type: "placeholder" },
     blocks: [
       {
@@ -45,13 +51,14 @@ export const projects = [
         items: [
           { type: "placeholder", shape: "totem" },
           { type: "placeholder", shape: "ribbon" },
+          { type: "placeholder", shape: "ribbon" },
+          { type: "placeholder", shape: "ribbon" },
         ],
       },
-      { type: "process", items: reusableProcess },
+      { type: "process", items: reusableProcess }
     ],
   },
-  {
-    slug: "procedural-pencil",
+  {    slug: "procedural-pencil",
     title: "Procedural Pencil",
     type: "3D Still",
     year: "2026",
@@ -79,8 +86,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "clear-motion",
+  {    slug: "clear-motion",
     title: "Clear Motion",
     type: "Animation",
     year: "2025",
@@ -117,8 +123,7 @@ export const projects = [
       },
     ],
   },
-  {
-    slug: "material-study",
+  {    slug: "material-study",
     title: "Material Study",
     type: "Shader R&D",
     year: "2025",
@@ -146,8 +151,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "retail-object",
+  {    slug: "retail-object",
     title: "Retail Object",
     type: "Brand Visual",
     year: "2025",
@@ -187,8 +191,7 @@ export const projects = [
       },
     ],
   },
-  {
-    slug: "soft-machine",
+  {    slug: "soft-machine",
     title: "Soft Machine",
     type: "Simulation",
     year: "2024",
@@ -216,8 +219,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "input-array",
+  {    slug: "input-array",
     title: "Input Array",
     type: "System Design",
     year: "2024",
@@ -251,8 +253,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "synthetic-plant",
+  {    slug: "synthetic-plant",
     title: "Synthetic Plant",
     type: "Generative",
     year: "2024",
@@ -293,8 +294,7 @@ export const projects = [
       },
     ],
   },
-  {
-    slug: "scan-cleanup",
+  {    slug: "scan-cleanup",
     title: "Scan Cleanup",
     type: "Pipeline",
     year: "2024",
@@ -322,8 +322,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "digital-cloth",
+  {    slug: "digital-cloth",
     title: "Digital Cloth",
     type: "Lookdev",
     year: "2023",
@@ -351,8 +350,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "object-index",
+  {    slug: "object-index",
     title: "Object Index",
     type: "Database",
     year: "2023",
@@ -380,8 +378,7 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {
-    slug: "future-console",
+  {    slug: "future-console",
     title: "Future Console",
     type: "Interface",
     year: "2023",

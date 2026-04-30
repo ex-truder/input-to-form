@@ -1,32 +1,64 @@
-# Portfolio Engine Guide
+# Portfolio Engine README
 
-Гайд по поддержке статического портфолио-сайта на **React + Vite + Tailwind**.
+Подробный гайд по поддержке статического двуязычного портфолио-сайта на **React + Vite + Tailwind + React Router**.
 
-Сайт устроен как маленький **portfolio engine без CMS**: дизайн и шаблоны живут в компонентах, а кейсы добавляются через данные и медиа-файлы.
+Сайт устроен как маленький **portfolio engine без CMS**: дизайн и шаблоны живут в React-компонентах, а кейсы добавляются через данные и медиа-файлы.
 
 ---
 
-## 1. Главная идея
+## 0. Что это за проект
 
-Не нужно вручную верстать отдельную страницу под каждый кейс.
-
-Правильный процесс:
+Это статический сайт-портфолио с двуязычной структурой:
 
 ```txt
-1. Создать папку проекта в public/projects/
-2. Положить туда изображения и видео
-3. Добавить один объект проекта в src/data/projects.js
-4. Описать страницу проекта через blocks
-5. Проверить локально
-6. Сделать commit / push
+/en
+/en/work
+/en/work/project-slug
+/en/about
+
+/ru
+/ru/work
+/ru/work/project-slug
+/ru/about
 ```
 
-После добавления объекта в `projects.js` проект автоматически появляется:
+Главная идея:
 
 ```txt
-/                 главная страница
-/work             список проектов
-/work/project-id  отдельная страница проекта
+Один дизайн
+Один набор компонентов
+Один массив проектов
+Два языка через data objects
+Без CMS
+Без отдельных страниц под каждый кейс
+```
+
+Проекты добавляются не через ручную вёрстку отдельных страниц, а через объект в `src/data/projects.js`.
+
+---
+
+## 1. Главный рабочий процесс
+
+Чтобы добавить новый кейс:
+
+```txt
+1. Придумать slug проекта
+2. Создать папку public/projects/project-slug/
+3. Положить туда cover, hero и дополнительные медиа
+4. Добавить объект проекта в src/data/projects.js
+5. Описать наполнение страницы через blocks
+6. Проверить /en/work/project-slug и /ru/work/project-slug
+7. Запустить npm run build
+8. Сделать commit / push
+```
+
+После добавления проекта он автоматически появится:
+
+```txt
+/en и /ru                    главная страница
+/en/work и /ru/work          список проектов
+/en/work/project-slug        страница проекта EN
+/ru/work/project-slug        страница проекта RU
 ```
 
 ---
@@ -42,6 +74,10 @@ src/
 ├── data/
 │   ├── site.js
 │   └── projects.js
+│
+├── i18n/
+│   ├── config.js
+│   └── useLocale.js
 │
 ├── components/
 │   ├── layout/
@@ -86,35 +122,343 @@ public/
         └── result-01.mp4
 ```
 
+Важно: в коде путь к файлам из `public` начинается **без ****/public**.
+
+Правильно:
+
+```js
+src: "/projects/synthetic-plant/cover.jpg"
+```
+
+Неправильно:
+
+```js
+src: "/public/projects/synthetic-plant/cover.jpg"
+```
+
 ---
 
-## 3. Как запускать проект локально
+## 3. Установка и запуск
+
+Установка зависимостей:
 
 ```bash
 npm install
+```
+
+Запуск локального dev-сервера:
+
+```bash
 npm run dev
 ```
 
-Обычно сайт откроется по адресу:
+Обычно сайт открывается по адресу:
 
 ```txt
 http://localhost:5173/
 ```
 
-Проверить production-сборку:
+Проверочные страницы:
+
+```txt
+http://localhost:5173/en
+http://localhost:5173/ru
+
+http://localhost:5173/en/work
+http://localhost:5173/ru/work
+
+http://localhost:5173/en/work/synthetic-plant
+http://localhost:5173/ru/work/synthetic-plant
+
+http://localhost:5173/en/about
+http://localhost:5173/ru/about
+```
+
+Production-сборка:
 
 ```bash
 npm run build
+```
+
+Локальная проверка production-сборки:
+
+```bash
 npm run preview
 ```
 
 ---
 
-# Часть 1. Как вносить изменения в дизайн и блоки
+# Часть 1. Двуязычность
 
 ---
 
-## 4. Где менять общие настройки сайта
+## 4. Как устроена двуязычность
+
+Двуязычность работает через:
+
+```txt
+1. URL-префикс языка: /en или /ru
+2. объектные поля вида { en: "...", ru: "..." }
+3. helper getText(value, locale)
+4. hook useLocale()
+5. словарь интерфейса UI
+```
+
+Например:
+
+```js
+title: {
+  en: "Synthetic Plant",
+  ru: "Синтетическое растение",
+}
+```
+
+При открытии `/en/work/synthetic-plant` будет взят английский текст.
+
+При открытии `/ru/work/synthetic-plant` будет взят русский текст.
+
+---
+
+## 5. Файл `src/i18n/config.js`
+
+В этом файле находятся:
+
+```txt
+DEFAULT_LOCALE
+LOCALES
+UI
+isValidLocale()
+getText()
+getLocaleFromPathname()
+localizePath()
+switchLocaleInPath()
+```
+
+Пример структуры:
+
+```js
+export const DEFAULT_LOCALE = "en";
+
+export const LOCALES = {
+  en: {
+    label: "EN",
+    name: "English",
+  },
+  ru: {
+    label: "RU",
+    name: "Русский",
+  },
+};
+```
+
+`DEFAULT_LOCALE` — язык по умолчанию.
+
+Если пользователь откроет `/`, его можно отправить на:
+
+```txt
+/en
+```
+
+---
+
+## 6. Словарь интерфейса `UI`
+
+В `UI` хранятся короткие интерфейсные тексты:
+
+```js
+export const UI = {
+  en: {
+    work: "Work",
+    viewProjects: "View projects",
+    contact: "Contact",
+    about: "About",
+    backToWork: "Back to work",
+    nextProject: "Next project",
+    goToProjects: "Go to Projects",
+    featuredOpening: "Featured Opening",
+    process: "Process",
+    all: "All",
+  },
+
+  ru: {
+    work: "Работы",
+    viewProjects: "Смотреть проекты",
+    contact: "Связаться",
+    about: "Обо мне",
+    backToWork: "Назад к работам",
+    nextProject: "Следующий проект",
+    goToProjects: "К проектам",
+    featuredOpening: "Избранный проект",
+    process: "Процесс",
+    all: "Все",
+  },
+};
+```
+
+Здесь лучше хранить:
+
+```txt
+пункты меню
+названия кнопок
+служебные подписи
+лейблы вроде Next project / Back to work
+```
+
+Не стоит хранить здесь тексты самих проектов. Тексты проектов должны жить в `projects.js`.
+
+---
+
+## 7. Helper `getText()`
+
+`getText()` нужен, чтобы безопасно получать текст на нужном языке.
+
+Он должен поддерживать оба формата:
+
+### Старый формат
+
+```js
+title: "Glass System"
+```
+
+### Новый bilingual-формат
+
+```js
+title: {
+  en: "Glass System",
+  ru: "Стеклянная система",
+}
+```
+
+Пример функции:
+
+```js
+export function getText(value, locale = DEFAULT_LOCALE) {
+  if (value == null) return "";
+
+  if (typeof value === "string") {
+    return value;
+  }
+
+  return value[locale] || value[DEFAULT_LOCALE] || Object.values(value)[0] || "";
+}
+```
+
+Это значит, что проект можно переводить постепенно. Если поле пока строка — сайт не сломается.
+
+---
+
+## 8. Hook `useLocale()`
+
+Файл:
+
+```txt
+src/i18n/useLocale.js
+```
+
+Hook определяет текущий язык из URL.
+
+Пример:
+
+```js
+import { useLocation, useParams } from "react-router-dom";
+import { DEFAULT_LOCALE, getLocaleFromPathname, isValidLocale } from "./config";
+
+export function useLocale() {
+  const params = useParams();
+  const location = useLocation();
+
+  if (params.locale && isValidLocale(params.locale)) {
+    return params.locale;
+  }
+
+  return getLocaleFromPathname(location.pathname) || DEFAULT_LOCALE;
+}
+```
+
+Использование:
+
+```js
+const locale = useLocale();
+```
+
+---
+
+## 9. Маршруты в `App.jsx`
+
+Файл:
+
+```txt
+src/App.jsx
+```
+
+Маршруты должны быть языковыми:
+
+```jsx
+<Routes>
+  <Route path="/" element={<Navigate to={`/${DEFAULT_LOCALE}`} replace />} />
+
+  <Route path="/work" element={<Navigate to={`/${DEFAULT_LOCALE}/work`} replace />} />
+  <Route path="/about" element={<Navigate to={`/${DEFAULT_LOCALE}/about`} replace />} />
+
+  <Route path="/:locale" element={<LocaleGuard><HomePage /></LocaleGuard>} />
+  <Route path="/:locale/work" element={<LocaleGuard><WorkIndexPage /></LocaleGuard>} />
+  <Route path="/:locale/work/:slug" element={<LocaleGuard><ProjectPage /></LocaleGuard>} />
+  <Route path="/:locale/about" element={<LocaleGuard><AboutPage /></LocaleGuard>} />
+
+  <Route path="*" element={<Navigate to={`/${DEFAULT_LOCALE}`} replace />} />
+</Routes>
+```
+
+Старые пути можно редиректить:
+
+```txt
+/work → /en/work
+/about → /en/about
+/work/project-slug → /en/work/project-slug
+```
+
+---
+
+## 10. Переключатель языка
+
+Переключатель языка находится в `Header.jsx`.
+
+Он должен менять только языковой сегмент URL, сохраняя текущую страницу.
+
+Например:
+
+```txt
+/en/work/synthetic-plant → /ru/work/synthetic-plant
+/ru/about → /en/about
+```
+
+Для этого используется:
+
+```js
+switchLocaleInPath(location.pathname, localeKey)
+```
+
+Пример:
+
+```jsx
+{Object.entries(LOCALES).map(([localeKey, localeData]) => (
+  <Link
+    key={localeKey}
+    to={switchLocaleInPath(location.pathname, localeKey)}
+    className={locale === localeKey ? "...active" : "...inactive"}
+  >
+    {localeData.label}
+  </Link>
+))}
+```
+
+---
+
+# Часть 2. Где менять дизайн
+
+---
+
+## 11. Общие настройки сайта
 
 Файл:
 
@@ -122,14 +466,22 @@ npm run preview
 src/data/site.js
 ```
 
-Там должны лежать базовые настройки:
+Пример:
 
 ```js
 export const site = {
-  title: "Input to Form",
+  title: {
+    en: "Input to Form",
+    ru: "Input to Form",
+  },
+
   email: "hello@example.com",
-  description:
-    "Procedural 3D, product visuals, simulations, asset pipelines and interactive visual systems.",
+
+  description: {
+    en: "Procedural 3D, product visuals, simulations, asset pipelines and interactive visual systems.",
+    ru: "Процедурная 3D-графика, продуктовые визуалы, симуляции, пайплайны ассетов и интерактивные визуальные системы.",
+  },
+
   socials: [
     { label: "Instagram", href: "#" },
     { label: "LinkedIn", href: "#" },
@@ -138,18 +490,18 @@ export const site = {
 };
 ```
 
-Менять здесь:
+Здесь менять:
 
 ```txt
 название сайта
 email
 описание в футере
-ссылки на соцсети
+соцсети
 ```
 
 ---
 
-## 5. Где менять глобальный стиль
+## 12. Глобальные стили
 
 Файл:
 
@@ -157,7 +509,7 @@ email
 src/index.css
 ```
 
-Здесь подключается Tailwind:
+Минимально:
 
 ```css
 @import "tailwindcss";
@@ -171,20 +523,11 @@ body {
 }
 ```
 
-Сюда можно добавлять глобальные правила, например:
-
-```css
-body {
-  margin: 0;
-  background: #f6f3ec;
-}
-```
-
-Но большую часть дизайна лучше менять не здесь, а прямо в компонентах через Tailwind-классы.
+Глобальные правки можно добавлять сюда, но основная стилизация проекта делается Tailwind-классами прямо в компонентах.
 
 ---
 
-## 6. Где менять фон, цветовую схему и общий layout
+## 13. Общий фон и shell сайта
 
 Файл:
 
@@ -192,7 +535,7 @@ body {
 src/App.jsx
 ```
 
-Основной wrapper выглядит примерно так:
+Основной wrapper:
 
 ```jsx
 <main className="min-h-screen bg-[#f6f3ec] text-zinc-950 selection:bg-zinc-950 selection:text-white">
@@ -202,45 +545,23 @@ src/App.jsx
 </main>
 ```
 
-Чтобы изменить фон всего сайта:
+Чтобы поменять фон всего сайта:
 
-```jsx
+```txt
 bg-[#f6f3ec]
 ```
 
 Например:
 
-```jsx
+```txt
 bg-white
-```
-
-или:
-
-```jsx
+bg-zinc-950 text-white
 bg-[#111111] text-white
-```
-
-Чтобы изменить максимальную ширину всего сайта, ищи классы:
-
-```txt
-max-w-[1600px]
-```
-
-Например можно заменить на:
-
-```txt
-max-w-[1440px]
-```
-
-или:
-
-```txt
-max-w-[1800px]
 ```
 
 ---
 
-## 7. Где менять Header
+## 14. Header
 
 Файл:
 
@@ -248,48 +569,37 @@ max-w-[1800px]
 src/components/layout/Header.jsx
 ```
 
-Здесь находятся:
+Здесь менять:
 
 ```txt
 логотип / название
-навигация
+пункты меню
 email в хедере
-мобильная ссылка Work
+переключатель языка
+мобильную навигацию
 ```
 
-Пример:
+Важно: ссылки должны включать `locale`.
+
+Правильно:
 
 ```jsx
-<Link to="/" className="text-lg font-black tracking-tight normal-case">
-  {site.title}
-</Link>
+<NavLink to={`/${locale}/work`}>
+  {ui.work}
+</NavLink>
 ```
 
-Чтобы изменить пункты меню, меняй этот блок:
+Неправильно:
 
 ```jsx
-<div className="hidden items-center gap-6 md:flex">
-  <NavLink to="/work" className={navLinkClass}>
-    Work
-  </NavLink>
-
-  <NavLink to="/" className={navLinkClass}>
-    3D
-  </NavLink>
-
-  <a href={`mailto:${site.email}`} className="normal-case hover:opacity-50">
-    {site.email}
-  </a>
-
-  <NavLink to="/about" className={navLinkClass}>
-    About
-  </NavLink>
-</div>
+<NavLink to="/work">
+  Work
+</NavLink>
 ```
 
 ---
 
-## 8. Где менять Footer
+## 15. Footer
 
 Файл:
 
@@ -297,19 +607,25 @@ email в хедере
 src/components/layout/Footer.jsx
 ```
 
-Footer берёт данные из:
+Footer должен брать язык через:
 
-```txt
-src/data/site.js
+```js
+const locale = useLocale();
 ```
 
-Если нужно изменить только email или соцсети — лучше менять `site.js`.
+И выводить переводимые тексты через:
 
-Если нужно изменить сам внешний вид футера — менять `Footer.jsx`.
+```js
+getText(site.description, locale)
+```
+
+Если нужно поменять только текст — меняй `site.js`.
+
+Если нужно поменять внешний вид — меняй `Footer.jsx`.
 
 ---
 
-## 9. Где менять главную страницу
+## 16. Главная страница
 
 Файл:
 
@@ -321,33 +637,33 @@ src/pages/HomePage.jsx
 
 ```txt
 hero-заголовок
-короткое описание
+описание
 кнопки View projects / Contact
-фильтры проектов
-главная сетка карточек
-нижний текстовый блок From input to form
+фильтры
+bento/grid карточек
+нижний текстовый блок
 ```
 
-Главный заголовок:
+Все тексты, которые должны быть двуязычными, можно хранить прямо в компоненте как объекты:
+
+```js
+const heroTitle = {
+  en: "I’d like this to be my 3D CV",
+  ru: "Я хочу, чтобы это было моим 3D-портфолио",
+};
+```
+
+И выводить так:
 
 ```jsx
-<h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[9.4vw]">
-  I&apos;d like this to be my 3D CV
-</h1>
+{getText(heroTitle, locale)}
 ```
 
-Чтобы поменять текст — меняй содержимое `h1`.
-
-Чтобы поменять размер — меняй классы:
-
-```txt
-text-[16vw]
-md:text-[9.4vw]
-```
+Или вынести эти тексты в отдельный словарь, если их станет много.
 
 ---
 
-## 10. Где менять страницу списка проектов `/work`
+## 17. Страница списка проектов `/en/work` и `/ru/work`
 
 Файл:
 
@@ -358,30 +674,30 @@ src/pages/WorkIndexPage.jsx
 Здесь находятся:
 
 ```txt
-заголовок I love 3D
-описание страницы
+заголовок страницы
+описание
 featured-блок
 список Go to Projects
-NDA-friendly блок
+нижний NDA-friendly блок
 ```
 
-Featured-проект сейчас выбирается автоматически:
+Featured-проект выбирается автоматически:
 
 ```js
 const featuredProject = projects.find((project) => project.featured) || projects[0];
 ```
 
-Это значит: берётся первый проект, у которого:
+То есть берётся первый проект с:
 
 ```js
 featured: true
 ```
 
-Если таких проектов несколько, будет выбран первый из списка.
+Если таких несколько — будет выбран первый в массиве.
 
 ---
 
-## 11. Где менять страницу одного проекта `/work/:slug`
+## 18. Страница проекта `/en/work/:slug` и `/ru/work/:slug`
 
 Файл:
 
@@ -389,11 +705,11 @@ featured: true
 src/pages/ProjectPage.jsx
 ```
 
-Здесь находится общий шаблон страницы проекта:
+Здесь находится универсальный шаблон проекта:
 
 ```txt
 Back to work
-мета проекта: type / year / client
+project meta: type / year / client
 title
 subtitle
 tool tags
@@ -402,22 +718,23 @@ blocks
 next project
 ```
 
-Важно: сюда обычно не нужно лезть при добавлении нового кейса.
+При добавлении нового проекта сюда обычно лезть не нужно.
 
-Сюда лезем только если нужно изменить структуру всех страниц проектов сразу.
+Сюда нужно лезть, только если меняется структура **всех** страниц проектов.
 
 Например:
 
 ```txt
-добавить client-logo в hero всех проектов
-поменять расположение title/subtitle
-изменить стиль tool-tags
-убрать блок Next project
+добавить логотип клиента
+изменить расположение title/subtitle
+убрать year/client
+поменять стили tags
+изменить блок Next project
 ```
 
 ---
 
-## 12. Где менять карточку проекта
+## 19. Карточка проекта
 
 Файл:
 
@@ -425,40 +742,109 @@ next project
 src/components/projects/ProjectCard.jsx
 ```
 
-Карточка используется на главной странице.
+Карточка используется на главной.
 
-Здесь настраиваются:
+Здесь настраивается:
 
 ```txt
 размер карточки
 hover-состояние
-название проекта на карточке
+cover media
+название проекта
 тип проекта
 кнопка Open
 ```
 
-Размер карточки зависит от поля `ratio` в проекте:
-
-```js
-ratio: "portrait"
-ratio: "wide"
-ratio: "square"
-```
-
-Логика:
+Карточка должна ссылаться на языковой URL:
 
 ```jsx
-const ratio =
-  project.ratio === "portrait"
-    ? "md:row-span-2 min-h-[520px]"
-    : project.ratio === "wide"
-      ? "md:col-span-2 min-h-[360px]"
-      : "min-h-[360px]";
+<Link to={`/${locale}/work/${project.slug}`}>
+```
+
+Тексты должны выводиться через:
+
+```jsx
+{getText(project.title, locale)}
+{getText(project.type, locale)}
 ```
 
 ---
 
-## 13. Где менять отображение картинок и видео
+## 20. Размеры карточек
+
+Размер карточки зависит от поля:
+
+```js
+ratio: "wide"
+ratio: "portrait"
+ratio: "square"
+```
+
+Рекомендуемая логика:
+
+```jsx
+const ratio =
+  project.ratio === "portrait"
+    ? "md:row-span-3 min-h-[520px]"
+    : project.ratio === "wide"
+      ? "md:col-span-2 md:row-span-2 min-h-[360px]"
+      : "md:row-span-2 min-h-[360px]";
+```
+
+Важно: `row-span` и `col-span` должны быть на **прямом grid item**, то есть на корневом элементе карточки, обычно `<Link>`.
+
+Хорошо:
+
+```jsx
+<Link className={`group relative block ... ${ratio}`}>
+  ...
+</Link>
+```
+
+Плохо:
+
+```jsx
+<Link className="block">
+  <article className={ratio}>...</article>
+</Link>
+```
+
+Во втором случае CSS Grid не увидит размеры карточки правильно.
+
+---
+
+## 21. Grid на главной
+
+Файл:
+
+```txt
+src/pages/HomePage.jsx
+```
+
+Рекомендуемый grid:
+
+```jsx
+<div className="grid grid-cols-1 gap-5 md:auto-rows-[180px] md:grid-cols-3 xl:grid-cols-4">
+  {visibleProjects.map((project, index) => (
+    <ProjectCard key={`${project.slug}-${active}`} project={project} index={index} />
+  ))}
+</div>
+```
+
+Почему `md:auto-rows-[180px]`, а не просто `auto-rows-[180px]`:
+
+```txt
+На мобильной версии одна колонка, карточки должны идти обычным потоком.
+На desktop нужен bento/grid layout с row-span.
+```
+
+---
+
+# Часть 3. Медиа и placeholders
+
+---
+
+## 22. ProjectMedia
 
 Файл:
 
@@ -466,7 +852,7 @@ const ratio =
 src/components/media/ProjectMedia.jsx
 ```
 
-Этот компонент отвечает за:
+Компонент отвечает за:
 
 ```txt
 image
@@ -474,12 +860,10 @@ video
 fallback на placeholder
 ошибку загрузки медиа
 object-cover
-скругление
+alt-тексты
 ```
 
-Если картинка не загрузилась, автоматически показывается placeholder.
-
-Поддерживаемые типы media:
+Поддерживаемые типы:
 
 ```js
 { type: "image", src: "..." }
@@ -487,20 +871,128 @@ object-cover
 { type: "placeholder" }
 ```
 
+Если картинка или видео не загрузились, компонент должен показать placeholder.
+
 ---
 
-## 14. Где менять placeholder-графику
+## 23. Bilingual alt для изображений
 
-Файлы:
+`alt` можно писать строкой:
 
-```txt
-src/components/media/PlaceholderVisual.jsx
-src/components/media/Shape.jsx
+```js
+alt: "Project image"
 ```
 
-`PlaceholderVisual.jsx` отвечает за фон и градиент.
+Или объектом:
 
-`Shape.jsx` отвечает за декоративную фигуру внутри placeholder.
+```js
+alt: {
+  en: "Project image",
+  ru: "Изображение проекта",
+}
+```
+
+В `ProjectMedia.jsx` лучше выводить так:
+
+```jsx
+alt={getText(media.alt, locale) || getText(project?.title, locale) || "Project media"}
+```
+
+---
+
+## 24. Изображения
+
+Формат:
+
+```js
+{
+  type: "image",
+  src: "/projects/new-project/cover.jpg",
+  alt: {
+    en: "New Project cover image",
+    ru: "Обложка проекта New Project",
+  },
+}
+```
+
+Рекомендации:
+
+```txt
+cover.jpg — 1600–2400 px по ширине
+hero.jpg — 2400–3200 px по ширине
+дополнительные изображения — 1600–2400 px по ширине
+```
+
+Форматы:
+
+```txt
+.jpg
+.jpeg
+.png
+.webp
+.avif
+```
+
+---
+
+## 25. Видео
+
+Формат:
+
+```js
+{
+  type: "video",
+  src: "/projects/new-project/hero.mp4",
+  poster: "/projects/new-project/cover.jpg",
+}
+```
+
+По умолчанию видео обычно:
+
+```txt
+autoplay
+muted
+loop
+playsInline
+controls = false
+```
+
+Если нужен обычный плеер:
+
+```js
+{
+  type: "video",
+  src: "/projects/new-project/hero.mp4",
+  controls: true,
+  autoPlay: false,
+  loop: false,
+}
+```
+
+---
+
+## 26. Placeholder
+
+Placeholder можно использовать, пока нет готовых материалов:
+
+```js
+cover: { type: "placeholder" },
+hero: { type: "placeholder" },
+```
+
+Или внутри блоков:
+
+```js
+{
+  type: "media",
+  media: {
+    type: "placeholder",
+    shape: "console",
+    accent: "from-violet-100 via-slate-200 to-cyan-100"
+  },
+  size: "large"
+}
+```
 
 Поддерживаемые shape:
 
@@ -519,21 +1011,13 @@ stack
 console
 ```
 
-Placeholder нужен для:
+---
 
-```txt
-быстрого прототипирования
-проектов без готовых картинок
-безопасного fallback, если путь к файлу неправильный
-```
+# Часть 4. Как добавлять проекты
 
 ---
 
-# Часть 2. Как добавлять проекты и оформлять страницы по блокам
-
----
-
-## 15. Основной файл для добавления кейсов
+## 27. Главный файл проектов
 
 Файл:
 
@@ -541,9 +1025,7 @@ Placeholder нужен для:
 src/data/projects.js
 ```
 
-Если у тебя файл называется `projects.jsx`, это тоже ок, но для данных лучше использовать `.js`.
-
-В этом файле должны быть:
+В нём должны быть:
 
 ```js
 export const reusableProcess = [...];
@@ -553,59 +1035,92 @@ export function getProject(slug) {...}
 export function getNextProject(slug) {...}
 ```
 
-Самое важное — массив:
+Важно: не забывать `export`. Если забыть, будут ошибки вроде:
 
-```js
-export const projects = [
-  {...},
-  {...},
-  {...},
-];
+```txt
+projects is not defined
+The requested module does not provide an export named 'projects'
 ```
-
-Каждый объект внутри массива — один проект.
 
 ---
 
-## 16. Минимальный шаблон проекта
+## 28. Минимальный bilingual-шаблон проекта
 
 ```js
 {
   slug: "new-project",
-  title: "New Project",
-  type: "CG / Product",
+
+  title: {
+    en: "New Project",
+    ru: "Новый проект",
+  },
+
+  typeKey: "cg-product",
+
+  type: {
+    en: "CG / Product",
+    ru: "CG / Продукт",
+  },
+
   year: "2026",
-  client: "Personal Study",
+
+  client: {
+    en: "Personal Study",
+    ru: "Личный проект",
+  },
+
   duration: "00:36",
   featured: false,
   ratio: "wide",
   accent: "from-stone-100 via-zinc-200 to-slate-300",
   shape: "box",
 
-  description: "Short description for cards and project lists.",
-  subtitle: "Longer intro sentence for the project page.",
+  description: {
+    en: "Short description for cards and project lists.",
+    ru: "Короткое описание для карточек и списка проектов.",
+  },
+
+  subtitle: {
+    en: "Longer intro sentence for the project page.",
+    ru: "Более развёрнутое вводное предложение для страницы проекта.",
+  },
 
   tools: ["Blender", "Houdini", "Redshift"],
 
   cover: {
     type: "image",
     src: "/projects/new-project/cover.jpg",
-    alt: "New Project cover image",
+    alt: {
+      en: "New Project cover image",
+      ru: "Обложка проекта Новый проект",
+    },
   },
 
   hero: {
     type: "image",
     src: "/projects/new-project/hero.jpg",
-    alt: "New Project hero image",
+    alt: {
+      en: "New Project hero image",
+      ru: "Главное изображение проекта Новый проект",
+    },
   },
 
   blocks: [
     {
       type: "text",
-      label: "Project note",
+      label: {
+        en: "Project note",
+        ru: "О проекте",
+      },
       columns: [
-        "First paragraph.",
-        "Second paragraph."
+        {
+          en: "First paragraph.",
+          ru: "Первый абзац.",
+        },
+        {
+          en: "Second paragraph.",
+          ru: "Второй абзац.",
+        },
       ],
     },
     {
@@ -614,12 +1129,18 @@ export const projects = [
         {
           type: "image",
           src: "/projects/new-project/01.jpg",
-          alt: "Detail image 1",
+          alt: {
+            en: "Detail image 1",
+            ru: "Детальное изображение 1",
+          },
         },
         {
           type: "image",
           src: "/projects/new-project/02.jpg",
-          alt: "Detail image 2",
+          alt: {
+            en: "Detail image 2",
+            ru: "Детальное изображение 2",
+          },
         },
       ],
     },
@@ -633,7 +1154,7 @@ export const projects = [
 
 ---
 
-## 17. Что означает каждое поле проекта
+## 29. Поля проекта
 
 ### `slug`
 
@@ -644,7 +1165,8 @@ slug: "synthetic-plant"
 Используется в URL:
 
 ```txt
-/work/synthetic-plant
+/en/work/synthetic-plant
+/ru/work/synthetic-plant
 ```
 
 Правила:
@@ -679,7 +1201,10 @@ scan_cleanup!!!
 ### `title`
 
 ```js
-title: "Synthetic Plant"
+title: {
+  en: "Synthetic Plant",
+  ru: "Синтетическое растение",
+}
 ```
 
 Показывается:
@@ -693,29 +1218,52 @@ title: "Synthetic Plant"
 
 ---
 
+### `typeKey`
+
+```js
+typeKey: "generative"
+```
+
+Это стабильный технический ключ для фильтров.
+
+Он не переводится.
+
+Лучше писать:
+
+```txt
+cg-product
+animation
+shader-rd
+brand-visual
+simulation
+system-design
+generative
+pipeline
+lookdev
+database
+interface
+```
+
+---
+
 ### `type`
 
 ```js
-type: "Generative"
+type: {
+  en: "Generative",
+  ru: "Генеративная графика",
+}
 ```
 
-Используется:
+Это отображаемое название типа проекта.
+
+Показывается:
 
 ```txt
-в карточках
-в фильтрах на главной
+на карточке
+в фильтрах
 в мета-информации проекта
 ```
-
-Фильтры создаются автоматически из всех уникальных `type`.
-
-Если добавишь новый type:
-
-```js
-type: "AR / VR"
-```
-
-то на главной автоматически появится фильтр `AR / VR`.
 
 ---
 
@@ -725,31 +1273,27 @@ type: "AR / VR"
 year: "2026"
 ```
 
-Показывается на странице проекта в строке:
-
-```txt
-TYPE / YEAR / CLIENT
-```
+Показывается на странице проекта.
 
 ---
 
 ### `client`
 
 ```js
-client: "Personal Study"
+client: {
+  en: "Personal Study",
+  ru: "Личный проект",
+}
 ```
 
-Можно писать:
+Можно писать нейтрально:
 
 ```txt
-Personal Study
-Internal R&D
-Commercial Concept
-Client Name
-NDA Project
+Personal Study / Личный проект
+Internal R&D / Внутренний R&D
+Commercial Concept / Коммерческий концепт
+NDA Project / NDA-проект
 ```
-
-Если не хочешь раскрывать клиента, используй нейтральное название.
 
 ---
 
@@ -759,9 +1303,9 @@ NDA Project
 duration: "00:21"
 ```
 
-Используется на странице `/work` в списке проектов, визуально как таймкод.
+Используется на странице `/work` как визуальный таймкод.
 
-Это не обязательно реальная длительность. Можно использовать как декоративную навигационную метку.
+Это не обязательно реальная длительность.
 
 ---
 
@@ -771,9 +1315,7 @@ duration: "00:21"
 featured: true
 ```
 
-Проект с `featured: true` может использоваться как главный проект на странице `/work`.
-
-Если таких проектов несколько, будет выбран первый из списка.
+Первый проект с `featured: true` используется как featured-проект на странице `/work`.
 
 ---
 
@@ -793,12 +1335,6 @@ portrait
 square
 ```
 
-`wide` — широкая карточка.
-
-`portrait` — высокая карточка.
-
-`square` — обычная карточка.
-
 ---
 
 ### `accent`
@@ -807,19 +1343,9 @@ square
 accent: "from-green-100 via-lime-200 to-yellow-100"
 ```
 
-Используется для placeholder-градиента, если нет реального изображения.
+Используется для placeholder-градиента.
 
-Это Tailwind-классы градиента.
-
-Примеры:
-
-```js
-accent: "from-slate-200 via-zinc-300 to-stone-400"
-accent: "from-cyan-100 via-blue-200 to-violet-200"
-accent: "from-rose-100 via-red-200 to-orange-200"
-```
-
-Если у проекта есть реальные картинки, `accent` всё равно полезен как fallback.
+Даже если у проекта есть реальные картинки, `accent` полезен как fallback.
 
 ---
 
@@ -829,31 +1355,17 @@ accent: "from-rose-100 via-red-200 to-orange-200"
 shape: "plant"
 ```
 
-Используется только для placeholder-графики.
-
-Поддерживаемые значения:
-
-```txt
-orb
-pencil
-ribbon
-totem
-box
-blob
-grid
-plant
-scan
-cloth
-stack
-console
-```
+Используется для placeholder-графики.
 
 ---
 
 ### `description`
 
 ```js
-description: "Procedural leaves, staged botanical forms and calm synthetic gardening."
+description: {
+  en: "Procedural leaves, staged botanical forms and calm synthetic gardening.",
+  ru: "Процедурные листья, постановочные ботанические формы и спокойная синтетическая ботаника.",
+}
 ```
 
 Короткое описание.
@@ -873,12 +1385,13 @@ description: "Procedural leaves, staged botanical forms and calm synthetic garde
 ### `subtitle`
 
 ```js
-subtitle: "A generative botanical study built as if it were a small product collection."
+subtitle: {
+  en: "A generative botanical study built as if it were a small product collection.",
+  ru: "Генеративное ботаническое исследование, собранное как небольшая продуктовая коллекция.",
+}
 ```
 
 Показывается в верхней части страницы проекта.
-
-Можно сделать чуть длиннее, чем `description`, но не превращать в большой абзац.
 
 ---
 
@@ -888,189 +1401,89 @@ subtitle: "A generative botanical study built as if it were a small product coll
 tools: ["Cinema 4D", "Houdini", "Octane"]
 ```
 
-Показывается как теги на странице проекта.
+Можно оставить строками, если названия инструментов одинаковы для обоих языков.
 
-Можно добавлять:
-
-```txt
-Blender
-Houdini
-Cinema 4D
-Redshift
-Octane
-Unity
-Unreal
-Python
-Figma
-Spline
-Photogrammetry
-Simulation
-Lookdev
-Pipeline
-```
-
----
-
-## 18. Как хранить медиа проекта
-
-Для каждого проекта создавай отдельную папку:
-
-```txt
-public/projects/project-slug/
-```
-
-Например:
-
-```txt
-public/projects/synthetic-plant/
-```
-
-Рекомендуемый набор файлов:
-
-```txt
-cover.jpg      карточка на главной и /work
-hero.jpg       главный визуал страницы проекта
-hero.mp4       если hero — видео
-01.jpg         первый дополнительный визуал
-02.jpg         второй дополнительный визуал
-03.jpg         третий дополнительный визуал
-process-01.jpg
-result-01.mp4
-```
-
-Путь в коде всегда начинается с `/projects/...`, без `public`:
+Если нужен перевод, можно использовать объекты:
 
 ```js
-src: "/projects/synthetic-plant/cover.jpg"
-```
-
-Не писать так:
-
-```js
-src: "/public/projects/synthetic-plant/cover.jpg"
-```
-
----
-
-## 19. Формат изображения
-
-Для картинок:
-
-```js
-{
-  type: "image",
-  src: "/projects/new-project/cover.jpg",
-  alt: "Description of the image"
-}
-```
-
-Поддерживаются обычные web-форматы:
-
-```txt
-.jpg
-.jpeg
-.png
-.webp
-.avif
-```
-
-Рекомендации:
-
-```txt
-cover.jpg — 1600–2400 px по ширине
-hero.jpg — 2400–3200 px по ширине
-дополнительные изображения — 1600–2400 px по ширине
-```
-
-Для сайта лучше использовать `.jpg`, `.webp` или `.avif`.
-
----
-
-## 20. Формат видео
-
-Для видео:
-
-```js
-{
-  type: "video",
-  src: "/projects/new-project/hero.mp4",
-  poster: "/projects/new-project/cover.jpg"
-}
-```
-
-По умолчанию видео:
-
-```txt
-autoplay
-muted
-loop
-playsInline
-controls = false
-```
-
-Можно явно задать:
-
-```js
-{
-  type: "video",
-  src: "/projects/new-project/hero.mp4",
-  poster: "/projects/new-project/cover.jpg",
-  autoPlay: true,
-  muted: true,
-  loop: true,
-  controls: false
-}
-```
-
-Если нужен обычный плеер с контролами:
-
-```js
-controls: true
-```
-
----
-
-## 21. Placeholder вместо медиа
-
-Если картинок ещё нет, можно использовать placeholder:
-
-```js
-cover: { type: "placeholder" },
-hero: { type: "placeholder" },
-```
-
-Или внутри блоков:
-
-```js
-{
-  type: "media",
-  media: {
-    type: "placeholder",
-    shape: "console"
+tools: [
+  "Houdini",
+  {
+    en: "Procedural Modeling",
+    ru: "Процедурное моделирование",
   },
-  size: "large"
-}
+]
 ```
 
-Можно задать отдельный shape:
+Выводить нужно через:
 
 ```js
-{ type: "placeholder", shape: "plant" }
-```
-
-И отдельный accent:
-
-```js
-{
-  type: "placeholder",
-  shape: "box",
-  accent: "from-fuchsia-100 via-purple-200 to-indigo-200"
-}
+getText(tool, locale)
 ```
 
 ---
 
-# Часть 3. Блоки страницы проекта
+# Часть 5. Фильтры проектов
+
+---
+
+## 30. Как строятся фильтры
+
+Фильтры лучше строить по `typeKey`, а отображать через `type`.
+
+Пример:
+
+```js
+export const filters = [
+  {
+    key: "all",
+    label: {
+      en: "All",
+      ru: "Все",
+    },
+  },
+  ...Array.from(
+    new Map(
+      projects.map((project) => [
+        project.typeKey,
+        {
+          key: project.typeKey,
+          label: project.type,
+        },
+      ])
+    ).values()
+  ),
+];
+```
+
+В `HomePage.jsx` активный фильтр должен хранить key:
+
+```js
+const [active, setActive] = useState("all");
+```
+
+Фильтрация:
+
+```js
+const visibleProjects = useMemo(() => {
+  if (active === "all") return projects;
+  return projects.filter((project) => project.typeKey === active);
+}, [active]);
+```
+
+Вывод label:
+
+```jsx
+{getText(filter.label, locale)}
+```
+
+---
+
+# Часть 6. Блоки страницы проекта
+
+---
+
+## 31. Как устроены blocks
 
 Страница проекта собирается из массива:
 
@@ -1082,24 +1495,39 @@ blocks: [
 ]
 ```
 
-Каждый объект внутри `blocks` — отдельный блок страницы.
+Каждый объект — один блок страницы.
 
 Порядок объектов = порядок блоков на странице.
 
+Рендеринг происходит в:
+
+```txt
+src/components/projects/ProjectBlocks.jsx
+```
+
 ---
 
-## 22. Блок `text`
+## 32. Блок `text`
 
-Текстовый блок в две колонки.
+Текстовый блок.
 
 ```js
 {
   type: "text",
-  label: "Project note",
+  label: {
+    en: "Project note",
+    ru: "О проекте",
+  },
   columns: [
-    "First text column.",
-    "Second text column."
-  ]
+    {
+      en: "First text column.",
+      ru: "Первый текстовый столбец.",
+    },
+    {
+      en: "Second text column.",
+      ru: "Второй текстовый столбец.",
+    },
+  ],
 }
 ```
 
@@ -1112,23 +1540,9 @@ blocks: [
 техническое пояснение
 ```
 
-Можно делать одну колонку:
-
-```js
-{
-  type: "text",
-  label: "Context",
-  columns: [
-    "Single paragraph text."
-  ]
-}
-```
-
-Но визуально лучше работают две колонки.
-
 ---
 
-## 23. Блок `media`
+## 33. Блок `media`
 
 Один большой визуальный блок.
 
@@ -1138,35 +1552,24 @@ blocks: [
   media: {
     type: "image",
     src: "/projects/new-project/01.jpg",
-    alt: "Large project image"
+    alt: {
+      en: "Large project image",
+      ru: "Большое изображение проекта",
+    },
   },
   size: "large",
-  caption: "Optional caption"
+  caption: {
+    en: "Optional caption",
+    ru: "Необязательная подпись",
+  },
 }
 ```
 
-`size` может быть:
-
-```txt
-large
-обычное значение можно не указывать
-```
-
-Если `size: "large"`, блок будет выше:
-
-```txt
-min-h-[72vh]
-```
-
-Без `large`:
-
-```txt
-min-h-[520px]
-```
+`size: "large"` делает блок выше.
 
 ---
 
-## 24. Блок `mediaGrid`
+## 34. Блок `mediaGrid`
 
 Сетка из двух медиа-блоков.
 
@@ -1177,40 +1580,25 @@ min-h-[520px]
     {
       type: "image",
       src: "/projects/new-project/01.jpg",
-      alt: "Detail 1"
-    },
-    {
-      type: "image",
-      src: "/projects/new-project/02.jpg",
-      alt: "Detail 2"
-    }
-  ]
-}
-```
-
-Можно смешивать image и video:
-
-```js
-{
-  type: "mediaGrid",
-  items: [
-    {
-      type: "image",
-      src: "/projects/new-project/01.jpg",
-      alt: "Still frame"
+      alt: {
+        en: "Detail 1",
+        ru: "Деталь 1",
+      },
     },
     {
       type: "video",
       src: "/projects/new-project/detail-loop.mp4",
-      poster: "/projects/new-project/02.jpg"
-    }
-  ]
+      poster: "/projects/new-project/02.jpg",
+    },
+  ],
 }
 ```
 
+Можно смешивать изображения и видео.
+
 ---
 
-## 25. Блок `process`
+## 35. Блок `process`
 
 Блок процесса.
 
@@ -1219,222 +1607,107 @@ min-h-[520px]
 ```js
 {
   type: "process",
-  items: reusableProcess
+  items: reusableProcess,
 }
 ```
 
-Или задать индивидуальный:
+Или индивидуальный:
 
 ```js
 {
   type: "process",
   items: [
     {
-      title: "Research",
-      text: "Collected references, constraints and input files."
-    },
-    {
-      title: "Build",
-      text: "Created procedural setup and visual system."
-    },
-    {
-      title: "Delivery",
-      text: "Rendered final visuals and prepared reusable assets."
-    }
-  ]
-}
-```
-
-Количество пунктов может быть не только 3, но текущий дизайн лучше всего выглядит с тремя.
-
----
-
-## 26. Блок `quote`
-
-Крупная цитата / statement.
-
-```js
-{
-  type: "quote",
-  text: "A project page should be flexible enough for a long case study, but simple enough for a one-evening upload."
-}
-```
-
-Где использовать:
-
-```txt
-ключевая мысль
-крупный слоган
-вывод по проекту
-```
-
----
-
-## 27. Блок `credits`
-
-Блок с ролями, задачами, outputs.
-
-```js
-{
-  type: "credits",
-  items: [
-    {
-      label: "Role",
-      value: "3D direction, lookdev, render system"
-    },
-    {
-      label: "Output",
-      value: "Hero images, crops, presentation visuals"
-    }
-  ]
-}
-```
-
-Можно добавить больше пунктов:
-
-```js
-{
-  type: "credits",
-  items: [
-    { label: "Client", value: "NDA" },
-    { label: "Role", value: "3D pipeline and rendering" },
-    { label: "Tools", value: "Blender, Houdini, Python" },
-    { label: "Output", value: "Realtime-ready assets and renders" }
-  ]
-}
-```
-
----
-
-# Часть 4. Полный пример нового проекта
-
----
-
-## 28. Создать папку
-
-```txt
-public/projects/robot-arm/
-```
-
-Положить файлы:
-
-```txt
-cover.jpg
-hero.mp4
-01.jpg
-02.jpg
-03.jpg
-```
-
----
-
-## 29. Добавить объект в `projects.js`
-
-```js
-{
-  slug: "robot-arm",
-  title: "Robot Arm",
-  type: "Pipeline",
-  year: "2026",
-  client: "Internal R&D",
-  duration: "00:36",
-  featured: false,
-  ratio: "wide",
-  accent: "from-stone-100 via-zinc-200 to-slate-300",
-  shape: "scan",
-
-  description: "Pipeline for preparing robotic arm assets for real-time and presentation use.",
-  subtitle: "From technical input geometry to optimized visual production assets.",
-
-  tools: ["Blender", "Houdini", "Python", "Unity"],
-
-  cover: {
-    type: "image",
-    src: "/projects/robot-arm/cover.jpg",
-    alt: "Robot Arm cover image",
-  },
-
-  hero: {
-    type: "video",
-    src: "/projects/robot-arm/hero.mp4",
-    poster: "/projects/robot-arm/cover.jpg",
-  },
-
-  blocks: [
-    {
-      type: "text",
-      label: "Project note",
-      columns: [
-        "The project started from a technical model that needed to become presentation-ready.",
-        "The final system included cleaned geometry, material setup and optimized outputs."
-      ],
-    },
-    {
-      type: "mediaGrid",
-      items: [
-        {
-          type: "image",
-          src: "/projects/robot-arm/01.jpg",
-          alt: "Robot Arm process image",
-        },
-        {
-          type: "image",
-          src: "/projects/robot-arm/02.jpg",
-          alt: "Robot Arm final render",
-        },
-      ],
-    },
-    {
-      type: "media",
-      media: {
-        type: "image",
-        src: "/projects/robot-arm/03.jpg",
-        alt: "Robot Arm detail render",
+      title: {
+        en: "Research",
+        ru: "Исследование",
       },
-      size: "large",
-      caption: "Detail view of the optimized asset.",
+      text: {
+        en: "Collected references, constraints and input files.",
+        ru: "Собрал референсы, ограничения и входные файлы.",
+      },
     },
     {
-      type: "process",
-      items: [
-        {
-          title: "Input",
-          text: "Technical model, references and target platform constraints."
-        },
-        {
-          title: "Cleanup",
-          text: "Geometry cleanup, hierarchy, naming and material preparation."
-        },
-        {
-          title: "Output",
-          text: "Presentation renders and optimized realtime-ready assets."
-        }
-      ]
+      title: {
+        en: "Build",
+        ru: "Сборка",
+      },
+      text: {
+        en: "Created procedural setup and visual system.",
+        ru: "Собрал процедурную систему и визуальные правила.",
+      },
     },
     {
-      type: "credits",
-      items: [
-        { label: "Role", value: "Pipeline, optimization, lookdev" },
-        { label: "Output", value: "Realtime asset, renders, documentation" }
-      ]
-    }
+      title: {
+        en: "Delivery",
+        ru: "Результат",
+      },
+      text: {
+        en: "Rendered final visuals and prepared reusable assets.",
+        ru: "Подготовил финальные визуалы и переиспользуемые ассеты.",
+      },
+    },
   ],
 }
 ```
 
-После этого проект будет доступен по адресу:
+---
 
-```txt
-/work/robot-arm
+## 36. Блок `quote`
+
+Крупная цитата или statement.
+
+```js
+{
+  type: "quote",
+  text: {
+    en: "A project page should be flexible enough for a long case study, but simple enough for a one-evening upload.",
+    ru: "Страница проекта должна быть достаточно гибкой для большого кейса и достаточно простой для вечерней загрузки материалов.",
+  },
+}
 ```
 
 ---
 
-# Часть 5. Как добавлять новые типы блоков
+## 37. Блок `credits`
+
+Блок ролей, задач и outputs.
+
+```js
+{
+  type: "credits",
+  items: [
+    {
+      label: {
+        en: "Role",
+        ru: "Роль",
+      },
+      value: {
+        en: "3D direction, lookdev, render system",
+        ru: "3D-дирекшн, lookdev, система рендера",
+      },
+    },
+    {
+      label: {
+        en: "Output",
+        ru: "Результат",
+      },
+      value: {
+        en: "Hero images, crops, presentation visuals",
+        ru: "Hero-изображения, кропы, презентационные визуалы",
+      },
+    },
+  ],
+}
+```
 
 ---
 
-## 30. Где находится renderer блоков
+# Часть 7. Добавление новых типов блоков
+
+---
+
+## 38. Где находится renderer блоков
 
 Файл:
 
@@ -1461,30 +1734,35 @@ export default function ProjectBlocks({ project }) {
 Чтобы добавить новый тип блока:
 
 ```txt
-1. Создать новую функцию блока в этом же файле
-2. Добавить условие в ProjectBlocks
-3. Использовать новый type в projects.js
+1. Создать новую функцию блока в ProjectBlocks.jsx
+2. Использовать getText() внутри всех текстовых полей
+3. Добавить условие в ProjectBlocks
+4. Использовать новый type в projects.js
 ```
 
 ---
 
-## 31. Пример: добавить блок `twoColumnTextMedia`
+## 39. Пример нового блока `twoColumnTextMedia`
 
-В `ProjectBlocks.jsx` добавить функцию:
+Добавить в `ProjectBlocks.jsx`:
 
 ```jsx
 function TwoColumnTextMediaBlock({ block, project }) {
+  const locale = useLocale();
+
   return (
     <section className="mx-auto grid max-w-[1600px] gap-5 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24">
       <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-          {block.label}
+          {getText(block.label, locale)}
         </p>
+
         <h2 className="mb-6 text-4xl font-black tracking-[-0.05em] md:text-6xl">
-          {block.title}
+          {getText(block.title, locale)}
         </h2>
+
         <p className="text-lg leading-relaxed text-zinc-700">
-          {block.text}
+          {getText(block.text, locale)}
         </p>
       </div>
 
@@ -1494,7 +1772,7 @@ function TwoColumnTextMediaBlock({ block, project }) {
 }
 ```
 
-Потом добавить в renderer:
+Добавить в renderer:
 
 ```jsx
 if (block.type === "twoColumnTextMedia") {
@@ -1502,314 +1780,249 @@ if (block.type === "twoColumnTextMedia") {
 }
 ```
 
-Теперь можно использовать в `projects.js`:
+Использовать в `projects.js`:
 
 ```js
 {
   type: "twoColumnTextMedia",
-  label: "Technical note",
-  title: "Geometry cleanup",
-  text: "The original input geometry was reorganized, renamed and optimized for downstream production.",
+  label: {
+    en: "Technical note",
+    ru: "Техническая заметка",
+  },
+  title: {
+    en: "Geometry cleanup",
+    ru: "Очистка геометрии",
+  },
+  text: {
+    en: "The original input geometry was reorganized, renamed and optimized for downstream production.",
+    ru: "Исходная геометрия была переорганизована, переименована и оптимизирована для дальнейшего производства.",
+  },
   media: {
     type: "image",
     src: "/projects/robot-arm/process-01.jpg",
-    alt: "Geometry cleanup process"
-  }
+    alt: {
+      en: "Geometry cleanup process",
+      ru: "Процесс очистки геометрии",
+    },
+  },
 }
 ```
 
 ---
 
-# Часть 6. Как менять внешний вид существующих блоков
+# Часть 8. Полный пример нового проекта
 
 ---
 
-## 32. Изменить отступы блоков
-
-В блоках часто встречается:
+## 40. Создать папку
 
 ```txt
-px-5 py-16 md:px-8 md:py-24
+public/projects/robot-arm/
 ```
 
-Это значит:
+Положить файлы:
 
 ```txt
-px-5      горизонтальные отступы на мобильных
-py-16     вертикальные отступы на мобильных
-md:px-8   горизонтальные отступы с breakpoint md
-md:py-24  вертикальные отступы с breakpoint md
-```
-
-Чтобы сделать блоки плотнее:
-
-```txt
-py-10 md:py-16
-```
-
-Чтобы сделать больше воздуха:
-
-```txt
-py-24 md:py-32
+cover.jpg
+hero.mp4
+01.jpg
+02.jpg
+03.jpg
 ```
 
 ---
 
-## 33. Изменить скругления
-
-Сейчас часто используется:
-
-```txt
-rounded-[2rem]
-```
-
-Более мягко:
-
-```txt
-rounded-3xl
-```
-
-Более резко:
-
-```txt
-rounded-xl
-```
-
-Совсем без скругления:
-
-```txt
-rounded-none
-```
-
----
-
-## 34. Изменить типографику
-
-Крупные заголовки используют:
-
-```txt
-font-black
-uppercase
-leading-[0.78]
-tracking-[-0.08em]
-```
-
-Если нужен менее агрессивный стиль:
-
-```txt
-font-bold
-normal-case
-leading-none
-tracking-[-0.04em]
-```
-
----
-
-## 35. Изменить карточки на главной
-
-Файл:
-
-```txt
-src/components/projects/ProjectCard.jsx
-```
-
-Основной контейнер:
-
-```jsx
-<article className={`group relative overflow-hidden rounded-[2rem] ${ratio}`}>
-```
-
-Hover-плашка:
-
-```jsx
-<div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-5 opacity-0 transition duration-300 group-hover:opacity-100">
-```
-
-Если нужно, чтобы подпись была видна всегда, заменить:
-
-```txt
-opacity-0 group-hover:opacity-100
-```
-
-на:
-
-```txt
-opacity-100
-```
-
----
-
-# Часть 7. Проверка перед публикацией
-
----
-
-## 36. Чеклист перед commit
-
-```txt
-[ ] npm run dev работает
-[ ] / открывается
-[ ] /work открывается
-[ ] /work/new-project открывается
-[ ] все картинки загружаются
-[ ] видео autoplay работает
-[ ] в консоли нет красных ошибок
-[ ] slug совпадает с папкой проекта
-[ ] пути к медиа начинаются с /projects/
-[ ] project object закрыт запятой
-[ ] массив projects не сломан
-```
-
----
-
-## 37. Команды
-
-```bash
-npm run dev
-```
-
-```bash
-npm run build
-```
-
-```bash
-npm run preview
-```
-
-Commit:
-
-```bash
-git add .
-git commit -m "Add new portfolio project"
-git push
-```
-
----
-
-# Часть 8. Частые ошибки
-
----
-
-## 38. Белая / пустая страница
-
-Смотри консоль браузера:
-
-```txt
-F12 → Console
-```
-
-Частые причины:
-
-```txt
-не экспортирован projects
-не импортирован ProjectMedia
-ошибка в пути импорта
-забыли закрыть объект проекта запятой
-забыли закрыть массив blocks
-сломана JSX-разметка
-```
-
----
-
-## 39. ProjectMedia is not defined
-
-В файле:
-
-```txt
-src/components/projects/ProjectBlocks.jsx
-```
-
-должен быть импорт:
+## 41. Добавить объект в `projects.js`
 
 ```js
-import ProjectMedia from "../media/ProjectMedia";
+{
+  slug: "robot-arm",
+
+  title: {
+    en: "Robot Arm",
+    ru: "Роботизированная рука",
+  },
+
+  typeKey: "pipeline",
+
+  type: {
+    en: "Pipeline",
+    ru: "Пайплайн",
+  },
+
+  year: "2026",
+
+  client: {
+    en: "Internal R&D",
+    ru: "Внутренний R&D",
+  },
+
+  duration: "00:36",
+  featured: false,
+  ratio: "wide",
+  accent: "from-stone-100 via-zinc-200 to-slate-300",
+  shape: "scan",
+
+  description: {
+    en: "Pipeline for preparing robotic arm assets for real-time and presentation use.",
+    ru: "Пайплайн подготовки ассетов роботизированной руки для realtime и презентационных задач.",
+  },
+
+  subtitle: {
+    en: "From technical input geometry to optimized visual production assets.",
+    ru: "От технической входной геометрии к оптимизированным визуальным ассетам.",
+  },
+
+  tools: ["Blender", "Houdini", "Python", "Unity"],
+
+  cover: {
+    type: "image",
+    src: "/projects/robot-arm/cover.jpg",
+    alt: {
+      en: "Robot Arm cover image",
+      ru: "Обложка проекта Роботизированная рука",
+    },
+  },
+
+  hero: {
+    type: "video",
+    src: "/projects/robot-arm/hero.mp4",
+    poster: "/projects/robot-arm/cover.jpg",
+  },
+
+  blocks: [
+    {
+      type: "text",
+      label: {
+        en: "Project note",
+        ru: "О проекте",
+      },
+      columns: [
+        {
+          en: "The project started from a technical model that needed to become presentation-ready.",
+          ru: "Проект начался с технической модели, которую нужно было довести до презентационного качества.",
+        },
+        {
+          en: "The final system included cleaned geometry, material setup and optimized outputs.",
+          ru: "Финальная система включала очищенную геометрию, настройку материалов и оптимизированные выходные файлы.",
+        },
+      ],
+    },
+    {
+      type: "mediaGrid",
+      items: [
+        {
+          type: "image",
+          src: "/projects/robot-arm/01.jpg",
+          alt: {
+            en: "Robot Arm process image",
+            ru: "Процесс работы над роботизированной рукой",
+          },
+        },
+        {
+          type: "image",
+          src: "/projects/robot-arm/02.jpg",
+          alt: {
+            en: "Robot Arm final render",
+            ru: "Финальный рендер роботизированной руки",
+          },
+        },
+      ],
+    },
+    {
+      type: "media",
+      media: {
+        type: "image",
+        src: "/projects/robot-arm/03.jpg",
+        alt: {
+          en: "Robot Arm detail render",
+          ru: "Детальный рендер роботизированной руки",
+        },
+      },
+      size: "large",
+      caption: {
+        en: "Detail view of the optimized asset.",
+        ru: "Детальный вид оптимизированного ассета.",
+      },
+    },
+    {
+      type: "process",
+      items: [
+        {
+          title: {
+            en: "Input",
+            ru: "Входные данные",
+          },
+          text: {
+            en: "Technical model, references and target platform constraints.",
+            ru: "Техническая модель, референсы и ограничения целевой платформы.",
+          },
+        },
+        {
+          title: {
+            en: "Cleanup",
+            ru: "Очистка",
+          },
+          text: {
+            en: "Geometry cleanup, hierarchy, naming and material preparation.",
+            ru: "Очистка геометрии, иерархия, нейминг и подготовка материалов.",
+          },
+        },
+        {
+          title: {
+            en: "Output",
+            ru: "Результат",
+          },
+          text: {
+            en: "Presentation renders and optimized realtime-ready assets.",
+            ru: "Презентационные рендеры и оптимизированные realtime-ready ассеты.",
+          },
+        },
+      ],
+    },
+    {
+      type: "credits",
+      items: [
+        {
+          label: {
+            en: "Role",
+            ru: "Роль",
+          },
+          value: {
+            en: "Pipeline, optimization, lookdev",
+            ru: "Пайплайн, оптимизация, lookdev",
+          },
+        },
+        {
+          label: {
+            en: "Output",
+            ru: "Результат",
+          },
+          value: {
+            en: "Realtime asset, renders, documentation",
+            ru: "Realtime-ассет, рендеры, документация",
+          },
+        },
+      ],
+    },
+  ],
+}
 ```
 
----
-
-## 40. projects is not defined
-
-В файле, где используется `projects`, должен быть импорт:
-
-```js
-import { projects } from "../data/projects";
-```
-
-Путь зависит от расположения файла.
-
----
-
-## 41. Картинка не отображается
-
-Проверь путь.
-
-Файл лежит здесь:
+После этого проект будет доступен:
 
 ```txt
-public/projects/robot-arm/cover.jpg
-```
-
-В коде путь должен быть:
-
-```js
-src: "/projects/robot-arm/cover.jpg"
-```
-
-Не так:
-
-```js
-src: "public/projects/robot-arm/cover.jpg"
-```
-
-И не так:
-
-```js
-src: "/public/projects/robot-arm/cover.jpg"
+/en/work/robot-arm
+/ru/work/robot-arm
 ```
 
 ---
 
-## 42. Страница проекта перекидывает на `/work`
-
-Значит проект не найден по slug.
-
-Проверь URL:
-
-```txt
-/work/robot-arm
-```
-
-И поле в объекте:
-
-```js
-slug: "robot-arm"
-```
-
-Они должны совпадать.
+# Часть 9. Контентные рекомендации
 
 ---
 
-## 43. Новый фильтр появился сам
-
-Это нормально.
-
-Фильтры строятся автоматически:
-
-```js
-export const filters = [
-  "All",
-  ...Array.from(new Set(projects.map((project) => project.type))),
-];
-```
-
-Если добавил новый `type`, он появится на главной.
-
----
-
-# Часть 9. Рекомендации по контенту
-
----
-
-## 44. Какой порядок блоков обычно хорошо работает
+## 42. Хороший порядок блоков
 
 Для простого кейса:
 
@@ -1848,9 +2061,9 @@ next project
 
 ---
 
-## 45. Сколько текста писать
+## 43. Сколько текста писать
 
-Для портфолио лучше:
+Для портфолио обычно хорошо работает:
 
 ```txt
 короткий subtitle
@@ -1860,9 +2073,7 @@ next project
 чёткие credits
 ```
 
-Не нужно превращать каждый кейс в длинную статью.
-
-Хороший принцип:
+Принцип:
 
 ```txt
 visual first, explanation second
@@ -1870,25 +2081,24 @@ visual first, explanation second
 
 ---
 
-## 46. Как оформлять NDA-кейсы
+## 44. Как оформлять NDA-кейсы
 
 Можно не раскрывать клиента и детали.
 
 Используй нейтральные формулировки:
 
 ```js
-client: "NDA Project"
+client: {
+  en: "NDA Project",
+  ru: "NDA-проект",
+}
 ```
 
 ```js
-description: "A production pipeline for preparing complex 3D assets for interactive use."
-```
-
-```js
-credits: [
-  { label: "Role", value: "3D pipeline, optimization, lookdev" },
-  { label: "Output", value: "Realtime-ready assets and internal presentation visuals" }
-]
+description: {
+  en: "A production pipeline for preparing complex 3D assets for interactive use.",
+  ru: "Производственный пайплайн подготовки сложных 3D-ассетов для интерактивного использования.",
+}
 ```
 
 Показывай:
@@ -1912,31 +2122,381 @@ credits: [
 
 ---
 
-# Часть 10. Главный рабочий сценарий
+# Часть 10. Проверка перед публикацией
 
-Когда нужно добавить новый проект:
+---
+
+## 45. Чеклист перед commit
+
+```txt
+[ ] npm run dev работает
+[ ] / редиректит на /en или открывается корректно
+[ ] /en открывается
+[ ] /ru открывается
+[ ] /en/work открывается
+[ ] /ru/work открывается
+[ ] /en/work/project-slug открывается
+[ ] /ru/work/project-slug открывается
+[ ] переключатель EN/RU сохраняет текущую страницу
+[ ] все картинки загружаются
+[ ] видео autoplay работает там, где нужно
+[ ] в консоли нет красных ошибок
+[ ] slug совпадает с папкой проекта
+[ ] пути к медиа начинаются с /projects/
+[ ] у проекта есть typeKey
+[ ] title / type / description / subtitle переведены или хотя бы не ломают getText()
+[ ] project object закрыт запятой
+[ ] массив projects не сломан
+[ ] npm run build проходит без ошибок
+```
+
+---
+
+## 46. Команды
+
+Локальная разработка:
+
+```bash
+npm run dev
+```
+
+Production build:
+
+```bash
+npm run build
+```
+
+Preview build:
+
+```bash
+npm run preview
+```
+
+Commit:
+
+```bash
+git add .
+git commit -m "Add new portfolio project"
+git push
+```
+
+---
+
+# Часть 11. Частые ошибки
+
+---
+
+## 47. Белая или пустая страница
+
+Открой консоль браузера:
+
+```txt
+F12 → Console
+```
+
+Частые причины:
+
+```txt
+не экспортирован projects
+не импортирован ProjectMedia
+ошибка в пути импорта
+забыли закрыть объект проекта запятой
+забыли закрыть массив blocks
+сломана JSX-разметка
+BrowserRouter случайно продублирован
+```
+
+---
+
+## 48. `ProjectMedia is not defined`
+
+В файле:
+
+```txt
+src/components/projects/ProjectBlocks.jsx
+```
+
+должен быть импорт:
+
+```js
+import ProjectMedia from "../media/ProjectMedia";
+```
+
+---
+
+## 49. `projects is not defined`
+
+В файле, где используется `projects`, должен быть импорт:
+
+```js
+import { projects } from "../data/projects";
+```
+
+Путь зависит от расположения файла.
+
+---
+
+## 50. `getText is not defined`
+
+Добавь импорт:
+
+```js
+import { getText } from "../i18n/config";
+```
+
+Или, если файл лежит глубже:
+
+```js
+import { getText } from "../../i18n/config";
+```
+
+Пример:
+
+```txt
+src/components/projects/ProjectCard.jsx
+```
+
+Для него путь будет:
+
+```js
+import { getText } from "../../i18n/config";
+```
+
+---
+
+## 51. `useLocale is not defined`
+
+Добавь импорт:
+
+```js
+import { useLocale } from "../i18n/useLocale";
+```
+
+Или для компонента внутри `components/projects`:
+
+```js
+import { useLocale } from "../../i18n/useLocale";
+```
+
+---
+
+## 52. Картинка не отображается
+
+Проверь путь.
+
+Файл:
+
+```txt
+public/projects/robot-arm/cover.jpg
+```
+
+В коде:
+
+```js
+src: "/projects/robot-arm/cover.jpg"
+```
+
+Не так:
+
+```js
+src: "public/projects/robot-arm/cover.jpg"
+```
+
+И не так:
+
+```js
+src: "/public/projects/robot-arm/cover.jpg"
+```
+
+---
+
+## 53. Страница проекта перекидывает на `/work` или `/en/work`
+
+Значит проект не найден по `slug`.
+
+Проверь URL:
+
+```txt
+/en/work/robot-arm
+```
+
+И поле в объекте:
+
+```js
+slug: "robot-arm"
+```
+
+Они должны совпадать.
+
+---
+
+## 54. Фильтр не работает
+
+Проверь, что у проекта есть:
+
+```js
+typeKey: "pipeline"
+```
+
+И что фильтрация идёт по `typeKey`, а не по `type`:
+
+```js
+project.typeKey === active
+```
+
+`type` теперь переводимый объект, поэтому использовать его как технический ключ не нужно.
+
+---
+
+## 55. Переключатель языка ведёт не туда
+
+Проверь функцию:
+
+```js
+switchLocaleInPath(location.pathname, localeKey)
+```
+
+Она должна заменять первый сегмент URL:
+
+```txt
+/en/work/project → /ru/work/project
+/ru/about → /en/about
+```
+
+Если текущий путь без языка, можно редиректить на `DEFAULT_LOCALE`.
+
+---
+
+## 56. Карточки накладываются друг на друга
+
+Проверь две вещи.
+
+### 1. `ratio` должен быть на корневом элементе карточки
+
+Хорошо:
+
+```jsx
+<Link className={`group relative block ... ${ratio}`}>
+```
+
+Плохо:
+
+```jsx
+<Link>
+  <article className={ratio}>...</article>
+</Link>
+```
+
+### 2. Grid должен учитывать row-span
+
+В `HomePage.jsx`:
+
+```jsx
+<div className="grid grid-cols-1 gap-5 md:auto-rows-[180px] md:grid-cols-3 xl:grid-cols-4">
+```
+
+А в `ProjectCard.jsx`:
+
+```js
+const ratio =
+  project.ratio === "portrait"
+    ? "md:row-span-3 min-h-[520px]"
+    : project.ratio === "wide"
+      ? "md:col-span-2 md:row-span-2 min-h-[360px]"
+      : "md:row-span-2 min-h-[360px]";
+```
+
+---
+
+# Часть 12. Главные правила поддержки
+
+---
+
+## 57. Что редактировать в разных случаях
+
+Если меняется конкретный кейс:
+
+```txt
+src/data/projects.js
+public/projects/project-slug/
+```
+
+Если меняется текст сайта, email, соцсети:
+
+```txt
+src/data/site.js
+```
+
+Если меняется перевод кнопок и интерфейса:
+
+```txt
+src/i18n/config.js
+```
+
+Если меняется внешний вид всех страниц проектов:
+
+```txt
+src/pages/ProjectPage.jsx
+src/components/projects/ProjectBlocks.jsx
+```
+
+Если меняется карточка проекта:
+
+```txt
+src/components/projects/ProjectCard.jsx
+```
+
+Если меняется логика image/video:
+
+```txt
+src/components/media/ProjectMedia.jsx
+```
+
+Если добавляется новый тип блока:
+
+```txt
+src/components/projects/ProjectBlocks.jsx
+```
+
+---
+
+## 58. Главное правило
+
+```txt
+Контент кейса — в projects.js.
+Медиа кейса — в public/projects/slug/.
+Дизайн — в компонентах.
+Переводы интерфейса — в i18n/config.js.
+```
+
+Не нужно создавать отдельную страницу под каждый проект.
+
+Не нужно дублировать русскую и английскую версии проекта.
+
+Один проект = один объект данных + bilingual-поля.
+
+---
+
+## 59. Финальный пайплайн добавления проекта
 
 ```txt
 1. Придумать slug
-2. Создать папку public/projects/slug/
-3. Подготовить cover.jpg и hero.jpg/hero.mp4
-4. Положить дополнительные изображения 01.jpg, 02.jpg, 03.jpg
-5. Скопировать минимальный шаблон проекта
-6. Вставить его в src/data/projects.js
-7. Заполнить title, type, year, client, description, subtitle, tools
-8. Настроить cover и hero
-9. Собрать blocks
-10. Проверить /work/slug
-11. Проверить главную и /work
-12. Сделать npm run build
-13. Commit / push
-```
-
-Главное правило:
-
-```txt
-Если меняется конкретный кейс — редактируй projects.js и public/projects/slug/.
-Если меняется внешний вид всех кейсов — редактируй компоненты.
-Если появляется новый тип секции — добавляй новый block в ProjectBlocks.jsx.
+2. Создать public/projects/slug/
+3. Подготовить cover.jpg
+4. Подготовить hero.jpg или hero.mp4
+5. Добавить дополнительные изображения 01.jpg, 02.jpg, 03.jpg
+6. Скопировать минимальный bilingual-шаблон проекта
+7. Вставить объект в src/data/projects.js
+8. Заполнить title en/ru
+9. Заполнить typeKey и type en/ru
+10. Заполнить year, client, duration, ratio
+11. Настроить cover и hero
+12. Собрать blocks
+13. Проверить /en/work/slug
+14. Проверить /ru/work/slug
+15. Проверить главную /en и /ru
+16. Проверить /en/work и /ru/work
+17. Запустить npm run build
+18. Commit / push
 ```
 
