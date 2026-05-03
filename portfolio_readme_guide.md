@@ -1013,6 +1013,386 @@ console
 
 ---
 
+## 26.1. 3D-модели
+
+Для интерактивного отображения 3D-моделей используется отдельный block type:
+
+```txt
+model3d
+```
+
+Рекомендуемый формат моделей:
+
+```txt
+.glb
+```
+
+Можно также использовать:
+
+```txt
+.gltf
+```
+
+Но для сайта удобнее `.glb`, потому что это один файл, внутри которого могут лежать геометрия, материалы и текстуры.
+
+Модели лучше хранить так:
+
+```txt
+public/projects/project-slug/models/model.glb
+public/projects/project-slug/models/model-poster.jpg
+```
+
+В коде путь будет:
+
+```js
+src: "/projects/project-slug/models/model.glb"
+poster: "/projects/project-slug/models/model-poster.jpg"
+```
+
+Не писать `/public` в пути.
+
+---
+
+## 26.2. Установка viewer для 3D-моделей
+
+Для простого portfolio-viewer удобнее использовать `@google/model-viewer`.
+
+Установка:
+
+```bash
+npm install @google/model-viewer
+```
+
+Этот пакет добавляет web component:
+
+```html
+<model-viewer></model-viewer>
+```
+
+В React-проекте достаточно импортировать пакет один раз в компоненте, где используется viewer:
+
+```js
+import "@google/model-viewer";
+```
+
+---
+
+## 26.3. Добавить block `model3d` в `ProjectBlocks.jsx`
+
+Файл:
+
+```txt
+src/components/projects/ProjectBlocks.jsx
+```
+
+В начало файла добавить импорт:
+
+```js
+import "@google/model-viewer";
+```
+
+Если в файле уже есть импорты `ProjectMedia`, `getText`, `useLocale`, итоговое начало может выглядеть так:
+
+```js
+import "@google/model-viewer";
+import ProjectMedia from "../media/ProjectMedia";
+import { getText, UI } from "../../i18n/config";
+import { useLocale } from "../../i18n/useLocale";
+```
+
+Затем добавить функцию блока:
+
+```jsx
+function Model3DBlock({ block }) {
+  const locale = useLocale();
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-white/35">
+        <div className="grid gap-0 lg:grid-cols-[1fr_0.38fr]">
+          <div className="relative min-h-[560px] bg-zinc-100">
+            <model-viewer
+              src={block.src}
+              poster={block.poster}
+              alt={getText(block.alt, locale) || "3D model"}
+              camera-controls
+              auto-rotate={block.autoRotate ?? true}
+              rotation-per-second={block.rotationPerSecond || "24deg"}
+              shadow-intensity={block.shadowIntensity ?? 0.8}
+              exposure={block.exposure ?? 1}
+              camera-orbit={block.cameraOrbit}
+              field-of-view={block.fieldOfView || "35deg"}
+              environment-image={block.environmentImage || "neutral"}
+              ar={block.ar ?? false}
+              loading="lazy"
+              reveal="auto"
+              class="h-full w-full"
+            />
+          </div>
+
+          <div className="flex flex-col justify-between gap-8 p-6 md:p-10">
+            <div>
+              {block.label && (
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                  {getText(block.label, locale)}
+                </p>
+              )}
+
+              {block.title && (
+                <h2 className="mb-5 text-4xl font-black leading-none tracking-[-0.05em] md:text-6xl">
+                  {getText(block.title, locale)}
+                </h2>
+              )}
+
+              {block.text && (
+                <p className="text-lg leading-relaxed text-zinc-700">
+                  {getText(block.text, locale)}
+                </p>
+              )}
+            </div>
+
+            {block.meta?.length > 0 && (
+              <div className="grid gap-3 border-t border-zinc-950/10 pt-5 text-sm">
+                {block.meta.map((item, index) => (
+                  <div key={index} className="grid grid-cols-[0.4fr_1fr] gap-4">
+                    <span className="text-zinc-500">{getText(item.label, locale)}</span>
+                    <span className="font-medium text-zinc-950">{getText(item.value, locale)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {block.caption && (
+        <p className="mt-3 text-sm text-zinc-500">
+          {getText(block.caption, locale)}
+        </p>
+      )}
+    </section>
+  );
+}
+```
+
+После этого добавить новый тип в renderer `ProjectBlocks`:
+
+```jsx
+if (block.type === "model3d") {
+  return <Model3DBlock key={index} block={block} />;
+}
+```
+
+Итоговый renderer будет примерно таким:
+
+```jsx
+export default function ProjectBlocks({ project }) {
+  return project.blocks?.map((block, index) => {
+    if (block.type === "text") return <TextBlock key={index} block={block} />;
+    if (block.type === "media") return <MediaBlock key={index} block={block} project={project} />;
+    if (block.type === "mediaGrid") return <MediaGridBlock key={index} block={block} project={project} />;
+    if (block.type === "model3d") return <Model3DBlock key={index} block={block} />;
+    if (block.type === "process") return <ProcessBlock key={index} block={block} />;
+    if (block.type === "quote") return <QuoteBlock key={index} block={block} />;
+    if (block.type === "credits") return <CreditsBlock key={index} block={block} />;
+    return null;
+  });
+}
+```
+
+---
+
+## 26.4. Пример использования блока `model3d`
+
+В `projects.js` внутри `blocks`:
+
+```js
+{
+  type: "model3d",
+
+  label: {
+    en: "Interactive model",
+    ru: "Интерактивная модель",
+  },
+
+  title: {
+    en: "Realtime asset preview",
+    ru: "Превью realtime-ассета",
+  },
+
+  text: {
+    en: "Rotate, zoom and inspect the optimized 3D model directly in the browser.",
+    ru: "Модель можно вращать, приближать и рассматривать прямо в браузере.",
+  },
+
+  src: "/projects/robot-arm/models/robot-arm.glb",
+  poster: "/projects/robot-arm/models/robot-arm-poster.jpg",
+
+  alt: {
+    en: "Interactive 3D model of a robot arm",
+    ru: "Интерактивная 3D-модель роботизированной руки",
+  },
+
+  autoRotate: true,
+  rotationPerSecond: "18deg",
+  shadowIntensity: 0.9,
+  exposure: 1,
+  fieldOfView: "35deg",
+  environmentImage: "neutral",
+
+  meta: [
+    {
+      label: {
+        en: "Format",
+        ru: "Формат",
+      },
+      value: "GLB",
+    },
+    {
+      label: {
+        en: "Use case",
+        ru: "Назначение",
+      },
+      value: {
+        en: "Web preview / realtime asset",
+        ru: "Web-превью / realtime-ассет",
+      },
+    },
+  ],
+
+  caption: {
+    en: "The model is optimized for browser preview.",
+    ru: "Модель оптимизирована для просмотра в браузере.",
+  },
+}
+```
+
+---
+
+## 26.5. Минимальный вариант `model3d`
+
+Если не нужны подписи и мета-информация:
+
+```js
+{
+  type: "model3d",
+  src: "/projects/new-project/models/model.glb",
+  poster: "/projects/new-project/models/poster.jpg",
+  alt: {
+    en: "Interactive 3D model",
+    ru: "Интерактивная 3D-модель",
+  },
+}
+```
+
+---
+
+## 26.6. Рекомендации по подготовке моделей для сайта
+
+```txt
+[ ] Лучше использовать .glb
+[ ] Названия файлов — латиницей, без пробелов
+[ ] Желательно держать модель до 10–30 MB
+[ ] Текстуры лучше оптимизировать
+[ ] Не использовать слишком тяжёлые 4K/8K текстуры без необходимости
+[ ] Проверить модель локально до публикации
+[ ] Добавить poster.jpg, чтобы блок не выглядел пустым во время загрузки
+[ ] Проверить модель в /en и /ru версиях страницы
+```
+
+Хорошие имена файлов:
+
+```txt
+robot-arm.glb
+product-configurator.glb
+scan-cleanup-preview.glb
+```
+
+Плохие имена файлов:
+
+```txt
+Робот рука финал.glb
+model final final 2.glb
+scan#preview.glb
+```
+
+---
+
+## 26.7. Частые ошибки с 3D-моделями
+
+### Модель не отображается
+
+Проверь путь:
+
+```js
+src: "/projects/robot-arm/models/robot-arm.glb"
+```
+
+Файл должен лежать здесь:
+
+```txt
+public/projects/robot-arm/models/robot-arm.glb
+```
+
+После build он окажется здесь:
+
+```txt
+dist/projects/robot-arm/models/robot-arm.glb
+```
+
+---
+
+### В консоли ошибка про неизвестный `model-viewer`
+
+Проверь, что пакет установлен:
+
+```bash
+npm install @google/model-viewer
+```
+
+И что в `ProjectBlocks.jsx` есть импорт:
+
+```js
+import "@google/model-viewer";
+```
+
+---
+
+### Модель слишком долго грузится
+
+Возможные причины:
+
+```txt
+слишком тяжёлый .glb
+слишком большие текстуры
+нет poster.jpg
+модель лежит на медленном хостинге
+```
+
+Что сделать:
+
+```txt
+оптимизировать геометрию
+сжать текстуры
+использовать .webp/.ktx2-текстуры, если пайплайн это поддерживает
+уменьшить размер файла
+положить тяжёлые модели на CDN/Object Storage
+```
+
+---
+
+### Модель выглядит слишком тёмной или пересвеченной
+
+Пробуй менять параметры блока:
+
+```js
+exposure: 1.2,
+shadowIntensity: 0.6,
+environmentImage: "neutral",
+```
+
+---
+
 # Часть 4. Как добавлять проекты
 
 ---

@@ -1,6 +1,7 @@
 import ProjectMedia from "../media/ProjectMedia";
 import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
+import "@google/model-viewer";
 
 function TextBlock({ block }) {
   const locale = useLocale();
@@ -39,6 +40,79 @@ function MediaGridBlock({ block, project }) {
       {block.items?.map((item, index) => (
         <ProjectMedia key={index} media={item} project={project} className="min-h-[520px]" />
       ))}
+    </section>
+  );
+}
+
+function Model3DBlock({ block }) {
+  const locale = useLocale();
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-white/35">
+        <div className="grid gap-0 lg:grid-cols-[1fr_0.38fr]">
+          <div className="relative h-[560px] bg-zinc-100 md:h-[680px]">
+            <model-viewer
+              src={block.src}
+              poster={block.poster}
+              alt={getText(block.alt, locale) || "3D model"}
+              camera-controls
+              auto-rotate
+              rotation-per-second={block.rotationPerSecond || "24deg"}
+              shadow-intensity={block.shadowIntensity ?? 0.8}
+              exposure={block.exposure ?? 1}
+              field-of-view={block.fieldOfView || "35deg"}
+              environment-image={block.environmentImage || "neutral"}
+              loading="lazy"
+              reveal="auto"
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+
+          <div className="flex flex-col justify-between gap-8 p-6 md:p-10">
+            <div>
+              {block.label && (
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                  {getText(block.label, locale)}
+                </p>
+              )}
+
+              {block.title && (
+                <h2 className="mb-5 text-4xl font-black leading-none tracking-[-0.05em] md:text-6xl">
+                  {getText(block.title, locale)}
+                </h2>
+              )}
+
+              {block.text && (
+                <p className="text-lg leading-relaxed text-zinc-700">
+                  {getText(block.text, locale)}
+                </p>
+              )}
+            </div>
+
+            {block.meta?.length > 0 && (
+              <div className="grid gap-3 border-t border-zinc-950/10 pt-5 text-sm">
+                {block.meta.map((item, index) => (
+                  <div key={index} className="grid grid-cols-[0.4fr_1fr] gap-4">
+                    <span className="text-zinc-500">
+                      {getText(item.label, locale)}
+                    </span>
+                    <span className="font-medium text-zinc-950">
+                      {getText(item.value, locale)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {block.caption && (
+        <p className="mt-3 text-sm text-zinc-500">
+          {getText(block.caption, locale)}
+        </p>
+      )}
     </section>
   );
 }
@@ -111,6 +185,7 @@ export default function ProjectBlocks({ project }) {
     if (block.type === "process") return <ProcessBlock key={index} block={block} />;
     if (block.type === "quote") return <QuoteBlock key={index} block={block} />;
     if (block.type === "credits") return <CreditsBlock key={index} block={block} />;
+    if (block.type === "model3d") return <Model3DBlock key={index} block={block} />;
     return null;
   });
 }

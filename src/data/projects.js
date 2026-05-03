@@ -63,6 +63,7 @@ export const projects = [
     type: "3D Still",
     year: "2026",
     client: "Personal Study",
+    typeKey: "3D Still",
     duration: "00:06",
     featured: false,
     ratio: "square",
@@ -71,8 +72,16 @@ export const projects = [
     description: "A playful object system built from simple primitives and material variation.",
     subtitle: "A small object turned into a visual identity exercise.",
     tools: ["Cinema 4D", "Redshift", "Procedural Modeling"],
-    cover: { type: "placeholder" },
-    hero: { type: "placeholder" },
+    cover: {
+      type: "video",
+      src: "/projects/procedural-pencil/earth_quakes_01.mp4",
+      poster: "/projects/procedural-pencil/cover.png",
+    },
+    hero: {
+      type: "video",
+      src: "/projects/procedural-pencil/earth_quakes_01.mp4",
+      poster: "/projects/procedural-pencil/cover.png",
+    },
     blocks: [
       {
         type: "text",
@@ -109,6 +118,19 @@ export const projects = [
           "This page can hold video loops, animated previews or still frames from motion tests. The same block renderer supports both image and video media.",
           "For final content, place files in public/projects/clear-motion/ and replace the placeholder media objects with video or image paths.",
         ],
+      },
+      {
+        type: "model3d",
+        src: "/projects/clear-motion/model.glb",
+        poster: "/projects/clear-motion/poster.png",
+        alt: {
+          en: "Test 3D model",
+          ru: "Тестовая 3D-модель",
+        },
+        caption: {
+          en: "Interactive model test.",
+          ru: "Тест интерактивной модели.",
+        },
       },
       {
         type: "mediaGrid",
