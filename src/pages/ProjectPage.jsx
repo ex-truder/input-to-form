@@ -4,6 +4,7 @@ import ProjectMedia from "../components/media/ProjectMedia";
 import ProjectBlocks from "../components/projects/ProjectBlocks";
 import { getText, UI } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
+import NextProjectBlock from "../components/projects/NextProjectBlock";
 
 export default function ProjectPage() {
   const locale = useLocale();
@@ -51,14 +52,8 @@ export default function ProjectPage() {
       </section>
 
       <ProjectBlocks project={project} />
+      <NextProjectBlock project={nextProject} />
 
-      <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-        <Link to={`/${locale}/work/${nextProject.slug}`}>
-          <p>{ui.nextProject}</p>
-          <h3>{getText(nextProject.title, locale)}</h3>
-          <p>{getText(nextProject.description, locale)}</p>
-        </Link>
-      </section>
     </>
   );
 }

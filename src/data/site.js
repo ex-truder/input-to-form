@@ -1,7 +1,7 @@
 export const site = {
   title: {
-    en: "Input to Form",
-    ru: "Input to Form",
+    en: "kustart.pro",
+    ru: "kustart.pro",
   },
 
   email: "hello@example.com",

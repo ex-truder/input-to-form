@@ -1,16 +1,35 @@
 export const reusableProcess = [
   {
-    title: "Input",
-    text: "Brief, references, constraints, geometry, datasets or source materials.",
+    title: {
+      en: "Input",
+      ru: "Вход",
+    },
+    text: {
+      en: "Brief, references, constraints, geometry, datasets or source materials.",
+      ru: "Бриф, референсы, наборы данных, геометрия или просто идея.",
+    },
   },
   {
-    title: "System",
-    text: "Procedural setup, material logic, lighting, layout rules and production decisions.",
+    title: {
+      en: "System",
+      ru: "Система",
+    },
+    text: {
+      en: "Procedural setup, material logic, lighting, layout rules and production decisions.",
+      ru: "Выбор инструментария, процедурный сетап, моделирование, создание материалов, свет, принятие решений.",
+    },    
   },
   {
-    title: "Output",
-    text: "Renders, animations, reusable assets, prototypes or presentation materials.",
+      title: {
+      en: "Output",
+      ru: "Выход",
+    },
+    text: {
+      en: "Renders, animations, reusable assets, prototypes or presentation materials.",
+      ru: "Рендеры, анимации, 3D ассеты, прототипы или материалы для презентаций",
+    },
   },
+
 ];
 
 export const projects = [

@@ -13,6 +13,8 @@ export const LOCALES = {
 
 export const UI = {
   en: {
+    motto: "Making data beautiful",
+    text01: "3D delivered by engineer",
     work: "Work",
     projects: "Projects",
     viewProjects: "View projects",
@@ -31,6 +33,8 @@ export const UI = {
   },
 
   ru: {
+    motto: "Превращаю данные в визуал",
+    text01: "Инженерный подход к 3D",
     work: "Работы",
     projects: "Проекты",
     viewProjects: "Смотреть проекты",

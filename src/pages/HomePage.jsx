@@ -20,11 +20,11 @@ export default function HomePage() {
     <>
       <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-12 md:pt-24">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-          <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[9.4vw]">
-            I&apos;d like this to be my 3D CV
+          <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-[9.4vw]">
+            {ui.motto}
           </h1>
           <div className="max-w-xl justify-self-end text-balance text-lg leading-relaxed text-zinc-700 md:text-xl">
-            A minimal portfolio template for procedural 3D, product visuals, simulations and interactive visual systems. Big visuals first, explanations only where they help.
+            {ui.text01}
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to={`/${locale}/work`} className="rounded-full bg-zinc-950 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
               >

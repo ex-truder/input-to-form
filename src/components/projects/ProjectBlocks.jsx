@@ -3,6 +3,7 @@ import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
 import "@google/model-viewer";
 
+
 function TextBlock({ block }) {
   const locale = useLocale();
 
@@ -49,9 +50,8 @@ function Model3DBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
-      <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-white/35">
-        <div className="grid gap-0 lg:grid-cols-[1fr_0.38fr]">
-          <div className="relative h-[560px] bg-zinc-100 md:h-[680px]">
+      <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-[#f6f3ec]">
+        <div className="relative h-[560px] bg-[#f6f3ec] md:h-[680px]">
             <model-viewer
               src={block.src}
               poster={block.poster}
@@ -67,44 +67,6 @@ function Model3DBlock({ block }) {
               reveal="auto"
               className="absolute inset-0 h-full w-full"
             />
-          </div>
-
-          <div className="flex flex-col justify-between gap-8 p-6 md:p-10">
-            <div>
-              {block.label && (
-                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-                  {getText(block.label, locale)}
-                </p>
-              )}
-
-              {block.title && (
-                <h2 className="mb-5 text-4xl font-black leading-none tracking-[-0.05em] md:text-6xl">
-                  {getText(block.title, locale)}
-                </h2>
-              )}
-
-              {block.text && (
-                <p className="text-lg leading-relaxed text-zinc-700">
-                  {getText(block.text, locale)}
-                </p>
-              )}
-            </div>
-
-            {block.meta?.length > 0 && (
-              <div className="grid gap-3 border-t border-zinc-950/10 pt-5 text-sm">
-                {block.meta.map((item, index) => (
-                  <div key={index} className="grid grid-cols-[0.4fr_1fr] gap-4">
-                    <span className="text-zinc-500">
-                      {getText(item.label, locale)}
-                    </span>
-                    <span className="font-medium text-zinc-950">
-                      {getText(item.value, locale)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
