@@ -27,10 +27,6 @@ export default function Header() {
             3D
           </NavLink>
 
-          <a href={`mailto:${site.email}`} className="normal-case hover:opacity-50">
-            {site.email}
-          </a>
-
           <NavLink to={`/${locale}/about`} className={navLinkClass}>
             {ui.about}
           </NavLink>
