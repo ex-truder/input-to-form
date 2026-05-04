@@ -12,8 +12,7 @@ export const site = {
   },
 
   socials: [
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Behance", href: "#" },
+    { label: "Instagram", href: "#", icon: "instagram" },
+    { label: "Telegram", href: "#", icon: "telegram" },
   ],
 };

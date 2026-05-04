@@ -20,7 +20,7 @@ export default function HomePage() {
     <>
       <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-12 md:pt-24">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-          <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-[9.4vw]">
+          <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-[5vw]">
             {ui.motto}
           </h1>
           <div className="max-w-xl justify-self-end text-balance text-lg leading-relaxed text-zinc-700 md:text-xl">

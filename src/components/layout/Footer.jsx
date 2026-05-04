@@ -1,6 +1,7 @@
 import { site } from "../../data/site";
 import { getText } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
+import SocialLinks from "../common/SocialLinks";
 
 export default function Footer() {
   const locale = useLocale();
@@ -20,14 +21,7 @@ export default function Footer() {
             {getText(site.description, locale)}
           </p>
         </div>
-
-        <div className="flex flex-wrap gap-4 text-sm font-semibold uppercase tracking-[0.08em]">
-          {site.socials.map((social) => (
-            <a key={social.label} href={social.href} className="hover:opacity-50">
-              {social.label}
-            </a>
-          ))}
-        </div>
+      <SocialLinks />
       </div>
     </footer>
   );
