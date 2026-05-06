@@ -13,7 +13,10 @@ export const LOCALES = {
 
 export const UI = {
   en: {
-    motto: "Making data beautiful",
+    mottotop: "Making data beautiful",
+    mottobottom: "From input to form",
+    explanation01: "You bring sketches, CAD, scans, briefs, datasets or a vague idea. I build the visual system: models, renders, motion, technical assets and interactive prototypes.",
+    explanation02: "If you are not sure of what do you really need or feeling overwhelmed with anything related to 3D, don't hesitate to contact me. Let's discuss!",
     text01: "3D delivered by engineer",
     work: "Work",
     projects: "Projects",
@@ -33,7 +36,10 @@ export const UI = {
   },
 
   ru: {
-    motto: "Превращаю данные в визуал",
+    mottotop: "Превращаю данные в визуал",
+    mottobottom: "From input to form",
+    explanation01: "Ваши данные в любом виде: скетч, CAD файлы, 3D сканы, массивы данных или просто Ваша идея в свободной форме. От меня 3D модели, рендеры, моушн, технические ассеты или прототипы",
+    explanation02: "Если Вы не знаете точно что именно Вам нужно, смело пишите мне. Разберёмся вместе!",
     text01: "Инженерный подход к 3D",
     work: "Работы",
     projects: "Проекты",

@@ -9,19 +9,21 @@ import { useLocale } from "../i18n/useLocale";
 export default function HomePage() {
   const locale = useLocale();
   const ui = UI[locale];
-  const [active, setActive] = useState("All");
+
+  const [active, setActive] = useState("all");
 
   const visibleProjects = useMemo(() => {
-    if (active === "All") return projects;
-    return projects.filter((project) => project.type === active);
+    if (active === "all") return projects;
+
+    return projects.filter((project) => project.typeKey === active);
   }, [active]);
 
   return (
     <>
-      <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-12 md:pt-24">
+      <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-12 md:pt-12">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-[5vw]">
-            {ui.motto}
+            {ui.mottotop}
           </h1>
           <div className="max-w-xl justify-self-end text-balance text-lg leading-relaxed text-zinc-700 md:text-xl">
             {ui.text01}
@@ -65,14 +67,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1600px] gap-8 px-5 py-24 md:grid-cols-[0.8fr_1.2fr] md:px-8 md:py-32">
-        <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.05em] md:text-8xl">From input to form</h2>
+      <section className="mx-auto grid max-w-[1600px] gap-8 px-5 py-24 md:grid-cols-[0.8fr_1.2fr] md:px-8 md:py-8">
+        <h2 className="text-5xl font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-8xl">From input to form</h2>
         <div className="grid gap-8 text-lg leading-relaxed text-zinc-700 md:grid-cols-2">
           <p>
-            You bring sketches, CAD, scans, briefs, datasets or a vague idea. I build the visual system: models, renders, motion, technical assets and interactive prototypes.
+            {ui.explanation01}
           </p>
           <p>
-            The site is now data-driven: add a folder with media, add one object to the projects array, and the homepage, work list and project page update automatically.
+            {ui.explanation02}
           </p>
         </div>
       </section>

@@ -38,7 +38,11 @@ export const projects = [
       en: "Glass System",
       ru: "Стеклянная система",
     },
-    type: "CG / Product",
+    type: {
+      en: "CG / Product",
+      ru: "Продукт",
+    },
+    typeKey: "CG / Product",
     year: "2026",
     client: "Personal Study",
     duration: "00:04",
@@ -79,10 +83,13 @@ export const projects = [
   },
   {    slug: "procedural-pencil",
     title: "Procedural Pencil",
-    type: "3D Still",
+    type: {
+      en: "3D Still",
+      ru: "3D модель",
+    },
+    typeKey: "3D Still",
     year: "2026",
     client: "Personal Study",
-    typeKey: "3D Still",
     duration: "00:06",
     featured: false,
     ratio: "square",
@@ -166,7 +173,11 @@ export const projects = [
   },
   {    slug: "material-study",
     title: "Material Study",
-    type: "Shader R&D",
+    type: {
+      en: "Shader R&D",
+      ru: "Шейдер R&D",
+    },
+    typeKey: "Shader R&D",
     year: "2025",
     client: "Internal R&D",
     duration: "00:10",
@@ -294,46 +305,173 @@ export const projects = [
       { type: "process", items: reusableProcess },
     ],
   },
-  {    slug: "synthetic-plant",
-    title: "Synthetic Plant",
-    type: "Generative",
-    year: "2024",
-    client: "Personal Study",
-    duration: "00:21",
-    featured: true,
-    ratio: "square",
-    accent: "from-green-100 via-lime-200 to-yellow-100",
-    shape: "plant",
-    description: "Procedural leaves, staged botanical forms and calm synthetic gardening.",
-    subtitle: "A generative botanical study built as if it were a small product collection.",
-    tools: ["Cinema 4D", "Houdini", "Generative Forms", "Octane"],
-    cover: { type: "placeholder" },
-    hero: { type: "placeholder" },
-    blocks: [
-      {
-        type: "text",
-        label: "Project note",
-        columns: [
-          "This is the reference project for the current template: large visual blocks, short explanation, tool tags and a clean path to the next case.",
-          "To turn it into a real case, replace only the data object and media files. The page itself should not require layout edits.",
-        ],
+  { slug: "synthetic-plant",
+
+  title: {
+    en: "Synthetic Plant",
+    ru: "Синтетическое растение",
+  },
+
+  typeKey: "generative",
+
+  type: {
+    en: "Generative",
+    ru: "Генеративная графика",
+  },
+
+  year: "2024",
+
+  client: {
+    en: "Personal Study",
+    ru: "Личный проект",
+  },
+
+  duration: "00:21",
+  featured: true,
+  ratio: "square",
+  accent: "from-green-100 via-lime-200 to-yellow-100",
+  shape: "plant",
+
+  description: {
+    en: "Procedural leaves, staged botanical forms and calm synthetic gardening.",
+    ru: "Процедурные листья, постановочные ботанические формы и спокойная синтетическая ботаника.",
+  },
+
+  subtitle: {
+    en: "A generative botanical study built as if it were a small product collection.",
+    ru: "Генеративное ботаническое исследование, собранное как небольшая продуктовая коллекция.",
+  },
+
+  tools: [
+    "Houdini",
+    "Cinema 4D",
+    {
+      en: "Generative Forms",
+      ru: "Генеративные формы",
+    },
+    "Octane",
+  ],
+
+  cover: {
+    type: "image",
+    src: "/projects/synthetic-plant/cover.jpg",
+    alt: {
+      en: "Synthetic Plant cover image",
+      ru: "Обложка проекта Синтетическое растение",
+    },
+  },
+
+  hero: {
+    type: "video",
+    src: "/projects/synthetic-plant/hero.mp4",
+    poster: "/projects/synthetic-plant/cover.jpg",
+  },
+
+  blocks: [
+    {
+      type: "text",
+
+      label: {
+        en: "Project note",
+        ru: "О проекте",
       },
-      {
-        type: "mediaGrid",
-        items: [
-          { type: "placeholder", shape: "plant" },
-          { type: "placeholder", shape: "totem" },
-        ],
-      },
-      { type: "process", items: reusableProcess },
-      {
-        type: "credits",
-        items: [
-          { label: "Role", value: "Generative forms, lookdev, art direction" },
-          { label: "Outputs", value: "Hero renders, crops, motion-ready assets" },
-        ],
-      },
-    ],
+
+      columns: [
+        {
+          en: "This project started as a procedural study of botanical forms.",
+          ru: "Проект начался как процедурное исследование ботанических форм.",
+        },
+        {
+          en: "The goal was to create a flexible visual system rather than one isolated render.",
+          ru: "Целью было создать гибкую визуальную систему, а не один изолированный рендер.",
+        },
+      ],
+    },
+
+    {
+      type: "mediaGrid",
+      items: [
+        {
+          type: "image",
+          src: "/projects/synthetic-plant/01.jpg",
+          alt: {
+            en: "Synthetic plant detail render",
+            ru: "Детальный рендер синтетического растения",
+          },
+        },
+        {
+          type: "image",
+          src: "/projects/synthetic-plant/02.jpg",
+          alt: {
+            en: "Synthetic plant material study",
+            ru: "Материальное исследование синтетического растения",
+          },
+        },
+      ],
+    },
+
+    {
+      type: "process",
+      items: [
+        {
+          title: {
+            en: "Input",
+            ru: "Входные данные",
+          },
+          text: {
+            en: "References, botanical structure and visual constraints.",
+            ru: "Референсы, ботаническая структура и визуальные ограничения.",
+          },
+        },
+        {
+          title: {
+            en: "System",
+            ru: "Система",
+          },
+          text: {
+            en: "Procedural growth setup, material rules and lighting.",
+            ru: "Процедурная система роста, правила материалов и свет.",
+          },
+        },
+        {
+          title: {
+            en: "Output",
+            ru: "Результат",
+          },
+          text: {
+            en: "Hero renders, detail crops and reusable visual assets.",
+            ru: "Hero-рендеры, детальные кропы и переиспользуемые визуальные ассеты.",
+          },
+        },
+      ],
+    },
+
+    {
+      type: "credits",
+      items: [
+        {
+          label: {
+            en: "Role",
+            ru: "Роль",
+          },
+          value: {
+            en: "Generative forms, lookdev, art direction",
+            ru: "Генеративные формы, lookdev, арт-дирекшн",
+          },
+        },
+        {
+          label: {
+            en: "Outputs",
+            ru: "Результаты",
+          },
+          value: {
+            en: "Hero renders, crops, motion-ready assets",
+            ru: "Hero-рендеры, кропы, ассеты для motion-задач",
+          },
+        },
+      ],
+    },
+  ],
   },
   {    slug: "scan-cleanup",
     title: "Scan Cleanup",
@@ -457,19 +595,21 @@ export const filters = [
       ru: "Все",
     },
   },
+
   ...Array.from(
     new Map(
-      projects.map((project) => [
-        project.typeKey,
-        {
-          key: project.typeKey,
-          label: project.type,
-        },
-      ])
+      projects
+        .filter((project) => project.typeKey)
+        .map((project) => [
+          project.typeKey,
+          {
+            key: project.typeKey,
+            label: project.type,
+          },
+        ])
     ).values()
   ),
 ];
-
 export function getProject(slug) {
   return projects.find((project) => project.slug === slug);
 }
