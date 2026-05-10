@@ -8,7 +8,7 @@ function TextBlock({ block }) {
   const locale = useLocale();
 
   return (
-    <section className="mx-auto grid max-w-[1600px] gap-10 px-5 py-16 md:grid-cols-[0.65fr_1.35fr] md:px-8 md:py-24">
+    <section className="mx-auto grid max-w-[1600px] gap-10 px-5 py-16 md:grid-cols-[0.4fr_1.5fr] md:px-8 md:py-24">
       <div>
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
           {getText(block.label, locale)}

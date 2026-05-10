@@ -20,22 +20,27 @@ export default function ProjectPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-12 md:px-8 md:pb-14 md:pt-20">
+      <section className="mx-auto max-w-[1600px] px-5 pb-4 pt-12 md:px-8 md:pb-5 md:pt-20">
         <Link to={`/${locale}/work`}>
           ← {ui.backToWork}
         </Link>
 
-        <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
+        <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end pt-2 md:pt-2">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-900">
               {getText(project.type, locale)} / {project.year} / {getText(project.client, locale)}
             </p>
-            <h1 className="text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[9vw]">
+            <h1 className="text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[5vw]">
               {getText(project.title, locale)}
             </h1>
           </div>
+        </div>
+      </section>
+      <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-5 md:px-8 md:pb-5 md:pt-5">
           <div className="max-w-xl text-lg leading-relaxed text-zinc-700 md:text-xl">
-            <p className="mb-6 font-semibold text-zinc-950">{getText(project.subtitle, locale)}</p>
+            <p className="mb-6 font-semibold text-zinc-950">
+              {getText(project.subtitle, locale)}
+              </p>
             <div className="flex flex-wrap gap-2">
               {project.tools.map((tool) => (
                 <span key={getText(tool, locale)}>
@@ -44,9 +49,7 @@ export default function ProjectPage() {
               ))}
             </div>
           </div>
-        </div>
       </section>
-
       <section className="mx-auto max-w-[1600px] px-5 md:px-8">
         <ProjectMedia media={project.hero} project={project} className="min-h-[72vh]" priority />
       </section>

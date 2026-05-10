@@ -39,7 +39,7 @@ export default function WorkIndexPage() {
               {ui.work}
             </p>
 
-            <h1 className="max-w-5xl text-[18vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[10vw]">
+            <h1 className="max-w-5xl text-[10vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[6vw]">
               {getText(pageTitle, locale)}
             </h1>
           </div>

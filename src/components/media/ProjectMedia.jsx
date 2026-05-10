@@ -13,7 +13,7 @@ export default function ProjectMedia({ media, project, className = "min-h-[420px
 
   if (media.type === "video") {
     return (
-      <div className={`relative overflow-hidden rounded-[2rem] bg-zinc-200 ${className}`}>
+      <div className={`relative overflow-hidden rounded-[1rem] bg-zinc-200 ${className}`}>
         <video
           src={media.src}
           poster={media.poster}
