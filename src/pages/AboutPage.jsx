@@ -1,4 +1,4 @@
-import { getText, UI } from "../i18n/config";
+import { getText } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
 
 const aboutCopy = {
@@ -68,7 +68,7 @@ export default function AboutPage() {
               {roles.map((role) => (
                 <span
                   key={role}
-                  className="rounded-full border border-zinc-950/10 bg-[#b6ff00] px-4 py-2 text-sm font-medium text-zinc-950"
+                  className="rounded-full border border-zinc-950/10 bg-accent px-4 py-2 text-sm font-medium text-zinc-950"
                 >
                   {role}
                 </span>

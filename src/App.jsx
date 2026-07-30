@@ -29,7 +29,7 @@ function LegacyProjectRedirect() {
 
 function AppShell() {
   return (
-    <main className="min-h-screen bg-[#f6f3ec] text-zinc-950 selection:bg-zinc-950 selection:text-white">
+    <main className="min-h-screen bg-site text-ink selection:bg-ink selection:text-white">
       <Header />
 
       <Routes>

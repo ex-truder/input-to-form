@@ -4,15 +4,23 @@ export const site = {
     ru: "kustart.pro",
   },
 
-  email: "hello@example.com",
+  email: "pro@kustart.ru",
 
   description: {
-    en: "Procedural 3D, product visuals, simulations, asset pipelines and interactive visual systems.",
-    ru: "Процедурная 3D-графика, продуктовые визуалы, симуляции, пайплайны ассетов и интерактивные визуальные системы.",
+    en: "I turn complex products, data and processes into clear visual content prepared for the target platform.",
+    ru: "Превращаю сложные продукты, данные и процессы в понятный визуальный контент, подготовленный под целевую платформу.",
   },
 
   socials: [
-    { label: "Instagram", href: "#", icon: "instagram" },
-    { label: "Telegram", href: "#", icon: "telegram" },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/ex.truder",
+      icon: "instagram",
+    },
+    {
+      label: "Telegram",
+      href: "https://t.me/romankustaev",
+      icon: "telegram",
+    },
   ],
 };

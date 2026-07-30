@@ -6,7 +6,7 @@ function SocialIcon({ icon }) {
   if (icon === "telegram") {
     return (
       <svg
-        viewBox="0 0 24 24"
+        viewBox="2 0 24 24"
         aria-hidden="true"
         className="h-15 w-15"
         fill="currentColor"
@@ -52,7 +52,7 @@ function SocialIcon({ icon }) {
   );
 }
 
-export default function SocialLinks({ className = "" }) {
+export default function SocialLinks({ className = "", compact = false }) {
   const locale = useLocale();
 
   const links = [
@@ -80,7 +80,9 @@ export default function SocialLinks({ className = "" }) {
             title={label}
             target={social.href.startsWith("mailto:") ? undefined : "_blank"}
             rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
-            className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-zinc-950/10 bg-white/35 text-zinc-700 transition hover:border-zinc-950/25 hover:bg-white/60 hover:text-zinc-950"
+            className={`inline-flex items-center justify-center rounded-full border border-zinc-950/15 bg-white/35 text-zinc-700 transition hover:border-zinc-950/30 hover:bg-white/60 hover:text-zinc-950 ${
+              compact ? "h-14 w-14 [&_svg]:h-8 [&_svg]:w-8" : "h-20 w-20"
+            }`}
           >
             <SocialIcon icon={social.icon} />
           </a>

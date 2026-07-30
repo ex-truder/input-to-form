@@ -1,81 +1,289 @@
-import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import ViewportMedia from "../components/media/ViewportMedia";
+import SocialLinks from "../components/common/SocialLinks";
+import Reveal from "../components/motion/Reveal";
+import { homeContent } from "../data/home";
+import { projects } from "../data/projects";
 import { site } from "../data/site";
-import { filters, projects } from "../data/projects";
-import ProjectCard from "../components/projects/ProjectCard";
-import { getText, UI } from "../i18n/config";
+import { getText } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
 
-export default function HomePage() {
+const solutionThemes = {
+  paper: {
+    article: "border-zinc-950/10 bg-site text-zinc-950",
+    eyebrow: "text-zinc-500",
+    summary: "text-zinc-600",
+    tag: "border-zinc-950/15 text-zinc-600",
+    divider: "border-zinc-950/10",
+    muted: "text-zinc-500",
+    body: "text-zinc-600",
+    link: "border-ink text-ink",
+  },
+  surface: {
+    article: "border-zinc-950/10 bg-surface text-zinc-950",
+    eyebrow: "text-accent",
+    summary: "text-zinc-600",
+    tag: "border-zinc-950/15 text-zinc-600",
+    divider: "border-zinc-950/10",
+    muted: "text-zinc-500",
+    body: "text-zinc-600",
+    link: "border-accent text-accent",
+  },
+  dark: {
+    article: "border-white/15 bg-ink text-white",
+    eyebrow: "text-accent",
+    summary: "text-white/65",
+    tag: "border-white/20 text-white/70",
+    divider: "border-white/15",
+    muted: "text-white/40",
+    body: "text-white/65",
+    link: "border-accent text-accent",
+  },
+  accentSoft: {
+    article: "border-zinc-950/10 bg-accent-soft text-zinc-950",
+    eyebrow: "text-accent",
+    summary: "text-zinc-700",
+    tag: "border-zinc-950/20 text-zinc-700",
+    divider: "border-zinc-950/15",
+    muted: "text-zinc-600",
+    body: "text-zinc-700",
+    link: "border-ink text-ink",
+  },
+};
+
+function SolutionSection({ solution }) {
   const locale = useLocale();
-  const ui = UI[locale];
-
-  const [active, setActive] = useState("all");
-
-  const visibleProjects = useMemo(() => {
-    if (active === "all") return projects;
-
-    return projects.filter((project) => project.typeKey === active);
-  }, [active]);
+  const project = projects.find((candidate) => candidate.slug === solution.projectSlug);
+  const theme = solutionThemes[solution.theme] || solutionThemes.paper;
 
   return (
-    <>
-      <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-12 md:pt-12">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-          <h1 className="max-w-5xl text-[16vw] font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-[5vw]">
-            {ui.mottotop}
-          </h1>
-          <div className="max-w-xl justify-self-end text-balance text-lg leading-relaxed text-zinc-700 md:text-xl">
-            {ui.text01}
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link to={`/${locale}/work`} className="rounded-full bg-zinc-950 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
+    <article
+      id={solution.id}
+      className={`scroll-mt-24 border-t ${theme.article}`}
+    >
+      <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+          <div className="flex flex-col justify-between gap-10">
+            <div>
+              <p
+                className={`font-mono text-sm uppercase tracking-[0.12em] ${theme.eyebrow}`}
               >
-                {ui.viewProjects}
-              </Link>
-              <a 
-              href={`mailto:${site.email}`}
-              className="rounded-full border border-zinc-950/15 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-zinc-800"
-              >
-                {ui.contact}
-              </a>
+                {solution.number} / {getText(solution.label, locale)}
+              </p>
+              <Reveal variant="mask-up" className="mt-7">
+                <h2 className="max-w-3xl text-5xl font-black uppercase leading-[1] tracking-[-0.06em] md:text-7xl">
+                  {getText(solution.title, locale)}
+                </h2>
+              </Reveal>
+              <Reveal variant="fade-up" delay={100}>
+                <p className={`mt-7 max-w-2xl text-lg leading-relaxed md:text-xl ${theme.summary}`}>
+                  {getText(solution.summary, locale)}
+                </p>
+              </Reveal>
+            </div>
+
+            <ul className="flex flex-wrap gap-2" aria-label={locale === "ru" ? "Применение" : "Applications"}>
+              {getText(solution.contexts, locale).map((context) => (
+                <li
+                  key={context}
+                  className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.09em] ${theme.tag}`}
+                >
+                  {context}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <Reveal variant="scale-in">
+              <ViewportMedia
+                media={solution.media}
+                project={project}
+                className="min-h-[420px] md:min-h-[620px]"
+              />
+            </Reveal>
+
+            <div
+              className={`mt-5 grid gap-5 border-t pt-5 md:grid-cols-[0.42fr_1fr] ${theme.divider}`}
+            >
+              <div>
+                <p
+                  className={`text-xs font-semibold uppercase tracking-[0.14em] ${theme.muted}`}
+                >
+                  {locale === "ru" ? "Проект" : "Project"}
+                </p>
+                <p className="mt-2 font-bold">{getText(solution.caseTitle, locale)}</p>
+              </div>
+              <div>
+                <p className={`max-w-2xl leading-relaxed ${theme.body}`}>
+                  {getText(solution.caseDescription, locale)}
+                </p>
+                {solution.note && (
+                  <p
+                    className={`mt-3 text-sm leading-relaxed ${theme.muted}`}
+                  >
+                    {getText(solution.note, locale)}
+                  </p>
+                )}
+                {project && (
+                  <Link
+                    to={`/${locale}/work/${project.slug}`}
+                    className={`mt-5 inline-flex items-center gap-2 border-b pb-1 text-sm font-semibold uppercase tracking-[0.08em] ${theme.link}`}
+                  >
+                    {locale === "ru" ? "Смотреть проект" : "View project"}
+                    <span aria-hidden="true">↗</span>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </article>
+  );
+}
 
-      <section className="mx-auto max-w-[1600px] px-5 md:px-8">
-        <div className="mb-6 flex flex-wrap items-center gap-2">
-          {filters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => setActive(filter.key)}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
-                active === filter.key
-                  ? "border-zinc-950 bg-zinc-950 text-white"
-                  : "border-zinc-950/15 bg-white/30 text-zinc-700 hover:border-zinc-950/50"
-              }`}
+export default function HomePage() {
+  const locale = useLocale();
+  const content = homeContent;
+  const emailSubject =
+    locale === "ru" ? "Задача на визуальный контент" : "Visual content project";
+
+  return (
+    <>
+      <section className="mx-auto max-w-[1600px] px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">
+          {getText(content.hero.eyebrow, locale)}
+        </p>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-end">
+          <Reveal variant="mask-up">
+            <h1 className="max-w-6xl text-[12.5vw] font-black uppercase leading-[1] tracking-[-0.07em] md:text-[6vw] lg:text-[5vw]">
+              {getText(content.hero.title, locale)}
+            </h1>
+          </Reveal>
+          <Reveal variant="fade-up" delay={120} className="max-w-2xl lg:justify-self-end">
+            <div>
+            <p className="text-balance text-xl leading-relaxed text-zinc-700 md:text-2xl">
+              {getText(content.hero.text, locale)}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={`mailto:${site.email}?subject=${encodeURIComponent(emailSubject)}`}
+                className="rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-700"
+              >
+                {getText(content.hero.primaryAction, locale)}
+              </a>
+              <a
+                href="#solutions"
+                className="rounded-full border border-zinc-950/20 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition hover:border-zinc-950"
+              >
+                {getText(content.hero.secondaryAction, locale)}
+              </a>
+            </div>
+            </div>
+          </Reveal>
+        </div>
+        <ul className="mt-14 grid border-y border-zinc-950/10 md:grid-cols-4">
+          {content.hero.formats.map((format, index) => (
+            <li
+              key={getText(format, locale)}
+              className="border-b border-zinc-950/10 py-4 text-sm font-medium text-zinc-700 last:border-b-0 md:border-b-0 md:border-r md:px-5 md:first:pl-0 md:last:border-r-0"
             >
-              {getText(filter.label, locale)}
-            </button>
+              <span className="mr-3 font-mono text-zinc-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              {getText(format, locale)}
+            </li>
           ))}
+        </ul>
+      </section>
+
+      <section id="solutions" className="scroll-mt-24 border-t border-zinc-950/10">
+        <div className="mx-auto grid max-w-[1600px] gap-6 px-5 py-16 md:grid-cols-[0.42fr_1fr] md:px-8 md:py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            {getText(content.solutionsIntro.eyebrow, locale)}
+          </p>
+          <Reveal variant="slide-left">
+            <h2 className="max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+              {getText(content.solutionsIntro.title, locale)}
+            </h2>
+          </Reveal>
         </div>
 
-        <div className="grid auto-rows-[180px] grid-cols-1 gap-5 md:grid-cols-3 xl:grid-cols-4">
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={`${project.slug}-${active}`} project={project} index={index} />
-          ))}
+        {content.solutions.map((solution) => (
+          <SolutionSection key={solution.id} solution={solution} />
+        ))}
+      </section>
+
+      <section id="process" className="scroll-mt-24 border-t border-zinc-950/10">
+        <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28">
+          <div className="grid gap-6 md:grid-cols-[0.42fr_1fr]">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+              {getText(content.process.eyebrow, locale)}
+            </p>
+            <Reveal variant="slide-left">
+              <h2 className="max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+                {getText(content.process.title, locale)}
+              </h2>
+            </Reveal>
+          </div>
+
+          <ol className="mt-12 grid gap-px overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-zinc-950/10 md:grid-cols-3">
+            {content.process.items.map((item, index) => (
+              <Reveal
+                key={getText(item.title, locale)}
+                as="li"
+                variant="fade-up"
+                delay={index * 90}
+                className="bg-site p-6 md:min-h-72 md:p-8"
+              >
+                <p className="font-mono text-sm text-zinc-400">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-12 text-2xl font-black tracking-[-0.035em] md:text-3xl">
+                  {getText(item.title, locale)}
+                </h3>
+                <p className="mt-4 max-w-md leading-relaxed text-zinc-600">
+                  {getText(item.text, locale)}
+                </p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1600px] gap-8 px-5 py-24 md:grid-cols-[0.8fr_1.2fr] md:px-8 md:py-8">
-        <h2 className="text-5xl font-black uppercase leading-[0.78] tracking-[-0.04em] md:text-8xl">From input to form</h2>
-        <div className="grid gap-8 text-lg leading-relaxed text-zinc-700 md:grid-cols-2">
-          <p>
-            {ui.explanation01}
+      <section id="contact" className="scroll-mt-24 border-t border-zinc-950/10 bg-accent">
+        <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-700">
+            {getText(content.cta.eyebrow, locale)}
           </p>
-          <p>
-            {ui.explanation02}
-          </p>
+          <div className="mt-7 grid gap-10 lg:grid-cols-[1fr_0.42fr] lg:items-end">
+            <div>
+              <Reveal variant="mask-up">
+                <h2 className="max-w-6xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.065em] md:text-8xl">
+                  {getText(content.cta.title, locale)}
+                </h2>
+              </Reveal>
+              <p className="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-800 md:text-xl">
+                {getText(content.cta.text, locale)}
+              </p>
+            </div>
+            <div className="lg:justify-self-end">
+              <a
+                href={`mailto:${site.email}?subject=${encodeURIComponent(emailSubject)}`}
+                className="inline-flex rounded-full bg-zinc-950 px-7 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-zinc-700"
+              >
+                {getText(content.cta.action, locale)}
+              </a>
+              <a
+                href={`mailto:${site.email}`}
+                className="mt-6 block text-2xl font-black tracking-[-0.03em] md:text-3xl"
+              >
+                {site.email}
+              </a>
+              <SocialLinks className="mt-6" compact />
+            </div>
+          </div>
         </div>
       </section>
     </>

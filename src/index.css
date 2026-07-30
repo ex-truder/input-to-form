@@ -1,9 +1,122 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Unbounded";
+  src: url("/fonts/Unbounded-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-display: "Unbounded", "Arial Black", sans-serif;
+
+  --color-site: #f3efe7;
+  --color-surface: #fffdf8;
+  --color-accent: #ff4d00;
+  --color-accent-soft: #ffd8c7;
+  --color-ink: #161512;
+}
+
+:root {
+  --site-bg: var(--color-site);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  background: var(--color-site);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+blockquote {
+  font-family: var(--font-display);
+}
+
+.reveal {
+  --reveal-delay: 0ms;
+}
+
+.reveal-slide-left,
+.reveal-fade-up,
+.reveal-scale-in {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity 420ms ease var(--reveal-delay),
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+}
+
+.reveal-slide-left {
+  transform: translate3d(-64px, 0, 0);
+}
+
+.reveal-fade-up {
+  transform: translate3d(0, 36px, 0);
+}
+
+.reveal-scale-in {
+  transform: scale(0.965);
+}
+
+.reveal-slide-left.is-visible,
+.reveal-fade-up.is-visible,
+.reveal-scale-in.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.reveal-mask-up {
+  overflow: clip;
+}
+
+.reveal-mask-up > .reveal-inner {
+  opacity: 0;
+  transform: translate3d(0, 110%, 0);
+  will-change: transform, opacity;
+  transition:
+    opacity 280ms ease var(--reveal-delay),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+}
+
+.reveal-mask-up.is-visible > .reveal-inner {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-slide-left,
+  .reveal-fade-up,
+  .reveal-scale-in,
+  .reveal-mask-up > .reveal-inner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

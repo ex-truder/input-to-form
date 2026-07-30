@@ -71,12 +71,6 @@ export default function NextProjectBlock({ project }) {
                   </span>
                 )}
 
-                {project.duration && (
-                  <span className="rounded-full border border-zinc-950/10 px-2.5 py-1">
-                    {project.duration}
-                  </span>
-                )}
-
                 {project.year && (
                   <span className="rounded-full border border-zinc-950/10 px-2.5 py-1">
                     {project.year}
@@ -95,12 +89,6 @@ export default function NextProjectBlock({ project }) {
               )}
             </div>
 
-            <div className="self-start md:self-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-zinc-950/10 px-4 py-2 text-sm font-medium text-zinc-700 transition group-hover:border-zinc-950/25 group-hover:text-zinc-950">
-                {getText(copy.open, locale)}
-                <span aria-hidden="true">↗</span>
-              </span>
-            </div>
           </div>
         </Link>
       </div>

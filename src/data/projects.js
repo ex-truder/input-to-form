@@ -40,11 +40,11 @@ export const projects = [
     ru: "Визуализация артрита",
   },
 
-  typeKey: "Explanatory",
+  typeKey: "Biology",
 
   type: {
-    en: "Explanatory",
-    ru: "Образование",
+    en: "Biology",
+    ru: "Биология",
   },
 
   year: "2024",
@@ -66,7 +66,7 @@ export const projects = [
 
   subtitle: {
     en: "",
-    ru: "Данное заболевание неприятно по своей сути и по внешнему виду поражённых костей. Было решено использовать это качество для достижения негативного эффекта на зрителя."
+    ru: "Данное заболевание неприятно по своей сути и по внешнему виду поражённых костей. Было решено использовать это качество для достижения негативного эффекта на зрителя (но не перестараться)."
   },
 
   tools: [
@@ -75,8 +75,10 @@ export const projects = [
   ],
 
   cover: {
-    type: "image",
-    src: "/projects/arthritis/cover.png",
+    type: "video",
+    src: "/projects/arthritis/hero.mp4",
+    //type: "image",
+    //src: "/projects/arthritis/cover.png",
     alt: {
       en: "Ostheoarthritis cover image",
       ru: "Обложка проекта Артрит",
@@ -90,8 +92,7 @@ export const projects = [
   },
 
   blocks: [
-    {
-      type: "text",
+    {      type: "text",
 
       label: {
         en: "Project note",
@@ -109,21 +110,40 @@ export const projects = [
         },
       ],
     },
-{
-        type: "model3d",
-        src: "/projects/ostheoarthritis/model.glb",
-        poster: "/projects/ostheoarthritis/poster.png",
+
+    {      type: "model3d",
+        src: "/projects/arthritis/model.glb",
+        poster: "/projects/arthritis/poster.png",
         alt: {
-          en: "Test 3D model",
-          ru: "Тестовая 3D-модель",
+          en: "Lumbar",
+          ru: "Шейный отдел",
         },
         caption: {
-          en: "Interactive model test.",
-          ru: "Тест интерактивной модели.",
+          en: "",
+          ru: "",
         },
+    },
+
+    {      type: "text",
+
+      label: {
+        en: "",
+        ru: "Технологии",
       },
-    {
-      type: "mediaGrid",
+
+      columns: [
+        {
+          en: "",
+          ru: "Заболевание начинается с истончения межпозвонковых дисков, затем может появиться грыжа, а на более поздних стадиях - костные отростки - остеофиты.",
+        },
+        {
+          en: ".",
+          ru: "Для достижения плавного перехода между стадиями, я создал несколько моделей и анимировал переход между ними через блендшейпы. Также создал два набора PBR текстур",
+        },
+      ],
+    },
+
+    {      type: "mediaGrid",
       items: [
         {
           type: "image",
@@ -144,8 +164,7 @@ export const projects = [
       ],
     },
 
-    {
-      type: "process",
+    {      type: "process",
       items: [
         {
           title: {
@@ -180,8 +199,7 @@ export const projects = [
       ],
     },
 
-    {
-      type: "credits",
+    {      type: "credits",
       items: [
         {
           label: {
@@ -249,8 +267,10 @@ export const projects = [
   ],
 
   cover: {
-    type: "image",
-    src: "/projects/synthetic-plant/cover.jpg",
+    type: "video",
+    src: "/projects/earthquakes/hero.mp4",
+    //type: "image",
+    //src: "/projects/earthquakes/cover.jpg",
     alt: {
       en: "Synthetic Plant cover image",
       ru: "Обложка проекта Синтетическое растение",
@@ -259,8 +279,8 @@ export const projects = [
 
   hero: {
     type: "video",
-    src: "/projects/synthetic-plant/hero.mp4",
-    poster: "/projects/synthetic-plant/cover.jpg",
+    src: "/projects/earthquakes/hero.mp4",
+    poster: "/projects/earthquakes/cover.jpg",
   },
 
   blocks: [
