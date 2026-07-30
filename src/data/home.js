@@ -28,6 +28,20 @@ export const homeContent = {
       en: "First define the goal. Then choose the right format.",
       ru: "Сначала определяем задачу — затем выбираем формат.",
     },
+    background: {
+      type: "three",
+      scene: "orbital-grid",
+      overlay: "light",
+      opacity: 0.82,
+      scrollDriven: true,
+      interactive: true,
+      intensity: 0.2,
+      sceneProps: {
+        knotColor: 0xff4d00,
+        pointColor: 0x161512,
+        pointCount: 720,
+      },
+    },
   },
 
   solutions: [

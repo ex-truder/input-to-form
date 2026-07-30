@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ViewportMedia from "../components/media/ViewportMedia";
 import SocialLinks from "../components/common/SocialLinks";
 import Reveal from "../components/motion/Reveal";
+import SectionBackground from "../components/backgrounds/SectionBackground";
 import { homeContent } from "../data/home";
 import { projects } from "../data/projects";
 import { site } from "../data/site";
@@ -59,9 +60,10 @@ function SolutionSection({ solution }) {
   return (
     <article
       id={solution.id}
-      className={`scroll-mt-24 border-t ${theme.article}`}
+      className={`relative isolate scroll-mt-24 overflow-hidden border-t ${theme.article}`}
     >
-      <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
+      <SectionBackground background={solution.background} />
+      <div className="relative z-10 mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div className="flex flex-col justify-between gap-10">
             <div>
@@ -151,11 +153,13 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="mx-auto max-w-[1600px] px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">
+      <section className="relative isolate overflow-hidden">
+        <SectionBackground background={content.hero.background} />
+        <div className="relative z-10 mx-auto max-w-[1600px] px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500">
           {getText(content.hero.eyebrow, locale)}
-        </p>
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-end">
+          </p>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-end">
           <Reveal variant="mask-up">
             <h1 className="max-w-6xl text-[12.5vw] font-black uppercase leading-[1] tracking-[-0.07em] md:text-[6vw] lg:text-[5vw]">
               {getText(content.hero.title, locale)}
@@ -182,8 +186,8 @@ export default function HomePage() {
             </div>
             </div>
           </Reveal>
-        </div>
-        <ul className="mt-14 grid border-y border-zinc-950/10 md:grid-cols-4">
+          </div>
+          <ul className="mt-14 grid border-y border-zinc-950/10 md:grid-cols-4">
           {content.hero.formats.map((format, index) => (
             <li
               key={getText(format, locale)}
@@ -195,11 +199,16 @@ export default function HomePage() {
               {getText(format, locale)}
             </li>
           ))}
-        </ul>
+          </ul>
+        </div>
       </section>
 
-      <section id="solutions" className="scroll-mt-24 border-t border-zinc-950/10">
-        <div className="mx-auto grid max-w-[1600px] gap-6 px-5 py-16 md:grid-cols-[0.42fr_1fr] md:px-8 md:py-24">
+      <section
+        id="solutions"
+        className="relative isolate scroll-mt-24 overflow-hidden border-t border-zinc-950/10"
+      >
+        <SectionBackground background={content.solutionsIntro.background} />
+        <div className="relative z-10 mx-auto grid max-w-[1600px] gap-6 px-5 py-16 md:grid-cols-[0.42fr_1fr] md:px-8 md:py-24">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
             {getText(content.solutionsIntro.eyebrow, locale)}
           </p>
@@ -210,13 +219,18 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        {content.solutions.map((solution) => (
-          <SolutionSection key={solution.id} solution={solution} />
-        ))}
       </section>
 
-      <section id="process" className="scroll-mt-24 border-t border-zinc-950/10">
-        <div className="mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28">
+      {content.solutions.map((solution) => (
+        <SolutionSection key={solution.id} solution={solution} />
+      ))}
+
+      <section
+        id="process"
+        className="relative isolate scroll-mt-24 overflow-hidden border-t border-zinc-950/10"
+      >
+        <SectionBackground background={content.process.background} />
+        <div className="relative z-10 mx-auto max-w-[1600px] px-5 py-20 md:px-8 md:py-28">
           <div className="grid gap-6 md:grid-cols-[0.42fr_1fr]">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
               {getText(content.process.eyebrow, locale)}
@@ -252,8 +266,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 border-t border-zinc-950/10 bg-accent">
-        <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
+      <section
+        id="contact"
+        className="relative isolate scroll-mt-24 overflow-hidden border-t border-zinc-950/10 bg-accent"
+      >
+        <SectionBackground background={content.cta.background} />
+        <div className="relative z-10 mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-700">
             {getText(content.cta.eyebrow, locale)}
           </p>
