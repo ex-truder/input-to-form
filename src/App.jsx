@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -85,9 +85,9 @@ function AppShell() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       <AppShell />
-    </BrowserRouter>
+    </HashRouter>
   );
 }

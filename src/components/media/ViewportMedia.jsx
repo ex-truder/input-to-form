@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import PlaceholderVisual from "./PlaceholderVisual";
 import { getText } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
+import { publicAsset } from "../../utils/publicAsset";
 
 export default function ViewportMedia({ media, project, className = "min-h-[420px]" }) {
   const locale = useLocale();
@@ -10,6 +11,8 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
   const [shouldLoad, setShouldLoad] = useState(media?.type !== "video");
   const [isVisible, setIsVisible] = useState(false);
   const [failed, setFailed] = useState(false);
+  const src = publicAsset(media?.src);
+  const poster = publicAsset(media?.poster);
 
   useEffect(() => {
     const node = containerRef.current;
@@ -51,8 +54,8 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
       >
         <video
           ref={videoRef}
-          src={shouldLoad ? media.src : undefined}
-          poster={media.poster}
+          src={shouldLoad ? src : undefined}
+          poster={poster}
           muted
           loop
           playsInline
@@ -67,7 +70,7 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
   return (
     <div className={`relative overflow-hidden rounded-[1.5rem] bg-zinc-200 ${className}`}>
       <img
-        src={media.src}
+        src={src}
         alt={getText(media.alt, locale) || getText(project?.title, locale) || "Project result"}
         loading="lazy"
         onError={() => setFailed(true)}

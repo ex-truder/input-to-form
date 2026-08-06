@@ -2,10 +2,13 @@ import { useState } from "react";
 import PlaceholderVisual from "./PlaceholderVisual";
 import { getText } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
+import { publicAsset } from "../../utils/publicAsset";
 
 export default function ProjectMedia({ media, project, className = "min-h-[420px]", priority = false }) {
   const locale = useLocale();
   const [failed, setFailed] = useState(false);
+  const src = publicAsset(media?.src);
+  const poster = publicAsset(media?.poster);
 
   if (!media || media.type === "placeholder" || !media.src || failed) {
     return <PlaceholderVisual project={project} media={media} className={className} />;
@@ -15,8 +18,8 @@ export default function ProjectMedia({ media, project, className = "min-h-[420px
     return (
       <div className={`relative overflow-hidden rounded-[1rem] bg-zinc-200 ${className}`}>
         <video
-          src={media.src}
-          poster={media.poster}
+          src={src}
+          poster={poster}
           autoPlay={media.autoPlay ?? true}
           muted={media.muted ?? true}
           loop={media.loop ?? true}
@@ -32,7 +35,7 @@ export default function ProjectMedia({ media, project, className = "min-h-[420px
   return (
     <div className={`relative overflow-hidden rounded-[2rem] bg-zinc-200 ${className}`}>
       <img
-        src={media.src}
+        src={src}
         alt={getText(media.alt, locale) || getText(project?.title, locale) || "Project media"}
         loading={priority ? "eager" : "lazy"}
         onError={() => setFailed(true)}

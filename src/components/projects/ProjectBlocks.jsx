@@ -1,6 +1,7 @@
 import ProjectMedia from "../media/ProjectMedia";
 import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
+import { publicAsset } from "../../utils/publicAsset";
 import "@google/model-viewer";
 
 function BlockLabel({ children, light = false }) {
@@ -62,8 +63,8 @@ function Model3DBlock({ block }) {
       <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-site">
         <div className="relative h-[560px] bg-site md:h-[680px]">
           <model-viewer
-            src={block.src}
-            poster={block.poster}
+            src={publicAsset(block.src)}
+            poster={publicAsset(block.poster)}
             alt={getText(block.alt, locale) || "3D model"}
             camera-controls
             autoplay

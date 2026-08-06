@@ -1,5 +1,6 @@
 import { getText } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
+import { publicAsset } from "../utils/publicAsset";
 
 const aboutCopy = {
   title: {
@@ -43,7 +44,7 @@ export default function AboutPage() {
       <div className="grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
         <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-white/35">
           <img
-            src="/about/portrait.jpg"
+            src={publicAsset("/about/portrait.jpg")}
             alt={getText(aboutCopy.portraitAlt, locale)}
             className="aspect-[4/5] h-full w-full object-cover grayscale"
           />

@@ -25,20 +25,20 @@ export default function Header() {
             {ui.work}
           </NavLink>
 
-          <a href={`/${locale}#solutions`} className="opacity-70 hover:opacity-50">
+          <Link to={`/${locale}#solutions`} className="opacity-70 hover:opacity-50">
             {solutionsLabel}
-          </a>
+          </Link>
 
           <NavLink to={`/${locale}/about`} className={navLinkClass}>
             {ui.about}
           </NavLink>
 
-          <a
-            href={`/${locale}#contact`}
+          <Link
+            to={`/${locale}#contact`}
             className="rounded-full bg-zinc-950 px-4 py-2 text-xs text-white transition hover:bg-zinc-700"
           >
             {discussLabel}
-          </a>
+          </Link>
 
           <div className="flex items-center gap-2">
             {Object.entries(LOCALES).map(([localeKey, localeData]) => (
@@ -59,12 +59,12 @@ export default function Header() {
 
         <div className="flex items-center gap-3 md:hidden">
           <NavLink to={`/${locale}/work`}>{ui.work}</NavLink>
-          <a
-            href={`/${locale}#contact`}
+          <Link
+            to={`/${locale}#contact`}
             className="rounded-full bg-zinc-950 px-3 py-2 text-[0.65rem] text-white"
           >
             {locale === "ru" ? "Обсудить" : "Discuss"}
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

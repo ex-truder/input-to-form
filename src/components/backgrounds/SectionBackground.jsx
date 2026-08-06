@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ThreeBackground from "./ThreeBackground";
+import { publicAsset } from "../../utils/publicAsset";
 
 const overlayClasses = {
   dark: "bg-gradient-to-r from-black/75 via-black/45 to-black/10",
@@ -47,8 +48,8 @@ function VideoBackground({ background }) {
   return (
     <video
       ref={videoRef}
-      src={shouldLoad ? background.src : undefined}
-      poster={background.poster}
+      src={shouldLoad ? publicAsset(background.src) : undefined}
+      poster={publicAsset(background.poster)}
       muted
       loop
       playsInline
@@ -66,7 +67,7 @@ export default function SectionBackground({ background }) {
 
   const posterStyle = background.poster
     ? {
-        backgroundImage: `url("${background.poster}")`,
+        backgroundImage: `url("${publicAsset(background.poster)}")`,
         backgroundPosition: background.position || "center",
         backgroundSize: "cover",
       }

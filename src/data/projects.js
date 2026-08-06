@@ -113,7 +113,7 @@ export const projects = [
 
     {      type: "model3d",
         src: "/projects/arthritis/model.glb",
-        poster: "/projects/arthritis/poster.png",
+        poster: "/projects/arthritis/cover.png",
         alt: {
           en: "Lumbar",
           ru: "Шейный отдел",
@@ -270,7 +270,7 @@ export const projects = [
     type: "video",
     src: "/projects/earthquakes/hero.mp4",
     //type: "image",
-    //src: "/projects/earthquakes/cover.jpg",
+    //src: "/projects/earthquakes/cover.png",
     alt: {
       en: "Synthetic Plant cover image",
       ru: "Обложка проекта Синтетическое растение",
@@ -280,7 +280,7 @@ export const projects = [
   hero: {
     type: "video",
     src: "/projects/earthquakes/hero.mp4",
-    poster: "/projects/earthquakes/cover.jpg",
+    poster: "/projects/earthquakes/cover.png",
   },
 
   blocks: [
@@ -305,8 +305,8 @@ export const projects = [
     },
 {
         type: "model3d",
-        src: "/projects/ostheoarthritis/model.glb",
-        poster: "/projects/ostheoarthritis/poster.png",
+        src: "/projects/knit-horse/model.glb",
+        poster: "/projects/knit-horse/poster.png",
         alt: {
           en: "Test 3D model",
           ru: "Тестовая 3D-модель",

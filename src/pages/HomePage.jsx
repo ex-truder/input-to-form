@@ -177,12 +177,12 @@ export default function HomePage() {
               >
                 {getText(content.hero.primaryAction, locale)}
               </a>
-              <a
-                href="#solutions"
+              <Link
+                to={`/${locale}#solutions`}
                 className="rounded-full border border-zinc-950/20 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition hover:border-zinc-950"
               >
                 {getText(content.hero.secondaryAction, locale)}
-              </a>
+              </Link>
             </div>
             </div>
           </Reveal>
