@@ -26,11 +26,11 @@ export default function ProjectPage() {
         </Link>
 
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end pt-2 md:pt-2">
-          <div>
+          <div className="min-w-0">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-900">
               {getText(project.type, locale)} / {project.year} / {getText(project.client, locale)}
             </p>
-            <h1 className="text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[5vw]">
+            <h1 className="mobile-heading-xl text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[5vw]">
               {getText(project.title, locale)}
             </h1>
           </div>

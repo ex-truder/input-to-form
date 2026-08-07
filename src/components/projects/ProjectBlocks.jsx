@@ -94,7 +94,7 @@ function ProcessBlock({ block }) {
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
       <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
-        <h2 className="mb-6 text-4xl font-black tracking-[-0.05em] md:text-7xl">
+        <h2 className="mobile-heading-lg mb-6 text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale) || ui.process}
         </h2>
         <div className="grid gap-6 text-zinc-700 md:grid-cols-3">
@@ -118,7 +118,7 @@ function QuoteBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <blockquote className="max-w-5xl text-4xl font-black leading-none tracking-[-0.06em] text-zinc-950 md:text-8xl">
+      <blockquote className="mobile-heading-lg max-w-5xl text-4xl font-black leading-none tracking-[-0.06em] text-zinc-950 md:text-8xl">
         “{getText(block.text, locale)}”
       </blockquote>
     </section>
@@ -150,7 +150,7 @@ function CaseSummaryBlock({ block }) {
       <div className="grid gap-10 rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10 lg:grid-cols-[0.75fr_1.25fr]">
         <div>
           <BlockLabel>{getText(block.label, locale)}</BlockLabel>
-          <h2 className="mt-5 text-4xl font-black leading-[0.95] tracking-[-0.05em] md:text-6xl">
+          <h2 className="mobile-heading-lg mt-5 text-4xl font-black leading-[0.95] tracking-[-0.05em] md:text-6xl">
             {getText(block.title, locale)}
           </h2>
           {block.intro && (
@@ -204,7 +204,7 @@ function ComparisonBlock({ block, project }) {
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
       <BlockLabel>{getText(block.label, locale)}</BlockLabel>
-      <h2 className="mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
+      <h2 className="mobile-heading-lg mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
         {getText(block.title, locale)}
       </h2>
       <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -222,7 +222,7 @@ function PipelineBlock({ block }) {
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
       <div className="rounded-[2rem] bg-zinc-950 p-6 text-white md:p-10">
         <BlockLabel light>{getText(block.label, locale)}</BlockLabel>
-        <h2 className="mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
+        <h2 className="mobile-heading-lg mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale)}
         </h2>
         <div className="mt-10 grid gap-px overflow-hidden rounded-[1.5rem] bg-white/15 md:grid-cols-5">
@@ -283,7 +283,7 @@ function EvidenceBlock({ block }) {
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
       <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
         <BlockLabel>{getText(block.label, locale)}</BlockLabel>
-        <h2 className="mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
+        <h2 className="mobile-heading-lg mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale)}
         </h2>
         <div className="mt-10 grid gap-10 md:grid-cols-2">
@@ -305,7 +305,7 @@ function FinalCtaBlock({ block }) {
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
       <div className="rounded-[2rem] bg-accent p-6 md:p-10">
-        <h2 className="max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+        <h2 className="mobile-heading-lg max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
           {getText(block.title, locale)}
         </h2>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-800">

@@ -17,6 +17,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: "/input-to-form/",
+  base: "/",
   plugins: [react(), tailwindcss()],
 });

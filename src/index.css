@@ -53,6 +53,28 @@ h2,
 h3,
 blockquote {
   font-family: var(--font-display);
+  max-width: 100%;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.mobile-heading-xl,
+.mobile-heading-lg {
+  max-width: 100%;
+}
+
+@media (max-width: 47.999rem) {
+  .mobile-heading-xl {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .mobile-heading-lg {
+    font-size: clamp(1.75rem, 7.5vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
 }
 
 .reveal {

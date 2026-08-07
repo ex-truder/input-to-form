@@ -39,7 +39,7 @@ export default function WorkIndexPage() {
               {ui.work}
             </p>
 
-            <h1 className="max-w-5xl text-[10vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[6vw]">
+            <h1 className="mobile-heading-xl max-w-5xl text-[10vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[6vw]">
               {getText(pageTitle, locale)}
             </h1>
           </div>
@@ -52,7 +52,7 @@ export default function WorkIndexPage() {
 
       <section className="mx-auto max-w-[1600px] px-5 md:px-8">
         <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <Link to={`/${locale}/work/${featuredProject.slug}`} className="text-left">
+          <Link to={`/${locale}/work/${featuredProject.slug}`} className="min-w-0 text-left">
             <ProjectMedia
               media={featuredProject.cover}
               project={featuredProject}
@@ -75,7 +75,7 @@ export default function WorkIndexPage() {
             </div>
           </Link>
 
-          <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-4 backdrop-blur md:p-6">
+          <div className="min-w-0 rounded-[2rem] border border-zinc-950/10 bg-white/35 p-4 backdrop-blur md:p-6">
             <div className="mb-6 flex items-center justify-between gap-4">
               <h2 className="text-2xl font-black tracking-[-0.04em]">
                 {ui.goToProjects}
@@ -91,13 +91,13 @@ export default function WorkIndexPage() {
                 <Link
                   key={project.slug}
                   to={`/${locale}/work/${project.slug}`}
-                  className="group grid w-full grid-cols-[4.5rem_1fr_auto] gap-4 py-4 text-left transition hover:pl-2"
+                  className="group grid w-full grid-cols-[minmax(0,1fr)_auto] gap-3 py-4 text-left transition hover:pl-2 sm:grid-cols-[4.5rem_minmax(0,1fr)_auto] sm:gap-4"
                 >
-                  <span className="font-mono text-sm text-zinc-500">
+                  <span className="hidden font-mono text-sm text-zinc-500 sm:block">
                     {project.duration}
                   </span>
 
-                  <span>
+                  <span className="min-w-0">
                     <span className="block font-semibold text-zinc-950">
                       {getText(project.title, locale)}
                     </span>
@@ -120,7 +120,7 @@ export default function WorkIndexPage() {
       <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-8">
         <div className="rounded-[2rem] bg-zinc-950 p-6 text-white md:p-10">
           <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-            <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-8xl">
+            <h2 className="mobile-heading-lg text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-8xl">
               {getText(ndaTitle, locale)}
             </h2>
 

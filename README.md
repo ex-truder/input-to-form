@@ -2,7 +2,7 @@
 
 Portfolio website built with React and Vite.
 
-Live site: https://ex-truder.github.io/input-to-form/
+Live site: https://kustart.pro/
 
 ## Local development
 

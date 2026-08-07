@@ -73,7 +73,7 @@ function SolutionSection({ solution }) {
                 {solution.number} / {getText(solution.label, locale)}
               </p>
               <Reveal variant="mask-up" className="mt-7">
-                <h2 className="max-w-3xl text-5xl font-black uppercase leading-[1] tracking-[-0.06em] md:text-7xl">
+                <h2 className="mobile-heading-lg max-w-3xl text-5xl font-black uppercase leading-[1] tracking-[-0.06em] md:text-7xl">
                   {getText(solution.title, locale)}
                 </h2>
               </Reveal>
@@ -161,7 +161,7 @@ export default function HomePage() {
           </p>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-end">
           <Reveal variant="mask-up">
-            <h1 className="max-w-6xl text-[12.5vw] font-black uppercase leading-[1] tracking-[-0.07em] md:text-[6vw] lg:text-[5vw]">
+            <h1 className="mobile-heading-xl max-w-6xl text-[12.5vw] font-black uppercase leading-[1] tracking-[-0.07em] md:text-[6vw] lg:text-[5vw]">
               {getText(content.hero.title, locale)}
             </h1>
           </Reveal>
@@ -213,7 +213,7 @@ export default function HomePage() {
             {getText(content.solutionsIntro.eyebrow, locale)}
           </p>
           <Reveal variant="slide-left">
-            <h2 className="max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+            <h2 className="mobile-heading-lg max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
               {getText(content.solutionsIntro.title, locale)}
             </h2>
           </Reveal>
@@ -236,7 +236,7 @@ export default function HomePage() {
               {getText(content.process.eyebrow, locale)}
             </p>
             <Reveal variant="slide-left">
-              <h2 className="max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+              <h2 className="mobile-heading-lg max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
                 {getText(content.process.title, locale)}
               </h2>
             </Reveal>
@@ -278,7 +278,7 @@ export default function HomePage() {
           <div className="mt-7 grid gap-10 lg:grid-cols-[1fr_0.42fr] lg:items-end">
             <div>
               <Reveal variant="mask-up">
-                <h2 className="max-w-6xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.065em] md:text-8xl">
+                <h2 className="mobile-heading-lg max-w-6xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.065em] md:text-8xl">
                   {getText(content.cta.title, locale)}
                 </h2>
               </Reveal>

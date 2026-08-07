@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
 
         <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 backdrop-blur md:p-10 lg:p-12">
-          <h1 className="max-w-4xl text-6xl font-black uppercase leading-[0.82] tracking-[-0.07em] text-zinc-950 md:text-8xl lg:text-9xl">
+          <h1 className="mobile-heading-xl max-w-4xl text-6xl font-black uppercase leading-[0.82] tracking-[-0.07em] text-zinc-950 md:text-8xl lg:text-9xl">
             {getText(aboutCopy.title, locale)}
           </h1>
 
