@@ -71,7 +71,7 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
     <div className={`relative overflow-hidden rounded-[1.5rem] bg-zinc-200 ${className}`}>
       <img
         src={src}
-        alt={getText(media.alt, locale) || getText(project?.title, locale) || "Project result"}
+        alt={getText(media.alt, locale) || getText(project?.title, locale) || (locale === "ru" ? "Результат проекта" : "Project result")}
         loading="lazy"
         onError={() => setFailed(true)}
         className="absolute inset-0 h-full w-full object-cover"

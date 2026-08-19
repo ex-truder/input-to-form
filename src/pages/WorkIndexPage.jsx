@@ -16,7 +16,7 @@ const pageDescription = {
 
 const ndaTitle = {
   en: "Mostly NDA-friendly",
-  ru: "NDA-friendly",
+  ru: "Можно показывать при NDA",
 };
 
 const ndaText = {
@@ -108,7 +108,7 @@ export default function WorkIndexPage() {
                   </span>
 
                   <span className="self-center rounded-full border border-zinc-950/10 px-3 py-1 text-xs uppercase tracking-[0.08em] text-zinc-500 group-hover:border-zinc-950 group-hover:text-zinc-950">
-                    Open
+                    {locale === "ru" ? "Открыть" : "Open"}
                   </span>
                 </Link>
               ))}

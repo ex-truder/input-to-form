@@ -1,0 +1,64 @@
+{
+  "$schema": "./pbr-model-animation.schema.json",
+  "version": 1,
+  "timeline": {
+    "clip": "Scene",
+    "loop": "ping-pong",
+    "autoplay": true,
+    "speed": 1
+  },
+  "viewer": {
+    "environment": "environment/studio.hdr",
+    "background": "transparent",
+    "showEnvironment": false,
+    "environmentIntensity": 1,
+    "exposure": 1,
+    "autoRotate": false
+  },
+  "materials": [
+    {
+      "target": "Material name from the GLB",
+      "from": {
+        "maps": {
+          "baseColor": "textures/healthy/basecolor.webp",
+          "normal": "textures/healthy/normal.webp",
+          "orm": "textures/healthy/orm.webp",
+          "emissive": "textures/healthy/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [1, 1, 1, 1],
+          "roughness": 0.35,
+          "metalness": 0,
+          "normalScale": [1, 1],
+          "emissive": [0, 0, 0],
+          "emissiveIntensity": 0
+        }
+      },
+      "to": {
+        "maps": {
+          "baseColor": "textures/advanced/basecolor.webp",
+          "normal": "textures/advanced/normal.webp",
+          "orm": "textures/advanced/orm.webp",
+          "emissive": "textures/advanced/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [1, 1, 1, 1],
+          "roughness": 0.7,
+          "metalness": 0,
+          "normalScale": [1, 1],
+          "emissive": [0.1, 0.02, 0.01],
+          "emissiveIntensity": 0.15
+        }
+      },
+      "blend": {
+        "easing": "smoothstep",
+        "keyframes": [
+          { "progress": 0, "value": 0 },
+          { "progress": 0.2, "value": 0 },
+          { "progress": 0.55, "value": 0.45 },
+          { "progress": 1, "value": 1 }
+        ]
+      }
+    }
+  ]
+}

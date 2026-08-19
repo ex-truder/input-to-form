@@ -1,4 +1,6 @@
+import { useEffect, useMemo, useState } from "react";
 import ProjectMedia from "../media/ProjectMedia";
+import PbrAnimatedModel from "../media/PbrAnimatedModel";
 import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
 import { publicAsset } from "../../utils/publicAsset";
@@ -15,7 +17,6 @@ function BlockLabel({ children, light = false }) {
     </p>
   );
 }
-
 function TextBlock({ block }) {
   const locale = useLocale();
 
@@ -58,6 +59,23 @@ function MediaGridBlock({ block, project }) {
 function Model3DBlock({ block }) {
   const locale = useLocale();
 
+  if (block.animationConfig) {
+    return (
+      <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
+        <PbrAnimatedModel
+          src={block.src}
+          poster={block.poster}
+          animationConfig={block.animationConfig}
+          alt={getText(block.alt, locale)}
+          className="h-[560px] rounded-[2rem] border border-zinc-950/10 md:h-[680px]"
+        />
+        {block.caption && (
+          <p className="mt-3 text-sm text-zinc-500">{getText(block.caption, locale)}</p>
+        )}
+      </section>
+    );
+  }
+
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
       <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-site">
@@ -65,7 +83,7 @@ function Model3DBlock({ block }) {
           <model-viewer
             src={publicAsset(block.src)}
             poster={publicAsset(block.poster)}
-            alt={getText(block.alt, locale) || "3D model"}
+            alt={getText(block.alt, locale) || (locale === "ru" ? "3D-модель" : "3D model")}
             camera-controls
             autoplay
             auto-rotate
@@ -260,7 +278,7 @@ function EvidenceColumn({ title, items, accent = false }) {
     <div>
       <p
         className={`text-sm font-semibold uppercase tracking-[0.14em] ${
-          accent ? "text-lime-700" : "text-zinc-500"
+          accent ? "text-orange-700" : "text-zinc-500"
         }`}
       >
         {getText(title, locale)}
@@ -314,7 +332,7 @@ function FinalCtaBlock({ block }) {
         <div className="mt-8 flex flex-wrap gap-3">
           {block.primaryAction && (
             <a
-              href={block.primaryAction.href}
+              href={block.primaryAction.href.replace(":locale", locale)}
               className="rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
             >
               {getText(block.primaryAction.label, locale)}
@@ -327,6 +345,286 @@ function FinalCtaBlock({ block }) {
             >
               {getText(block.secondaryAction.label, locale)}
             </a>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseHeading({ block, light = false }) {
+  const locale = useLocale();
+
+  return (
+    <div className="grid gap-5 md:grid-cols-[0.4fr_1.5fr] md:gap-10">
+      <div className={`flex items-start gap-3 text-sm font-semibold uppercase tracking-[0.16em] ${light ? "text-white/45" : "text-zinc-500"}`}>
+        {block.number && <span className={light ? "text-accent" : "text-zinc-950"}>{block.number}</span>}
+        <span>{getText(block.label, locale)}</span>
+      </div>
+      <div>
+        <h2 className={`max-w-5xl text-4xl font-black leading-[0.98] tracking-[-0.05em] md:text-7xl ${light ? "text-white" : "text-zinc-950"}`}>
+          {getText(block.title, locale)}
+        </h2>
+        {block.intro && (
+          <p className={`mt-6 max-w-3xl text-lg leading-relaxed ${light ? "text-white/60" : "text-zinc-600"}`}>
+            {getText(block.intro, locale)}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function MediaSlot({ item, project, className = "aspect-[4/3] min-h-0" }) {
+  const locale = useLocale();
+  const isPlaceholder = !item.media || item.media.type === "placeholder" || !item.media.src;
+
+  if (item.media?.type === "model3d" && item.media.src && item.media.animationConfig) {
+    return (
+      <PbrAnimatedModel
+        src={item.media.src}
+        poster={item.media.poster}
+        animationConfig={item.media.animationConfig}
+        alt={getText(item.media.alt, locale) || getText(item.title, locale)}
+        className={className}
+      />
+    );
+  }
+
+  if (item.media?.type === "model3d" && item.media.src) {
+    return (
+      <div className={`relative overflow-hidden bg-site ${className}`}>
+        <model-viewer
+          src={publicAsset(item.media.src)}
+          poster={publicAsset(item.media.poster)}
+          alt={getText(item.media.alt, locale) || getText(item.title, locale) || (locale === "ru" ? "3D-модель" : "3D model")}
+          camera-controls
+          autoplay
+          auto-rotate
+          rotation-per-second={item.media.rotationPerSecond || "24deg"}
+          shadow-intensity={item.media.shadowIntensity ?? 0.8}
+          exposure={item.media.exposure ?? 1}
+          field-of-view={item.media.fieldOfView || "35deg"}
+          environment-image={item.media.environmentImage || "neutral"}
+          loading="lazy"
+          reveal="auto"
+          className="absolute inset-0 h-full w-full"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative">
+      <ProjectMedia media={item.media} project={project} className={className} />
+      {isPlaceholder && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6 text-center">
+          <span className="rounded-full border border-zinc-950/15 bg-[#f6f3ec]/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-600 backdrop-blur-sm">
+            {getText(item.title, locale)} {locale === "ru" ? "медиа" : "media"}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CaseSectionBlock({ block }) {
+  const locale = useLocale();
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+      <CaseHeading block={block} />
+      <div className="mt-10 grid gap-8 text-lg leading-relaxed text-zinc-700 md:ml-[calc(21%+2.5rem)] md:grid-cols-2 md:text-xl">
+        {block.paragraphs?.map((paragraph, index) => (
+          <p key={index}>{getText(paragraph, locale)}</p>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function StageSystemBlock({ block, project }) {
+  const locale = useLocale();
+  const imageItems = useMemo(
+    () => block.items?.filter((item) => item.media?.type === "image" && item.media.src) || [],
+    [block.items],
+  );
+  const [activeIndex, setActiveIndex] = useState(null);
+  const activeItem = activeIndex === null ? null : imageItems[activeIndex];
+
+  useEffect(() => {
+    if (!activeItem) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setActiveIndex(null);
+      if (event.key === "ArrowLeft") {
+        setActiveIndex((current) => (current - 1 + imageItems.length) % imageItems.length);
+      }
+      if (event.key === "ArrowRight") {
+        setActiveIndex((current) => (current + 1) % imageItems.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeItem, imageItems.length]);
+
+  return (
+    <>
+      <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+        <CaseHeading block={block} />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {block.items?.map((item, index) => {
+            const openIndex = imageItems.indexOf(item);
+            const media = (
+              <MediaSlot item={item} project={project} className="aspect-square min-h-0 rounded-[1rem]" />
+            );
+
+            return (
+              <article key={index} className="overflow-hidden rounded-[1.5rem] border border-zinc-950/10 bg-white/35 p-3">
+                {openIndex >= 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(openIndex)}
+                    className="block w-full cursor-zoom-in text-left"
+                    aria-label={`${locale === "ru" ? "Открыть в полном размере" : "View full size"}: ${getText(item.title, locale)}`}
+                  >
+                    {media}
+                  </button>
+                ) : media}
+                <div className="flex items-end justify-between gap-4 px-2 pb-2 pt-5">
+                  <div>
+                    <p className="font-mono text-xs text-zinc-400">{String(index + 1).padStart(2, "0")}</p>
+                    <h3 className="mt-2 text-xl font-black tracking-[-0.03em]">{getText(item.title, locale)}</h3>
+                  </div>
+                  <p className="max-w-28 text-right text-xs leading-relaxed text-zinc-500">{getText(item.note, locale)}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {activeItem && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm md:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={getText(activeItem.title, locale)}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActiveIndex(null);
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveIndex(null)}
+            autoFocus
+            className="absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/35 text-2xl text-white transition hover:bg-white hover:text-black md:right-8 md:top-8"
+            aria-label={locale === "ru" ? "Закрыть" : "Close"}
+          >
+            ×
+          </button>
+
+          {imageItems.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={() => setActiveIndex((activeIndex - 1 + imageItems.length) % imageItems.length)}
+                className="absolute bottom-5 left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/35 text-2xl text-white transition hover:bg-white hover:text-black md:bottom-auto md:left-8"
+                aria-label={locale === "ru" ? "Предыдущее изображение" : "Previous image"}
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveIndex((activeIndex + 1) % imageItems.length)}
+                className="absolute bottom-5 right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/35 text-2xl text-white transition hover:bg-white hover:text-black md:bottom-auto md:right-8"
+                aria-label={locale === "ru" ? "Следующее изображение" : "Next image"}
+              >
+                →
+              </button>
+            </>
+          )}
+
+          <figure className="flex max-h-full max-w-full flex-col items-center gap-4">
+            <img
+              src={publicAsset(activeItem.media.src)}
+              alt={getText(activeItem.media.alt, locale) || getText(activeItem.title, locale)}
+              className="max-h-[calc(100vh-7rem)] max-w-full object-contain"
+            />
+            <figcaption className="text-center text-sm font-semibold text-white/75">
+              {String(activeIndex + 1).padStart(2, "0")} / {String(imageItems.length).padStart(2, "0")} · {getText(activeItem.title, locale)}
+            </figcaption>
+          </figure>
+        </div>
+      )}
+    </>
+  );
+}
+
+function FormatSplitBlock({ block, project }) {
+  const locale = useLocale();
+
+  return (
+    <section className="bg-zinc-950 py-16 text-white md:py-28">
+      <div className="mx-auto max-w-[1600px] px-5 md:px-8">
+        <CaseHeading block={block} light />
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {block.items?.map((item, index) => (
+            <article key={index} className="rounded-[1.5rem] border border-white/15 p-3">
+              <MediaSlot item={item} project={project} className="aspect-video min-h-0 rounded-[1rem]" />
+              <div className="p-3 pb-5 pt-6 md:p-5 md:pb-7">
+                <p className="font-mono text-xs text-accent">0{index + 1}</p>
+                <h3 className="mt-3 text-3xl font-black tracking-[-0.04em]">{getText(item.title, locale)}</h3>
+                <p className="mt-4 max-w-xl leading-relaxed text-white/60">{getText(item.text, locale)}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BreakdownGridBlock({ block, project }) {
+  const locale = useLocale();
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+      <CaseHeading block={block} />
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {block.items?.map((item, index) => (
+          <article key={index}>
+            <MediaSlot item={item} project={project} className="aspect-[4/3] min-h-0 rounded-[1.5rem]" />
+            <div className="mt-4 flex items-center justify-between border-t border-zinc-950/10 pt-3">
+              <h3 className="font-semibold">{getText(item.title, locale)}</h3>
+              <span className="font-mono text-xs text-zinc-400">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function OutcomeBlock({ block }) {
+  const locale = useLocale();
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+      <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
+        <CaseHeading block={block} />
+        <div className="mt-10 grid gap-8 md:ml-[calc(21%+2.5rem)] md:grid-cols-[1.4fr_0.6fr]">
+          <p className="text-xl leading-relaxed text-zinc-700 md:text-2xl">{getText(block.text, locale)}</p>
+          {block.note && (
+            <p className="border-l border-zinc-950/15 pl-4 text-sm leading-relaxed text-zinc-500">{getText(block.note, locale)}</p>
           )}
         </div>
       </div>
@@ -355,6 +653,11 @@ export default function ProjectBlocks({ project }) {
     }
     if (block.type === "pipeline") return <PipelineBlock key={index} block={block} />;
     if (block.type === "evidence") return <EvidenceBlock key={index} block={block} />;
+    if (block.type === "caseSection") return <CaseSectionBlock key={index} block={block} />;
+    if (block.type === "stageSystem") return <StageSystemBlock key={index} block={block} project={project} />;
+    if (block.type === "formatSplit") return <FormatSplitBlock key={index} block={block} project={project} />;
+    if (block.type === "breakdownGrid") return <BreakdownGridBlock key={index} block={block} project={project} />;
+    if (block.type === "outcome") return <OutcomeBlock key={index} block={block} />;
     if (block.type === "finalCta") return <FinalCtaBlock key={index} block={block} />;
     return null;
   });

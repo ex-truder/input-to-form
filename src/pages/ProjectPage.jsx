@@ -25,25 +25,34 @@ export default function ProjectPage() {
           ← {ui.backToWork}
         </Link>
 
-        <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end pt-2 md:pt-2">
+        <div className="grid gap-8 pt-6 md:items-end md:pt-10">
           <div className="min-w-0">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-900">
               {getText(project.type, locale)} / {project.year} / {getText(project.client, locale)}
             </p>
-            <h1 className="mobile-heading-xl text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[5vw]">
+            <h1 className={project.caseStudy
+              ? "mobile-heading-xl max-w-[1450px] text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.82] tracking-[-0.075em]"
+              : "mobile-heading-xl text-[17vw] font-black uppercase leading-[0.78] tracking-[-0.08em] md:text-[5vw]"}>
               {getText(project.title, locale)}
             </h1>
           </div>
         </div>
       </section>
       <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-5 md:px-8 md:pb-5 md:pt-5">
-          <div className="max-w-xl text-lg leading-relaxed text-zinc-700 md:text-xl">
-            <p className="mb-6 font-semibold text-zinc-950">
+        <div className={`grid gap-8 text-lg leading-relaxed text-zinc-700 md:text-xl ${project.caseStudy ? "max-w-6xl md:grid-cols-2" : "max-w-xl"}`}>
+          <div>
+            <p className="mb-5 text-2xl font-semibold leading-tight text-zinc-950 md:text-3xl">
               {getText(project.subtitle, locale)}
               </p>
+              {project.description && (
+                <p className="mb-6 text-base leading-relaxed text-zinc-600 md:text-lg">
+                  {getText(project.description, locale)}
+                </p>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2">
               {project.tools.map((tool) => (
-                <span key={getText(tool, locale)}>
+                <span key={getText(tool, locale)} className="h-fit rounded-full border border-zinc-950/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-zinc-600">
                   {getText(tool, locale)}
                 </span>
               ))}
@@ -51,7 +60,7 @@ export default function ProjectPage() {
           </div>
       </section>
       <section className="mx-auto max-w-[1600px] px-5 md:px-8">
-        <ProjectMedia media={project.hero} project={project} className="min-h-[72vh]" priority />
+        <ProjectMedia media={project.hero} project={project} className={project.caseStudy ? "aspect-[4/3] min-h-0 md:aspect-[16/9]" : "min-h-[72vh]"} priority />
       </section>
 
       <ProjectBlocks project={project} />

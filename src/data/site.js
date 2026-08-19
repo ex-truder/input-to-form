@@ -8,7 +8,7 @@ export const site = {
 
   description: {
     en: "I turn complex products, data and processes into clear visual content prepared for the target platform.",
-    ru: "Превращаю сложные продукты, данные и процессы в понятный визуальный контент, подготовленный под целевую платформу.",
+    ru: "Создаю визуальные системы для задач, которые нужно построить, объяснить или ускорить.",
   },
 
   socials: [

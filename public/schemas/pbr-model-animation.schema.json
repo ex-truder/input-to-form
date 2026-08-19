@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/pbr-model-animation.schema.json",
+  "title": "PBR model animation manifest",
+  "type": "object",
+  "required": ["version", "timeline"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "timeline": {
+      "type": "object",
+      "required": ["loop"],
+      "properties": {
+        "clip": { "type": "string" },
+        "clips": {
+          "oneOf": [
+            { "const": "*" },
+            { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+          ]
+        },
+        "loop": { "enum": ["once", "ping-pong", "wrap"] },
+        "autoplay": { "type": "boolean" },
+        "speed": { "type": "number", "exclusiveMinimum": 0 },
+        "duration": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "viewer": {
+      "type": "object",
+      "properties": {
+        "environment": { "type": "string", "minLength": 1 },
+        "background": { "type": "string", "minLength": 1 },
+        "showEnvironment": { "type": "boolean" },
+        "environmentIntensity": { "type": "number", "minimum": 0 },
+        "exposure": { "type": "number", "minimum": 0 },
+        "autoRotate": { "type": "boolean" },
+        "autoRotateSpeed": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["target"],
+        "properties": {
+          "target": { "type": "string", "minLength": 1 },
+          "from": { "$ref": "#/$defs/materialState" },
+          "to": { "$ref": "#/$defs/materialState" },
+          "blend": {
+            "type": "object",
+            "properties": {
+              "easing": { "enum": ["linear", "smoothstep", "step"] },
+              "keyframes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["progress", "value"],
+                  "properties": {
+                    "progress": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "value": { "type": "number", "minimum": 0, "maximum": 1 }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "materialState": {
+      "type": "object",
+      "properties": {
+        "maps": {
+          "type": "object",
+          "properties": {
+            "baseColor": { "type": "string" },
+            "normal": { "type": "string" },
+            "orm": { "type": "string" },
+            "roughness": { "type": "string" },
+            "metalness": { "type": "string" },
+            "ao": { "type": "string" },
+            "emissive": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "factors": {
+          "type": "object",
+          "properties": {
+            "baseColor": { "$ref": "#/$defs/rgba" },
+            "emissive": { "$ref": "#/$defs/rgb" },
+            "emissiveIntensity": { "type": "number", "minimum": 0 },
+            "roughness": { "type": "number", "minimum": 0, "maximum": 1 },
+            "metalness": { "type": "number", "minimum": 0, "maximum": 1 },
+            "normalScale": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "clearcoat": { "type": "number", "minimum": 0, "maximum": 1 },
+            "clearcoatRoughness": { "type": "number", "minimum": 0, "maximum": 1 },
+            "transmission": { "type": "number", "minimum": 0, "maximum": 1 },
+            "thickness": { "type": "number", "minimum": 0 },
+            "ior": { "type": "number", "minimum": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "rgb": {
+      "type": "array",
+      "items": { "type": "number", "minimum": 0, "maximum": 1 },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "rgba": {
+      "type": "array",
+      "items": { "type": "number", "minimum": 0, "maximum": 1 },
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "additionalProperties": false
+}

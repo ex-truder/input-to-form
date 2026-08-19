@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schemas/pbr-model-animation.schema.json",
+  "version": 1,
+  "timeline": {
+    "clip": "Scene",
+    "loop": "wrap",
+    "autoplay": true,
+    "speed": 1
+  },
+  "viewer": {
+    "environment": "environment/billiard_hall_1k.hdr",
+    "background": "#f4f4f5",
+    "showEnvironment": false,
+    "environmentIntensity": 0.8,
+    "exposure": 0.5,
+    "autoRotate": false
+  },
+  "materials": []
+}

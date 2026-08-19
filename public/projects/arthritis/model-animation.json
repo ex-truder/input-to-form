@@ -1,0 +1,220 @@
+{
+  "$schema": "/schemas/pbr-model-animation.schema.json",
+  "version": 1,
+  "timeline": {
+    "clips": "*",
+    "loop": "ping-pong",
+    "autoplay": true,
+    "speed": 1,
+    "duration": 4.333333
+  },
+  "viewer": {
+    "background": "transparent",
+    "showEnvironment": false,
+    "environmentIntensity": 1,
+    "exposure": 1,
+    "autoRotate": false
+  },
+  "materials": [
+    {
+      "target": "lumbar_bone",
+      "from": {
+        "maps": {
+          "baseColor": "textures/lumbar_bone/from/basecolor.webp",
+          "normal": "textures/lumbar_bone/from/normal.webp",
+          "roughness": "textures/lumbar_bone/from/roughness.webp",
+          "metalness": "textures/lumbar_bone/from/metalness.webp",
+          "emissive": "textures/lumbar_bone/from/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness": 1,
+          "metalness": 1,
+          "normalScale": [
+            1,
+            1
+          ],
+          "emissive": [
+            1,
+            1,
+            1
+          ],
+          "emissiveIntensity": 1
+        }
+      },
+      "to": {
+        "maps": {
+          "baseColor": "textures/lumbar_bone/to/basecolor.webp",
+          "normal": "textures/lumbar_bone/to/normal.webp",
+          "roughness": "textures/lumbar_bone/to/roughness.webp",
+          "metalness": "textures/lumbar_bone/to/metalness.webp",
+          "emissive": "textures/lumbar_bone/to/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness": 1,
+          "metalness": 1,
+          "normalScale": [
+            1,
+            1
+          ],
+          "emissive": [
+            1,
+            1,
+            1
+          ],
+          "emissiveIntensity": 1
+        }
+      },
+      "blend": {
+        "easing": "smoothstep",
+        "keyframes": [
+          {
+            "progress": 0.0,
+            "value": 0.0
+          },
+          {
+            "progress": 0.461538,
+            "value": 0.0
+          },
+          {
+            "progress": 0.923077,
+            "value": 0.999
+          },
+          {
+            "progress": 1.0,
+            "value": 0.999
+          }
+        ]
+      }
+    },
+    {
+      "target": "lumbar_disk",
+      "from": {
+        "maps": {
+          "baseColor": "textures/lumbar_disk/from/basecolor.webp",
+          "normal": "textures/lumbar_disk/from/normal.webp",
+          "roughness": "textures/lumbar_disk/from/roughness.webp",
+          "metalness": "textures/lumbar_disk/from/metalness.webp",
+          "emissive": "textures/lumbar_disk/from/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness": 1,
+          "metalness": 1,
+          "normalScale": [
+            1,
+            1
+          ],
+          "emissive": [
+            1,
+            1,
+            1
+          ],
+          "emissiveIntensity": 1
+        }
+      },
+      "to": {
+        "maps": {
+          "baseColor": "textures/lumbar_disk/to/basecolor.webp",
+          "normal": "textures/lumbar_disk/to/normal.webp",
+          "roughness": "textures/lumbar_disk/to/roughness.webp",
+          "metalness": "textures/lumbar_disk/to/metalness.webp",
+          "emissive": "textures/lumbar_disk/to/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness": 1,
+          "metalness": 1,
+          "normalScale": [
+            1,
+            1
+          ],
+          "emissive": [
+            1,
+            1,
+            1
+          ],
+          "emissiveIntensity": 1
+        }
+      },
+      "blend": {
+        "easing": "smoothstep",
+        "keyframes": [
+          {
+            "progress": 0.0,
+            "value": 0.0
+          },
+          {
+            "progress": 0.153846,
+            "value": 0.0
+          },
+          {
+            "progress": 0.230769,
+            "value": 1.0
+          },
+          {
+            "progress": 0.461538,
+            "value": 1.0
+          },
+          {
+            "progress": 1.0,
+            "value": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "target": "disk_internals",
+      "from": {
+        "maps": {
+          "baseColor": "textures/disk_internals/from/basecolor.webp",
+          "normal": "textures/disk_internals/from/normal.webp",
+          "roughness": "textures/disk_internals/from/roughness.webp",
+          "metalness": "textures/disk_internals/from/metalness.webp",
+          "emissive": "textures/disk_internals/from/emissive.webp"
+        },
+        "factors": {
+          "baseColor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness": 1,
+          "metalness": 1,
+          "normalScale": [
+            1,
+            1
+          ],
+          "emissive": [
+            1,
+            1,
+            1
+          ],
+          "emissiveIntensity": 1
+        }
+      }
+    }
+  ]
+}

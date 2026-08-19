@@ -1,4 +1,4 @@
-export const DEFAULT_LOCALE = "en";
+export const DEFAULT_LOCALE = "ru";
 
 export const LOCALES = {
   en: {
@@ -14,7 +14,7 @@ export const LOCALES = {
 export const UI = {
   en: {
     mottotop: "Making data beautiful",
-    mottobottom: "From input to form",
+    mottobottom: "От исходных данных к форме",
     explanation01: "You bring sketches, CAD, scans, briefs, datasets or a vague idea. I build the visual system: models, renders, motion, technical assets and interactive prototypes.",
     explanation02: "If you are not sure of what do you really need or feeling overwhelmed with anything related to 3D, don't hesitate to contact me. Let's discuss!",
     text01: "3D delivered by engineer",
@@ -53,7 +53,7 @@ export const UI = {
     projectNote: "О проекте",
     process: "Процесс",
     all: "Все",
-    mostlyNda: "NDA-friendly",
+    mostlyNda: "Можно показывать при NDA",
     mostlyNdaText:
       "Публичная версия портфолио фокусируется на процессе, визуальном мышлении и производственной логике. Реальные клиентские материалы можно добавлять позже как изображения, видео или закрытые кейсы.",
   },
