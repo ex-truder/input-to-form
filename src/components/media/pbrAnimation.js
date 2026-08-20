@@ -1,6 +1,84 @@
 export const LOOP_MODES = new Set(["once", "ping-pong", "wrap"]);
+export const MATERIAL_SHADER_TYPES = new Set(["glass-refraction"]);
+export const MATERIAL_SIDES = new Set(["front", "back", "double"]);
 
 const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
+
+const SHADER_NUMBER_RANGES = {
+  roughness: [0, 1],
+  metalness: [0, 1],
+  transmission: [0, 1],
+  thickness: [0, Infinity],
+  ior: [1, 2.333],
+  attenuationDistance: [Number.MIN_VALUE, Infinity],
+  dispersion: [0, 1],
+  clearcoat: [0, 1],
+  clearcoatRoughness: [0, 1],
+  envMapIntensity: [0, Infinity],
+};
+
+const GLASS_SHADER_PARAMETERS = new Set([
+  "color",
+  "attenuationColor",
+  "doubleSided",
+  ...Object.keys(SHADER_NUMBER_RANGES),
+]);
+
+function validateRgb(value, path) {
+  if (!Array.isArray(value) || value.length !== 3 || value.some((channel) => (
+    !Number.isFinite(channel) || channel < 0 || channel > 1
+  ))) {
+    throw new Error(`${path} must be an RGB array with three values between 0 and 1.`);
+  }
+}
+
+function validateMaterialShader(shader, target) {
+  if (!shader || typeof shader !== "object" || Array.isArray(shader)) {
+    throw new Error(`Material "${target}" shader must be an object.`);
+  }
+
+  if (!MATERIAL_SHADER_TYPES.has(shader.type)) {
+    throw new Error(
+      `Unknown material shader "${shader.type ?? "missing"}" for "${target}". `
+      + `Use ${[...MATERIAL_SHADER_TYPES].join(", ")}.`,
+    );
+  }
+
+  const parameters = shader.parameters || {};
+  if (typeof parameters !== "object" || Array.isArray(parameters)) {
+    throw new Error(`Material "${target}" shader.parameters must be an object.`);
+  }
+
+  const unknownParameters = Object.keys(parameters).filter(
+    (property) => !GLASS_SHADER_PARAMETERS.has(property),
+  );
+  if (unknownParameters.length) {
+    throw new Error(
+      `Material "${target}" shader has unknown parameters: ${unknownParameters.join(", ")}.`,
+    );
+  }
+
+  for (const colorProperty of ["color", "attenuationColor"]) {
+    if (parameters[colorProperty] != null) {
+      validateRgb(parameters[colorProperty], `Material "${target}" shader.parameters.${colorProperty}`);
+    }
+  }
+
+  for (const [property, [minimum, maximum]] of Object.entries(SHADER_NUMBER_RANGES)) {
+    const parameter = parameters[property];
+    if (parameter != null && (
+      !Number.isFinite(parameter) || parameter < minimum || parameter > maximum
+    )) {
+      throw new Error(
+        `Material "${target}" shader.parameters.${property} must be between ${minimum} and ${maximum}.`,
+      );
+    }
+  }
+
+  if (parameters.doubleSided != null && typeof parameters.doubleSided !== "boolean") {
+    throw new Error(`Material "${target}" shader.parameters.doubleSided must be true or false.`);
+  }
+}
 
 export function validateAnimationManifest(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -50,6 +128,14 @@ export function validateAnimationManifest(value) {
     if (material.target === "*" && (value.materials || []).length > 1) {
       throw new Error('The wildcard material target "*" cannot be combined with other material tracks.');
     }
+
+    if (material.side != null && !MATERIAL_SIDES.has(material.side)) {
+      throw new Error(
+        `Unknown side "${material.side}" for material "${material.target}". Use front, back or double.`,
+      );
+    }
+
+    if (material.shader != null) validateMaterialShader(material.shader, material.target);
 
     const keyframes = material.blend?.keyframes;
     if (keyframes) {

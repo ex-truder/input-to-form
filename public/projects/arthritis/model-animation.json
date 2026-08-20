@@ -19,61 +19,67 @@
     {
       "target": "lumbar_bone",
       "from": {
-        "maps": {
-          "baseColor": "textures/lumbar_bone/from/basecolor.webp",
-          "normal": "textures/lumbar_bone/from/normal.webp",
-          "roughness": "textures/lumbar_bone/from/roughness.webp",
-          "metalness": "textures/lumbar_bone/from/metalness.webp",
-          "emissive": "textures/lumbar_bone/from/emissive.webp"
-        },
         "factors": {
           "baseColor": [
-            1,
-            1,
-            1,
-            1
+            1.0,
+            1.0,
+            1.0,
+            1.0
           ],
-          "roughness": 1,
-          "metalness": 1,
+          "roughness": 1.0,
+          "metalness": 0.0,
           "normalScale": [
-            1,
-            1
+            1.0,
+            1.0
           ],
           "emissive": [
-            1,
-            1,
-            1
+            0.0,
+            0.0,
+            0.0
           ],
-          "emissiveIntensity": 1
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_bone/from/basecolor.ktx2",
+          "normal": "textures/lumbar_bone/from/normal.ktx2",
+          "orm": "textures/lumbar_bone/from/orm.ktx2"
         }
       },
       "to": {
-        "maps": {
-          "baseColor": "textures/lumbar_bone/to/basecolor.webp",
-          "normal": "textures/lumbar_bone/to/normal.webp",
-          "roughness": "textures/lumbar_bone/to/roughness.webp",
-          "metalness": "textures/lumbar_bone/to/metalness.webp",
-          "emissive": "textures/lumbar_bone/to/emissive.webp"
-        },
         "factors": {
           "baseColor": [
-            1,
-            1,
-            1,
-            1
+            1.0,
+            1.0,
+            1.0,
+            1.0
           ],
-          "roughness": 1,
-          "metalness": 1,
+          "roughness": 1.0,
+          "metalness": 0.0,
           "normalScale": [
-            1,
-            1
+            1.0,
+            1.0
           ],
           "emissive": [
-            1,
-            1,
-            1
+            0.0,
+            0.0,
+            0.0
           ],
-          "emissiveIntensity": 1
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_bone/to/basecolor.ktx2",
+          "normal": "textures/lumbar_bone/to/normal.ktx2",
+          "orm": "textures/lumbar_bone/to/orm.ktx2"
         }
       },
       "blend": {
@@ -101,61 +107,67 @@
     {
       "target": "lumbar_disk",
       "from": {
-        "maps": {
-          "baseColor": "textures/lumbar_disk/from/basecolor.webp",
-          "normal": "textures/lumbar_disk/from/normal.webp",
-          "roughness": "textures/lumbar_disk/from/roughness.webp",
-          "metalness": "textures/lumbar_disk/from/metalness.webp",
-          "emissive": "textures/lumbar_disk/from/emissive.webp"
-        },
         "factors": {
           "baseColor": [
-            1,
-            1,
-            1,
-            1
+            1.0,
+            1.0,
+            1.0,
+            1.0
           ],
-          "roughness": 1,
-          "metalness": 1,
+          "roughness": 1.0,
+          "metalness": 0.0,
           "normalScale": [
-            1,
-            1
+            1.0,
+            1.0
           ],
           "emissive": [
-            1,
-            1,
-            1
+            0.0,
+            0.0,
+            0.0
           ],
-          "emissiveIntensity": 1
+          "emissiveIntensity": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_disk/from/basecolor.ktx2",
+          "normal": "textures/lumbar_disk/from/normal.ktx2",
+          "orm": "textures/lumbar_disk/from/orm.ktx2"
         }
       },
       "to": {
-        "maps": {
-          "baseColor": "textures/lumbar_disk/to/basecolor.webp",
-          "normal": "textures/lumbar_disk/to/normal.webp",
-          "roughness": "textures/lumbar_disk/to/roughness.webp",
-          "metalness": "textures/lumbar_disk/to/metalness.webp",
-          "emissive": "textures/lumbar_disk/to/emissive.webp"
-        },
         "factors": {
           "baseColor": [
-            1,
-            1,
-            1,
-            1
+            1.0,
+            1.0,
+            1.0,
+            1.0
           ],
-          "roughness": 1,
-          "metalness": 1,
+          "roughness": 1.0,
+          "metalness": 0.0,
           "normalScale": [
-            1,
-            1
+            1.0,
+            1.0
           ],
           "emissive": [
-            1,
-            1,
-            1
+            0.0,
+            0.0,
+            0.0
           ],
-          "emissiveIntensity": 1
+          "emissiveIntensity": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_disk/to/basecolor.ktx2",
+          "normal": "textures/lumbar_disk/to/normal.ktx2",
+          "orm": "textures/lumbar_disk/to/orm.ktx2"
         }
       },
       "blend": {
@@ -187,34 +199,59 @@
     {
       "target": "disk_internals",
       "from": {
-        "maps": {
-          "baseColor": "textures/disk_internals/from/basecolor.webp",
-          "normal": "textures/disk_internals/from/normal.webp",
-          "roughness": "textures/disk_internals/from/roughness.webp",
-          "metalness": "textures/disk_internals/from/metalness.webp",
-          "emissive": "textures/disk_internals/from/emissive.webp"
-        },
         "factors": {
           "baseColor": [
-            1,
-            1,
-            1,
-            1
+            0.6710885763168335,
+            0.44018954038619995,
+            0.4510197043418884,
+            1.0
           ],
-          "roughness": 1,
-          "metalness": 1,
+          "roughness": 0.10999983549118042,
+          "metalness": 0.0,
           "normalScale": [
-            1,
-            1
+            1.0,
+            1.0
           ],
           "emissive": [
-            1,
-            1,
-            1
+            0.0,
+            0.0,
+            0.0
           ],
-          "emissiveIntensity": 1
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.7936363816261292,
+          "transmission": 1.0,
+          "thickness": 0.0,
+          "ior": 1.2999999523162842
         }
-      }
+      },
+      "shader": {
+        "type": "glass-refraction",
+        "parameters": {
+          "color": [
+            0.6710885763168335,
+            0.44018954038619995,
+            0.4510197043418884
+          ],
+          "roughness": 0.10999983549118042,
+          "metalness": 0.0,
+          "transmission": 1.0,
+          "thickness": 0.35,
+          "ior": 1.2999999523162842,
+          "attenuationColor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "attenuationDistance": 10.0,
+          "dispersion": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.7936363816261292,
+          "envMapIntensity": 1.0,
+          "doubleSided": true
+        }
+      },
+      "side": "double"
     }
   ]
 }

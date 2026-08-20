@@ -59,6 +59,34 @@
           { "progress": 1, "value": 1 }
         ]
       }
+    },
+    {
+      "target": "Glass material name from the GLB",
+      "side": "double",
+      "shader": {
+        "type": "glass-refraction",
+        "parameters": {
+          "color": [0.92, 0.98, 1],
+          "roughness": 0.08,
+          "transmission": 1,
+          "thickness": 0.35,
+          "ior": 1.5,
+          "attenuationColor": [0.82, 0.95, 1],
+          "attenuationDistance": 8,
+          "dispersion": 0.02,
+          "clearcoat": 1,
+          "clearcoatRoughness": 0.05,
+          "envMapIntensity": 1
+        }
+      },
+      "from": {
+        "maps": {
+          "normal": "textures/glass/normal.webp",
+          "roughness": "textures/glass/roughness.webp",
+          "transmission": "textures/glass/transmission.webp",
+          "thickness": "textures/glass/thickness.webp"
+        }
+      }
     }
   ]
 }

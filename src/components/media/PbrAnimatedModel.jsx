@@ -18,6 +18,18 @@ const LOOP_LABELS = {
   wrap: { en: "Loop", ru: "По кругу" },
 };
 
+function FullscreenIcon({ active }) {
+  return active ? (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+      <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+      <path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function selectClips(animations, timeline) {
   const requested = timeline.clips ?? timeline.clip;
   if (requested === "*" || (Array.isArray(requested) && requested.includes("*"))) return animations;
@@ -89,6 +101,19 @@ export default function PbrAnimatedModel({
   const [playing, setPlaying] = useState(false);
   const [loopMode, setLoopMode] = useState("wrap");
   const [containerBackground, setContainerBackground] = useState("#f4f4f5");
+  const [fullscreen, setFullscreen] = useState(false);
+  const [fullscreenSupported, setFullscreenSupported] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    setFullscreenSupported(Boolean(document.fullscreenEnabled && container?.requestFullscreen));
+
+    const onFullscreenChange = () => {
+      setFullscreen(document.fullscreenElement === container);
+    };
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -312,10 +337,25 @@ export default function PbrAnimatedModel({
     runtime.setProgress(Number(event.target.value));
   };
 
+  const toggleFullscreen = async () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    try {
+      if (document.fullscreenElement === container) {
+        await document.exitFullscreen();
+      } else {
+        await container.requestFullscreen();
+      }
+    } catch {
+      // Browsers can reject fullscreen when the user gesture is interrupted.
+    }
+  };
+
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className}`}
+      className={`pbr-model-viewer relative overflow-hidden ${className}`}
       style={{ backgroundColor: containerBackground }}
       aria-label={alt}
     >
@@ -365,9 +405,21 @@ export default function PbrAnimatedModel({
             className="min-w-0 flex-1 accent-orange-500"
             aria-label={locale === "ru" ? "Положение анимации" : "Animation progress"}
           />
-          <span className="shrink-0 rounded-full border border-white/20 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-white/75">
-            {LOOP_LABELS[loopMode]?.[locale] || loopMode}
-          </span>
+          {fullscreenSupported && (
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/15"
+              aria-label={fullscreen
+                ? (locale === "ru" ? "Выйти из полноэкранного режима" : "Exit fullscreen")
+                : (locale === "ru" ? "Открыть на весь экран" : "Open fullscreen")}
+              title={fullscreen
+                ? (locale === "ru" ? "Выйти из полноэкранного режима" : "Exit fullscreen")
+                : (locale === "ru" ? "На весь экран" : "Fullscreen")}
+            >
+              <FullscreenIcon active={fullscreen} />
+            </button>
+          )}
         </div>
       )}
     </div>

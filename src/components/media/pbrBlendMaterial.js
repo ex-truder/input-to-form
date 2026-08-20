@@ -4,11 +4,97 @@ import { evaluateKeyframes, resolveManifestAsset } from "./pbrAnimation";
 const MAP_PROPERTIES = {
   baseColor: "map",
   normal: "normalMap",
+  emissive: "emissiveMap",
+  transmission: "transmissionMap",
+  thickness: "thicknessMap",
+};
+
+// Legacy manifests may still contain separate maps. New exports use one ORM
+// texture: R = ambient occlusion, G = roughness, B = metalness.
+const LEGACY_PBR_MAP_PROPERTIES = {
   roughness: "roughnessMap",
   metalness: "metalnessMap",
   ao: "aoMap",
-  emissive: "emissiveMap",
 };
+
+const MATERIAL_MAP_PROPERTIES = {
+  ...MAP_PROPERTIES,
+  ...LEGACY_PBR_MAP_PROPERTIES,
+};
+
+const MATERIAL_SIDES = {
+  front: THREE.FrontSide,
+  back: THREE.BackSide,
+  double: THREE.DoubleSide,
+};
+
+const GLASS_REFRACTION_DEFAULTS = {
+  color: [1, 1, 1],
+  roughness: 0.08,
+  metalness: 0,
+  transmission: 1,
+  thickness: 0.35,
+  ior: 1.5,
+  attenuationColor: [1, 1, 1],
+  attenuationDistance: 10,
+  dispersion: 0,
+  clearcoat: 1,
+  clearcoatRoughness: 0.05,
+  envMapIntensity: 1,
+  doubleSided: false,
+};
+
+function createGlassRefractionMaterial(original, configuredParameters) {
+  if (!original.isMeshStandardMaterial) {
+    throw new Error(
+      `Shader "glass-refraction" requires a standard or physical material; "${original.name}" is ${original.type}.`,
+    );
+  }
+
+  const material = new THREE.MeshPhysicalMaterial();
+  if (original.isMeshPhysicalMaterial) {
+    material.copy(original);
+  } else {
+    THREE.MeshStandardMaterial.prototype.copy.call(material, original);
+    material.defines = { STANDARD: "", PHYSICAL: "" };
+  }
+
+  const parameters = { ...GLASS_REFRACTION_DEFAULTS, ...(configuredParameters || {}) };
+  material.color.fromArray(parameters.color);
+  material.roughness = parameters.roughness;
+  material.metalness = parameters.metalness;
+  material.transmission = parameters.transmission;
+  material.thickness = parameters.thickness;
+  material.ior = parameters.ior;
+  material.attenuationColor.fromArray(parameters.attenuationColor);
+  material.attenuationDistance = parameters.attenuationDistance;
+  material.dispersion = parameters.dispersion;
+  material.clearcoat = parameters.clearcoat;
+  material.clearcoatRoughness = parameters.clearcoatRoughness;
+  material.envMapIntensity = parameters.envMapIntensity;
+  material.side = parameters.doubleSided ? THREE.DoubleSide : THREE.FrontSide;
+
+  // Transmission has its own render path. Alpha blending would produce a second,
+  // visually incorrect transparency model on top of the refraction.
+  material.opacity = 1;
+  material.transparent = false;
+  material.needsUpdate = true;
+  return material;
+}
+
+function createConfiguredMaterial(original, shader) {
+  if (!shader) return original.clone();
+  if (shader.type === "glass-refraction") {
+    return createGlassRefractionMaterial(original, shader.parameters);
+  }
+  throw new Error(`Unsupported material shader "${shader.type}".`);
+}
+
+function applyConfiguredSide(material, side) {
+  if (side == null) return;
+  material.side = MATERIAL_SIDES[side];
+  material.needsUpdate = true;
+}
 
 function setTextureColorSpace(texture, semantic) {
   texture.colorSpace = semantic === "baseColor" || semantic === "emissive"
@@ -40,9 +126,11 @@ function createNeutralTexture(semantic) {
     baseColor: [255, 255, 255, 255],
     normal: [128, 128, 255, 255],
     roughness: [255, 255, 255, 255],
-    metalness: [0, 0, 0, 255],
+    metalness: [255, 255, 255, 255],
     ao: [255, 255, 255, 255],
-    emissive: [0, 0, 0, 255],
+    emissive: [255, 255, 255, 255],
+    transmission: [255, 255, 255, 255],
+    thickness: [255, 255, 255, 255],
   };
   const texture = new THREE.DataTexture(new Uint8Array(colors[semantic]), 1, 1, THREE.RGBAFormat);
   setTextureColorSpace(texture, semantic);
@@ -65,9 +153,19 @@ async function loadMapSet(definition, textureLoaders, manifestUrl, textureCache)
 
   if (maps.orm) {
     const orm = await loadTexture(textureLoaders, manifestUrl, maps.orm, "orm", textureCache);
-    result.roughness ||= orm;
-    result.metalness ||= orm;
-    result.ao ||= orm;
+    result.roughness = orm;
+    result.metalness = orm;
+    result.ao = orm;
+  } else {
+    for (const semantic of Object.keys(LEGACY_PBR_MAP_PROPERTIES)) {
+      result[semantic] = await loadTexture(
+        textureLoaders,
+        manifestUrl,
+        maps[semantic],
+        semantic,
+        textureCache,
+      );
+    }
   }
 
   return result;
@@ -193,6 +291,59 @@ function patchShader(material, targetMaps, blendUniform) {
         #endif`,
       );
     }
+
+    if (targetMaps.transmission) {
+      shader.uniforms.uPbrTransmissionTo = { value: targetMaps.transmission };
+      addShaderDeclaration(shader, "uniform sampler2D uPbrTransmissionTo;");
+    }
+
+    if (targetMaps.thickness) {
+      shader.uniforms.uPbrThicknessTo = { value: targetMaps.thickness };
+      addShaderDeclaration(shader, "uniform sampler2D uPbrThicknessTo;");
+    }
+
+    if (targetMaps.transmission || targetMaps.thickness) {
+      const transmissionMapSample = targetMaps.transmission
+        ? `float pbrTransmissionFrom = texture2D( transmissionMap, vTransmissionMapUv ).r;
+          float pbrTransmissionTo = texture2D( uPbrTransmissionTo, vTransmissionMapUv ).r;
+          material.transmission *= mix( pbrTransmissionFrom, pbrTransmissionTo, uPbrBlend );`
+        : "material.transmission *= texture2D( transmissionMap, vTransmissionMapUv ).r;";
+      const thicknessMapSample = targetMaps.thickness
+        ? `float pbrThicknessFrom = texture2D( thicknessMap, vThicknessMapUv ).g;
+          float pbrThicknessTo = texture2D( uPbrThicknessTo, vThicknessMapUv ).g;
+          material.thickness *= mix( pbrThicknessFrom, pbrThicknessTo, uPbrBlend );`
+        : "material.thickness *= texture2D( thicknessMap, vThicknessMapUv ).g;";
+
+      shader.fragmentShader = shader.fragmentShader.replace(
+        "#include <transmission_fragment>",
+        `#ifdef USE_TRANSMISSION
+          material.transmission = transmission;
+          material.transmissionAlpha = 1.0;
+          material.thickness = thickness;
+          material.attenuationDistance = attenuationDistance;
+          material.attenuationColor = attenuationColor;
+
+          #ifdef USE_TRANSMISSIONMAP
+            ${transmissionMapSample}
+          #endif
+
+          #ifdef USE_THICKNESSMAP
+            ${thicknessMapSample}
+          #endif
+
+          vec3 pos = vWorldPosition;
+          vec3 v = normalize( cameraPosition - pos );
+          vec3 n = inverseTransformDirection( normal, viewMatrix );
+          vec4 transmitted = getIBLVolumeRefraction(
+            n, v, material.roughness, material.diffuseContribution, material.specularColorBlended,
+            material.specularF90, pos, modelMatrix, viewMatrix, projectionMatrix, material.dispersion,
+            material.ior, material.thickness, material.attenuationColor, material.attenuationDistance
+          );
+          material.transmissionAlpha = mix( material.transmissionAlpha, transmitted.a, material.transmission );
+          totalDiffuse = mix( totalDiffuse, transmitted.rgb, material.transmission );
+        #endif`,
+      );
+    }
   };
 
   material.customProgramCacheKey = () => `pbr-blend:${enabled.sort().join(",")}`;
@@ -291,11 +442,22 @@ export async function createPbrMaterialTracks({ root, definitions, manifestUrl, 
     Object.values(toMaps).filter(Boolean).forEach((texture) => ownedTextures.add(texture));
 
     for (const original of matches) {
-      const material = original.clone();
+      const material = createConfiguredMaterial(original, definition.shader);
       material.name = original.name;
+      applyConfiguredSide(material, definition.side);
       ownedMaterials.add(material);
 
-      for (const [semantic, property] of Object.entries(MAP_PROPERTIES)) {
+      if (
+        !material.isMeshPhysicalMaterial
+        && (fromMaps.transmission || fromMaps.thickness || toMaps.transmission || toMaps.thickness)
+      ) {
+        throw new Error(
+          `Material "${original.name}" uses transmission/thickness maps but is not physical. `
+          + 'Select shader.type "glass-refraction" or use a physical material in the GLB.',
+        );
+      }
+
+      for (const [semantic, property] of Object.entries(MATERIAL_MAP_PROPERTIES)) {
         if (fromMaps[semantic]) material[property] = fromMaps[semantic];
         if (toMaps[semantic] && !material[property]) {
           material[property] = createNeutralTexture(semantic);

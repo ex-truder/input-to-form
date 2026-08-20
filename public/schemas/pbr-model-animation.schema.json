@@ -45,6 +45,8 @@
         "required": ["target"],
         "properties": {
           "target": { "type": "string", "minLength": 1 },
+          "side": { "enum": ["front", "back", "double"] },
+          "shader": { "$ref": "#/$defs/materialShader" },
           "from": { "$ref": "#/$defs/materialState" },
           "to": { "$ref": "#/$defs/materialState" },
           "blend": {
@@ -72,6 +74,34 @@
     }
   },
   "$defs": {
+    "materialShader": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "glass-refraction" },
+        "parameters": { "$ref": "#/$defs/glassRefractionParameters" }
+      },
+      "additionalProperties": false
+    },
+    "glassRefractionParameters": {
+      "type": "object",
+      "properties": {
+        "color": { "$ref": "#/$defs/rgb" },
+        "roughness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "metalness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "transmission": { "type": "number", "minimum": 0, "maximum": 1 },
+        "thickness": { "type": "number", "minimum": 0 },
+        "ior": { "type": "number", "minimum": 1, "maximum": 2.333 },
+        "attenuationColor": { "$ref": "#/$defs/rgb" },
+        "attenuationDistance": { "type": "number", "exclusiveMinimum": 0 },
+        "dispersion": { "type": "number", "minimum": 0, "maximum": 1 },
+        "clearcoat": { "type": "number", "minimum": 0, "maximum": 1 },
+        "clearcoatRoughness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "envMapIntensity": { "type": "number", "minimum": 0 },
+        "doubleSided": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
     "materialState": {
       "type": "object",
       "properties": {
@@ -84,7 +114,9 @@
             "roughness": { "type": "string" },
             "metalness": { "type": "string" },
             "ao": { "type": "string" },
-            "emissive": { "type": "string" }
+            "emissive": { "type": "string" },
+            "transmission": { "type": "string" },
+            "thickness": { "type": "string" }
           },
           "additionalProperties": false
         },
