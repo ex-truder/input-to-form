@@ -73,7 +73,7 @@ function DirectionCase({ direction }) {
   );
 }
 
-function DirectionSection({ direction }) {
+function DirectionSection({ direction, step }) {
   const locale = useLocale();
   const isDark = direction.id === "explain";
   const isAccent = direction.id === "save-time";
@@ -81,6 +81,7 @@ function DirectionSection({ direction }) {
   return (
     <section
       id={direction.id}
+      data-logo-step={step}
       className={`scroll-mt-24 border-t ${
         isDark
           ? "border-white/10 bg-ink text-white"
@@ -170,8 +171,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {content.directions.items.map((direction) => (
-        <DirectionSection key={direction.id} direction={direction} />
+      {content.directions.items.map((direction, index) => (
+        <DirectionSection key={direction.id} direction={direction} step={index + 1} />
       ))}
 
       <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
@@ -196,7 +197,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-zinc-950/10 bg-accent">
+      <section id="contact" data-logo-step="4" className="border-t border-zinc-950/10 bg-accent">
         <div className="mx-auto grid max-w-[1600px] gap-8 px-5 py-16 md:grid-cols-[1fr_auto] md:items-end md:px-8 md:py-24">
           <div>
             <Reveal variant="mask-up">
