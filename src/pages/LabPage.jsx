@@ -3,6 +3,7 @@ import { experiments } from "../data/lab";
 import { getText } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
 import { publicAsset } from "../utils/publicAsset";
+import LabArExperiment from "../components/media/LabArExperiment";
 
 function ExperimentCard({ experiment, locale }) {
   const [failed, setFailed] = useState(false);
@@ -34,9 +35,10 @@ export default function LabPage() {
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/80 md:text-xl">
         {locale === "ru"
-          ? "Место для экспериментов с пространством, движением и изображением. Пока здесь плейсхолдеры — материалы появятся позже."
-          : "A space for experiments with space, motion and images. These are placeholders for now; the experiments will follow."}
+          ? "Место для экспериментов с пространством, движением и изображением. Первый опыт — 3D-модель в вашем пространстве. Остальные исследования пока представлены плейсхолдерами."
+          : "A space for experiments with space, motion and images. Start with a 3D model in your space. The other studies are placeholders for now."}
       </p>
+      <LabArExperiment locale={locale} />
       {experiments.length ? (
         <div className="lab-card-grid mt-10 grid grid-cols-1 md:mt-14 md:grid-cols-2">
           {experiments.map((experiment) => <ExperimentCard key={experiment.id} experiment={experiment} locale={locale} />)}

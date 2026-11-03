@@ -4,6 +4,8 @@ Portfolio website built with React and Vite.
 
 Live site: https://kustart.pro/
 
+Lab WebAR experiment and phone testing: [docs/lab-ar.md](docs/lab-ar.md).
+
 ## Local development
 
 ```bash
