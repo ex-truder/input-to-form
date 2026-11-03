@@ -5,12 +5,13 @@ import { getText } from "../../i18n/config";
 import { publicAsset } from "../../utils/publicAsset";
 import "./labAr.css";
 
-// Both existing GLBs use Draco. Keep the decoder on the same host as the site.
+// The GLBs use Draco. Keep the decoder on the same host as the site.
 ModelViewerElement.dracoDecoderLocation = publicAsset("/draco/");
 
 const models = [
   { id: "knit-horse", src: "/projects/knit-horse/model.glb", name: { ru: "Вязаная лошадка", en: "Knitted horse" }, size: "13.5 MB" },
   { id: "arthritis", src: "/projects/arthritis/model.glb", name: { ru: "Позвоночник", en: "Spine" }, size: "3.7 MB" },
+  { id: "medznat_mascott_foxie", src: "/lab/models/medznat_mascott_foxie.glb", iosSrc: "/lab/models/medznat_mascott_foxie.usdz", name: { ru: "Лисёнок Foxie · Medznat", en: "Foxie mascot · Medznat" }, size: "1.1 MB" },
 ];
 
 const copy = {
@@ -28,7 +29,7 @@ const copy = {
     tracking: "Медленно перемещайте телефон, чтобы найти поверхность.",
     phone: "Открыть на телефоне", link: "Ссылка на выбранную модель", copy: "Скопировать ссылку", copied: "Ссылка скопирована", copyError: "Не удалось скопировать. Выделите ссылку и скопируйте вручную.",
     local: "Это локальный адрес компьютера. Для телефона нужна опубликованная HTTPS-версия или HTTPS-предпросмотр с доступом по сети.",
-    limits: "Android: WebXR или Scene Viewer. iPhone/iPad: Quick Look, USDZ создаётся при запуске. Эксперимент рассчитан на размещение статичной модели: анимация, blend shapes и переходы материалов в нативном AR не проверены; материалы могут выглядеть иначе. Масштаб можно менять — это не измерительный инструмент.",
+    limits: "Android: WebXR или Scene Viewer. iPhone/iPad: Quick Look; для Foxie используется готовый USDZ, для остальных моделей он создаётся при запуске. Анимация, blend shapes и переходы материалов в нативном AR не проверены; материалы могут выглядеть иначе. Масштаб можно менять — это не измерительный инструмент.",
   },
   en: {
     title: "From browser to your space",
@@ -44,7 +45,7 @@ const copy = {
     tracking: "Move your phone slowly to find a surface.",
     phone: "Open on your phone", link: "Link to the selected model", copy: "Copy link", copied: "Link copied", copyError: "Could not copy. Select the link and copy it manually.",
     local: "This address is local to your computer. Your phone needs a published HTTPS version or a network-accessible HTTPS preview.",
-    limits: "Android: WebXR or Scene Viewer. iPhone/iPad: Quick Look, with USDZ generated on launch. This experiment places a static model: animation, blend shapes and material transitions have not been verified in native AR; materials may look different. Scale is adjustable — this is not a measuring tool.",
+    limits: "Android: WebXR or Scene Viewer. iPhone/iPad: Quick Look; Foxie uses the supplied USDZ, while other models generate it on launch. Animation, blend shapes and material transitions have not been verified in native AR; materials may look different. Scale is adjustable — this is not a measuring tool.",
   },
 };
 
@@ -105,6 +106,7 @@ function ArViewer({ model, locale }) {
     <>
       <div className="lab-ar__stage" aria-busy={state === "loading" || state === "slow"}>
         <model-viewer ref={ref} src={publicAsset(model.src)} alt={getText(model.name, locale)}
+          ios-src={model.iosSrc ? publicAsset(model.iosSrc) : undefined}
           camera-controls touch-action="pan-y" environment-image="neutral" shadow-intensity="1"
           ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor" ar-scale="auto"
           ar-usdz-max-texture-size="2048" loading="eager" reveal="auto">
