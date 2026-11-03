@@ -35,7 +35,7 @@ export default function WorkIndexPage() {
       <section className="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-8 md:pb-14 md:pt-24">
         <div className="grid gap-10 md:grid-cols-[1fr_0.75fr] md:items-end">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-muted">
               {ui.work}
             </p>
 
@@ -44,7 +44,7 @@ export default function WorkIndexPage() {
             </h1>
           </div>
 
-          <div className="max-w-xl text-lg leading-relaxed text-zinc-700 md:text-xl">
+          <div className="max-w-xl text-lg leading-relaxed text-body md:text-xl">
             {getText(pageDescription, locale)}
           </div>
         </div>
@@ -56,32 +56,32 @@ export default function WorkIndexPage() {
             <ProjectMedia
               media={featuredProject.cover}
               project={featuredProject}
-              className="min-h-[560px]"
+              className="aspect-[4/3] min-h-0 lg:aspect-auto lg:min-h-[560px]"
               priority
             />
 
             <div className="mt-5 grid gap-2 md:grid-cols-[auto_1fr] md:items-baseline md:gap-8">
-              <p className="font-mono text-sm text-zinc-500">00:00</p>
+              <p className="font-mono text-sm text-muted">00:00</p>
 
               <div>
                 <h2 className="text-3xl font-black tracking-[-0.04em] md:text-5xl">
                   {ui.featuredOpening}
                 </h2>
 
-                <p className="mt-2 text-zinc-600">
+                <p className="mt-2 text-body">
                   {getText(featuredProject.description, locale)}
                 </p>
               </div>
             </div>
           </Link>
 
-          <div className="min-w-0 rounded-[2rem] border border-zinc-950/10 bg-white/35 p-4 backdrop-blur md:p-6">
+          <div className="min-w-0 rounded-[2rem] border border-zinc-950/10 bg-panel p-4 backdrop-blur md:p-6">
             <div className="mb-6 flex items-center justify-between gap-4">
               <h2 className="text-2xl font-black tracking-[-0.04em]">
                 {ui.goToProjects}
               </h2>
 
-              <span className="rounded-full bg-zinc-950 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-white">
+              <span className="rounded-full bg-ink px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-white">
                 {projects.length}
               </span>
             </div>
@@ -93,21 +93,21 @@ export default function WorkIndexPage() {
                   to={`/${locale}/work/${project.slug}`}
                   className="group grid w-full grid-cols-[minmax(0,1fr)_auto] gap-3 py-4 text-left transition hover:pl-2 sm:grid-cols-[4.5rem_minmax(0,1fr)_auto] sm:gap-4"
                 >
-                  <span className="hidden font-mono text-sm text-zinc-500 sm:block">
+                  <span className="hidden font-mono text-sm text-muted sm:block">
                     {project.duration}
                   </span>
 
                   <span className="min-w-0">
-                    <span className="block font-semibold text-zinc-950">
+                    <span className="block font-semibold text-ink">
                       {getText(project.title, locale)}
                     </span>
 
-                    <span className="mt-1 block text-sm text-zinc-500">
+                    <span className="mt-1 block text-sm text-muted">
                       {getText(project.description, locale)}
                     </span>
                   </span>
 
-                  <span className="self-center rounded-full border border-zinc-950/10 px-3 py-1 text-xs uppercase tracking-[0.08em] text-zinc-500 group-hover:border-zinc-950 group-hover:text-zinc-950">
+                  <span className="self-center rounded-full border border-zinc-950/10 px-3 py-1 text-xs uppercase tracking-[0.08em] text-muted group-hover:border-zinc-950 group-hover:text-ink">
                     {locale === "ru" ? "Открыть" : "Open"}
                   </span>
                 </Link>
@@ -118,13 +118,13 @@ export default function WorkIndexPage() {
       </section>
 
       <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-8">
-        <div className="rounded-[2rem] bg-zinc-950 p-6 text-white md:p-10">
-          <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+        <div className="rounded-[2rem] bg-ink p-6 text-white md:p-10">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
             <h2 className="mobile-heading-lg text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-8xl">
               {getText(ndaTitle, locale)}
             </h2>
 
-            <p className="max-w-2xl text-lg leading-relaxed text-white/70">
+            <p className="max-w-2xl text-lg leading-relaxed text-on-dark">
               {getText(ndaText, locale)}
             </p>
           </div>

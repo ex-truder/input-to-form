@@ -1,0 +1,5219 @@
+{
+  "version": 1,
+  "exportId": "239a7ce2-17d9-4b82-9a0b-a4f2b79ca445",
+  "createdAt": "2026-10-28T11:13:06.767252+00:00",
+  "exporterVersion": "0.1.0",
+  "format": "hda-demo.parameters",
+  "timeline": {
+    "fps": 24.0,
+    "startFrame": 1.0,
+    "endFrame": 300.0,
+    "sampleStep": 1.0,
+    "sampleCount": 300,
+    "timeOrigin": "first_sample",
+    "lastSampleTime": 12.458333333333334
+  },
+  "source": {
+    "houdiniVersion": "22.0.429",
+    "pythonVersion": "3.13.10"
+  },
+  "nodes": [
+    {
+      "id": "node_c36f8ac2d6f423279aba65df",
+      "path": "/stage/buiding/sopnet/create/residental_building",
+      "name": "residental_building",
+      "type": "KRV::residental_building::1.0",
+      "category": "Sop",
+      "description": "Residental Building",
+      "initialLayoutId": "layout_609f00cb100a9f4d8b2bbca6",
+      "initialStates": {
+        "node_c36f8ac2d6f423279aba65df/copyinput": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "copyinput",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": true
+        },
+        "node_c36f8ac2d6f423279aba65df/cacheinput": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "cacheinput",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/enable_safety": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "enable_safety",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/shape_ready": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "shape_ready",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/struct_ready": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "struct_ready",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/make_uv": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "make_uv",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": true
+        },
+        "node_c36f8ac2d6f423279aba65df/folder0": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "folder01",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 3
+        },
+        "node_c36f8ac2d6f423279aba65df/texturesize": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "texturesize",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2048,
+          "menu": {
+            "tokens": [
+              "128",
+              "256",
+              "512",
+              "1024",
+              "2048",
+              "4096"
+            ],
+            "labels": [
+              "128x128",
+              "256x256",
+              "512x512",
+              "1024x1024",
+              "2048x2048",
+              "4096x4096"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/length": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "length",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 8
+        },
+        "node_c36f8ac2d6f423279aba65df/base_size": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "base_size",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 15.0
+        },
+        "node_c36f8ac2d6f423279aba65df/rows": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "rows",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2
+        },
+        "node_c36f8ac2d6f423279aba65df/cols": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "cols",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2
+        },
+        "node_c36f8ac2d6f423279aba65df/count": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "count",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0
+        },
+        "node_c36f8ac2d6f423279aba65df/randseed": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "randseed",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0
+        },
+        "node_c36f8ac2d6f423279aba65df/percent": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "percent",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/globalseed": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "globalseed",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0
+        },
+        "node_c36f8ac2d6f423279aba65df/bevel": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "bevel",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": true
+        },
+        "node_c36f8ac2d6f423279aba65df/divisions": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "divisions",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2
+        },
+        "node_c36f8ac2d6f423279aba65df/filletshape": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "filletshape",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 3,
+          "menu": {
+            "tokens": [
+              "none",
+              "solid",
+              "crease",
+              "chamfer",
+              "round"
+            ],
+            "labels": [
+              "None",
+              "Solid",
+              "Crease",
+              "Chamfer",
+              "Round"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/niche_size": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "niche_sizex",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            },
+            {
+              "name": "niche_sizey",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            },
+            {
+              "name": "niche_sizez",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": [
+            3.0,
+            1.0,
+            5.0
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/schm_custom": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "schm_custom",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/floors": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "floors",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 7
+        },
+        "node_c36f8ac2d6f423279aba65df/input2": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "input2",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0
+        },
+        "node_c36f8ac2d6f423279aba65df/bias": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "bias",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": {
+            "kind": "ramp",
+            "positions": [
+              0.06133332848548889,
+              0.2639999985694885,
+              0.46666666865348816,
+              0.671999990940094,
+              0.9013333320617676
+            ],
+            "values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "basis": [
+              "Linear",
+              "Linear",
+              "Linear",
+              "Linear",
+              "Linear"
+            ],
+            "profile": {
+              "positions": [
+                0.0,
+                0.015873015873015872,
+                0.031746031746031744,
+                0.047619047619047616,
+                0.06349206349206349,
+                0.07936507936507936,
+                0.09523809523809523,
+                0.1111111111111111,
+                0.12698412698412698,
+                0.14285714285714285,
+                0.15873015873015872,
+                0.1746031746031746,
+                0.19047619047619047,
+                0.20634920634920634,
+                0.2222222222222222,
+                0.23809523809523808,
+                0.25396825396825395,
+                0.2698412698412698,
+                0.2857142857142857,
+                0.30158730158730157,
+                0.31746031746031744,
+                0.3333333333333333,
+                0.3492063492063492,
+                0.36507936507936506,
+                0.38095238095238093,
+                0.3968253968253968,
+                0.4126984126984127,
+                0.42857142857142855,
+                0.4444444444444444,
+                0.4603174603174603,
+                0.47619047619047616,
+                0.49206349206349204,
+                0.5079365079365079,
+                0.5238095238095238,
+                0.5396825396825397,
+                0.5555555555555556,
+                0.5714285714285714,
+                0.5873015873015873,
+                0.6031746031746031,
+                0.6190476190476191,
+                0.6349206349206349,
+                0.6507936507936508,
+                0.6666666666666666,
+                0.6825396825396826,
+                0.6984126984126984,
+                0.7142857142857143,
+                0.7301587301587301,
+                0.746031746031746,
+                0.7619047619047619,
+                0.7777777777777778,
+                0.7936507936507936,
+                0.8095238095238095,
+                0.8253968253968254,
+                0.8412698412698413,
+                0.8571428571428571,
+                0.873015873015873,
+                0.8888888888888888,
+                0.9047619047619048,
+                0.9206349206349206,
+                0.9365079365079365,
+                0.9523809523809523,
+                0.9682539682539683,
+                0.9841269841269841,
+                1.0
+              ],
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/labelparm5": {
+          "status": "no_value",
+          "components": [
+            {
+              "name": "labelparm5",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/row_seed": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "row_seed",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 198
+        },
+        "node_c36f8ac2d6f423279aba65df/col_seed": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "col_seed",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 227
+        },
+        "node_c36f8ac2d6f423279aba65df/labelparm": {
+          "status": "no_value",
+          "components": [
+            {
+              "name": "labelparm",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/h_entr": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_entr",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 3.0
+        },
+        "node_c36f8ac2d6f423279aba65df/h_comm": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_comm",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2.0
+        },
+        "node_c36f8ac2d6f423279aba65df/h_resid": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_resid",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2.5
+        },
+        "node_c36f8ac2d6f423279aba65df/h_tech": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_tech",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1.5
+        },
+        "node_c36f8ac2d6f423279aba65df/h_roof": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_roof",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.2
+        },
+        "node_c36f8ac2d6f423279aba65df/labelparm3": {
+          "status": "no_value",
+          "components": [
+            {
+              "name": "labelparm3",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/th_slab": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "th_slab",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.2
+        },
+        "node_c36f8ac2d6f423279aba65df/th_wall": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "th_wall",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.4
+        },
+        "node_c36f8ac2d6f423279aba65df/labelparm2": {
+          "status": "no_value",
+          "components": [
+            {
+              "name": "labelparm2",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/h_arcs": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "h_arcs",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 2
+        },
+        "node_c36f8ac2d6f423279aba65df/labelparm4": {
+          "status": "no_value",
+          "components": [
+            {
+              "name": "labelparm4",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ]
+        },
+        "node_c36f8ac2d6f423279aba65df/w_stairs": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "w_stairs",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 3.0
+        },
+        "node_c36f8ac2d6f423279aba65df/entr_outside": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "entr_outside",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": false
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp1pos": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp1pos",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.06133332848548889
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp1value": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp1value",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp1interp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp1interp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1,
+          "menu": {
+            "tokens": [
+              "constant",
+              "linear",
+              "catmull-rom",
+              "monotonecubic",
+              "bezier",
+              "bspline",
+              "hermite"
+            ],
+            "labels": [
+              "Constant",
+              "Linear",
+              "Catmull-Rom",
+              "Monotone Cubic",
+              "Bezier",
+              "B-Spline",
+              "Hermite"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp2pos": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp2pos",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.2639999985694885
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp2value": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp2value",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp2interp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp2interp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1,
+          "menu": {
+            "tokens": [
+              "constant",
+              "linear",
+              "catmull-rom",
+              "monotonecubic",
+              "bezier",
+              "bspline",
+              "hermite"
+            ],
+            "labels": [
+              "Constant",
+              "Linear",
+              "Catmull-Rom",
+              "Monotone Cubic",
+              "Bezier",
+              "B-Spline",
+              "Hermite"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp3pos": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp3pos",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.46666666865348816
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp3value": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp3value",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp3interp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp3interp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1,
+          "menu": {
+            "tokens": [
+              "constant",
+              "linear",
+              "catmull-rom",
+              "monotonecubic",
+              "bezier",
+              "bspline",
+              "hermite"
+            ],
+            "labels": [
+              "Constant",
+              "Linear",
+              "Catmull-Rom",
+              "Monotone Cubic",
+              "Bezier",
+              "B-Spline",
+              "Hermite"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp4pos": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp4pos",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.671999990940094
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp4value": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp4value",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp4interp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp4interp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1,
+          "menu": {
+            "tokens": [
+              "constant",
+              "linear",
+              "catmull-rom",
+              "monotonecubic",
+              "bezier",
+              "bspline",
+              "hermite"
+            ],
+            "labels": [
+              "Constant",
+              "Linear",
+              "Catmull-Rom",
+              "Monotone Cubic",
+              "Bezier",
+              "B-Spline",
+              "Hermite"
+            ]
+          }
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp5pos": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp5pos",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.9013333320617676
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp5value": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp5value",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 0.0
+        },
+        "node_c36f8ac2d6f423279aba65df/ramp5interp": {
+          "status": "ok",
+          "components": [
+            {
+              "name": "ramp5interp",
+              "isHidden": false,
+              "isDisabled": false,
+              "isLocked": false
+            }
+          ],
+          "value": 1,
+          "menu": {
+            "tokens": [
+              "constant",
+              "linear",
+              "catmull-rom",
+              "monotonecubic",
+              "bezier",
+              "bspline",
+              "hermite"
+            ],
+            "labels": [
+              "Constant",
+              "Linear",
+              "Catmull-Rom",
+              "Monotone Cubic",
+              "Bezier",
+              "B-Spline",
+              "Hermite"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "templates": {
+    "tpl_664d52909a1fc6cdf102ec96": {
+      "name": "copyinput",
+      "label": "Copy Input (Note: Input will be still cooked if disabled)",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": true,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": true,
+      "defaultExpression": "on",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"copyinput\", \"Copy Input (Note: Input will be still cooked if disabled)\", default_value=True, default_expression='on', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template.hide(True)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_eb6f0fa3059315c92c9b672a": {
+      "name": "cacheinput",
+      "label": "Cache Input",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {
+        "parmCondType.DisableWhen": "{ copyinput == 0 }"
+      },
+      "isHidden": true,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "off",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"cacheinput\", \"Cache Input\", default_value=False, default_expression='off', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template.setConditional(hou.parmCondType.DisableWhen, \"{ copyinput == 0 }\")\nhou_parm_template.hide(True)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_8a55a4c1a56a650eaa66c3cd": {
+      "name": "enable_safety",
+      "label": "Enable Details",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"enable_safety\", \"Enable Details\", default_value=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_b6505ac930f9c9a7f69448d5": {
+      "name": "shape_ready",
+      "label": "Shape Ready",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"shape_ready\", \"Shape Ready\", default_value=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_75a4592a70ffdc0918d5dc6a": {
+      "name": "struct_ready",
+      "label": "Structure Ready",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"struct_ready\", \"Structure Ready\", default_value=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_182eb07cfdf2ffb880539b50": {
+      "name": "make_uv",
+      "label": "Make UVs",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"make_uv\", \"Make UVs\", default_value=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_208c0797064ba80a1a2831a9": {
+      "name": "folder0",
+      "label": "General",
+      "type": "Folder",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 0,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "isActualFolder": true,
+      "endsTabGroup": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderParmTemplate(\"folder0\", \"General\", folder_type=hou.folderType.Tabs, default_value=0, ends_tab_group=False)\n"
+    },
+    "tpl_23c07dc3061160ca9425d411": {
+      "name": "texturesize",
+      "label": "Texture Size",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        2048
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 100,
+      "maxValue": 101,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [
+        "128",
+        "256",
+        "512",
+        "1024",
+        "2048",
+        "4096"
+      ],
+      "menuLabels": [
+        "128x128",
+        "256x256",
+        "512x512",
+        "1024x1024",
+        "2048x2048",
+        "4096x4096"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": true,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"texturesize\", \"Texture Size\", 1, default_value=([2048]), min=100, max=101, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([\"128\",\"256\",\"512\",\"1024\",\"2048\",\"4096\"]), menu_labels=([\"128x128\",\"256x256\",\"512x512\",\"1024x1024\",\"2048x2048\",\"4096x4096\"]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=True)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_d1799269ae8a8a0135fc03e5": {
+      "name": "length",
+      "label": "Coverage Length",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python",
+        "units": ""
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        8
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 1,
+      "maxValue": 100,
+      "minIsStrict": true,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"length\", \"Coverage Length\", 1, default_value=([8]), min=1, max=100, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\", \"units\": \"\"})\n"
+    },
+    "tpl_976d0f037a5a96696c7e6744": {
+      "name": "folder0_1",
+      "label": "UV",
+      "type": "Folder",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 0,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "isActualFolder": true,
+      "endsTabGroup": false,
+      "children": [
+        "tpl_23c07dc3061160ca9425d411",
+        "tpl_d1799269ae8a8a0135fc03e5"
+      ],
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderParmTemplate(\"folder0_1\", \"UV\", folder_type=hou.folderType.Tabs, default_value=0, ends_tab_group=False)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"texturesize\", \"Texture Size\", 1, default_value=([2048]), min=100, max=101, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([\"128\",\"256\",\"512\",\"1024\",\"2048\",\"4096\"]), menu_labels=([\"128x128\",\"256x256\",\"512x512\",\"1024x1024\",\"2048x2048\",\"4096x4096\"]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=True)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"length\", \"Coverage Length\", 1, default_value=([8]), min=1, max=100, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\", \"units\": \"\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n"
+    },
+    "tpl_91b8a1a66b82480ffaa75a76": {
+      "name": "base_size",
+      "label": "Base Size (m)",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        20.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 15.0,
+      "maxValue": 50.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"base_size\", \"Base Size (m)\", 1, default_value=([20]), min=15, max=50, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_e67e0f85fae688d6c4a415c0": {
+      "name": "sepparm",
+      "label": "",
+      "type": "Separator",
+      "dataType": "String",
+      "numComponents": 0,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.SeparatorParmTemplate(\"sepparm\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_48d00c180900c00c3cf0d4f7": {
+      "name": "rows",
+      "label": "Section Rows",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 8,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"rows\", \"Section Rows\", 1, default_value=([5]), min=0, max=8, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_9b7a0d4731904de25f486505": {
+      "name": "cols",
+      "label": "Section Cols",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 8,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"cols\", \"Section Cols\", 1, default_value=([5]), min=0, max=8, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_7d06366f3c52ebe30f00be82": {
+      "name": "count",
+      "label": "Arcs Count",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "The number of elements to select.",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        4
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 4,
+      "minIsStrict": true,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"count\", \"Arcs Count\", 1, default_value=([4]), min=0, max=4, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setHelp(\"The number of elements to select.\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_85d0a52951d5c396a4c2921b": {
+      "name": "randseed",
+      "label": "Arcs Seed",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "Affects the selection pattern. In Probability mode, it also affects the final selection ratio and number.",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        74
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 200,
+      "minIsStrict": true,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"randseed\", \"Arcs Seed\", 1, default_value=([74]), min=0, max=200, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setHelp(\"Affects the selection pattern. In Probability mode, it also affects the final selection ratio and number.\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_4703d4075b0776a17a3b2706": {
+      "name": "percent",
+      "label": "Sections Remove Percent",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        4.2
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 100.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"percent\", \"Sections Remove Percent\", 1, default_value=([4.2]), min=0, max=100, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_49bab9a76d2da2dee5b8da3b": {
+      "name": "globalseed",
+      "label": "Sections Remove Seed",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        2
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 10,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"globalseed\", \"Sections Remove Seed\", 1, default_value=([2]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_4839284e6cc406bd3d487887": {
+      "name": "bevel",
+      "label": "Corner Bevel",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": true,
+      "defaultExpression": "on",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"bevel\", \"Corner Bevel\", default_value=True, default_expression='on', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_696aaa3531fa857c35573a99": {
+      "name": "divisions",
+      "label": "Corner Divisions",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        1
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 1,
+      "maxValue": 5,
+      "minIsStrict": true,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"divisions\", \"Corner Divisions\", 1, default_value=([1]), min=1, max=5, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_a2cc26416ecc7df96d0ce0c6": {
+      "name": "filletshape",
+      "label": "Corner Shape",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 3,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "none",
+        "solid",
+        "crease",
+        "chamfer",
+        "round"
+      ],
+      "menuLabels": [
+        "None",
+        "Solid",
+        "Crease",
+        "Chamfer",
+        "Round"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"filletshape\", \"Corner Shape\", menu_items=([\"none\",\"solid\",\"crease\",\"chamfer\",\"round\"]), menu_labels=([\"None\",\"Solid\",\"Crease\",\"Chamfer\",\"Round\"]), default_value=3, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_9a20b7b3c10a4a64203ec94b": {
+      "name": "sepparm2",
+      "label": "",
+      "type": "Separator",
+      "dataType": "String",
+      "numComponents": 0,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.SeparatorParmTemplate(\"sepparm2\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_24f84cbbfeff5cc97dbee2af": {
+      "name": "niche_size",
+      "label": "Niches Size",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 3,
+      "namingScheme": "XYZW",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        5.0,
+        20.0,
+        5.0
+      ],
+      "defaultExpression": [
+        "",
+        "",
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript",
+        "Hscript",
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"niche_size\", \"Niches Size\", 3, default_value=([5, 20, 5]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.XYZW)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_a590eace13ce46f89c88bf2d": {
+      "name": "sepparm3",
+      "label": "",
+      "type": "Separator",
+      "dataType": "String",
+      "numComponents": 0,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.SeparatorParmTemplate(\"sepparm3\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_0a21fde38abe4a33490c277a": {
+      "name": "schm_custom",
+      "label": "Enable 1st Input",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "off",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"schm_custom\", \"Enable 1st Input\", default_value=False, default_expression='off', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_7eabe8fc44696d7e2a4334e1": {
+      "name": "folder0_2",
+      "label": "Plan",
+      "type": "Folder",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 0,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "isActualFolder": true,
+      "endsTabGroup": false,
+      "children": [
+        "tpl_91b8a1a66b82480ffaa75a76",
+        "tpl_e67e0f85fae688d6c4a415c0",
+        "tpl_48d00c180900c00c3cf0d4f7",
+        "tpl_9b7a0d4731904de25f486505",
+        "tpl_7d06366f3c52ebe30f00be82",
+        "tpl_85d0a52951d5c396a4c2921b",
+        "tpl_4703d4075b0776a17a3b2706",
+        "tpl_49bab9a76d2da2dee5b8da3b",
+        "tpl_4839284e6cc406bd3d487887",
+        "tpl_696aaa3531fa857c35573a99",
+        "tpl_a2cc26416ecc7df96d0ce0c6",
+        "tpl_9a20b7b3c10a4a64203ec94b",
+        "tpl_24f84cbbfeff5cc97dbee2af",
+        "tpl_a590eace13ce46f89c88bf2d",
+        "tpl_0a21fde38abe4a33490c277a"
+      ],
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderParmTemplate(\"folder0_2\", \"Plan\", folder_type=hou.folderType.Tabs, default_value=0, ends_tab_group=False)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"base_size\", \"Base Size (m)\", 1, default_value=([20]), min=15, max=50, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.SeparatorParmTemplate(\"sepparm\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"rows\", \"Section Rows\", 1, default_value=([5]), min=0, max=8, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"cols\", \"Section Cols\", 1, default_value=([5]), min=0, max=8, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"count\", \"Arcs Count\", 1, default_value=([4]), min=0, max=4, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setHelp(\"The number of elements to select.\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"randseed\", \"Arcs Seed\", 1, default_value=([74]), min=0, max=200, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setHelp(\"Affects the selection pattern. In Probability mode, it also affects the final selection ratio and number.\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"percent\", \"Sections Remove Percent\", 1, default_value=([4.2]), min=0, max=100, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"globalseed\", \"Sections Remove Seed\", 1, default_value=([2]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.ToggleParmTemplate(\"bevel\", \"Corner Bevel\", default_value=True, default_expression='on', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"divisions\", \"Corner Divisions\", 1, default_value=([1]), min=1, max=5, min_is_strict=True, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.MenuParmTemplate(\"filletshape\", \"Corner Shape\", menu_items=([\"none\",\"solid\",\"crease\",\"chamfer\",\"round\"]), menu_labels=([\"None\",\"Solid\",\"Crease\",\"Chamfer\",\"Round\"]), default_value=3, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.SeparatorParmTemplate(\"sepparm2\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"niche_size\", \"Niches Size\", 3, default_value=([5, 20, 5]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.XYZW)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.SeparatorParmTemplate(\"sepparm3\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.ToggleParmTemplate(\"schm_custom\", \"Enable 1st Input\", default_value=False, default_expression='off', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n"
+    },
+    "tpl_757aab91c7a5dad0f37e36e5": {
+      "name": "floors",
+      "label": "Floors",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        9
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 4,
+      "maxValue": 20,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"floors\", \"Floors\", 1, default_value=([9]), min=4, max=20, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_44be10fe4e61cd03d91ef84e": {
+      "name": "input2",
+      "label": "Max Extra Floors",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "parmvop": "1",
+        "shaderparmcontexts": "cvex"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 10,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"input2\", \"Max Extra Floors\", 1, default_value=([5]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"parmvop\": \"1\", \"shaderparmcontexts\": \"cvex\"})\n"
+    },
+    "tpl_b0c97feb629d543c6d314b3e": {
+      "name": "bias",
+      "label": "Cascade Spin",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.204
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"bias\", \"Cascade Spin\", 1, default_value=([0.204]), min=0, max=1, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_63f25bb18b4e079002f0b5dd": {
+      "name": "ramp#pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp#pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_0c4d531e97a2390ba820687f": {
+      "name": "ramp#value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp#value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_5588514c1a6b6c4880296f3d": {
+      "name": "ramp#interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp#interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    },
+    "tpl_194e3400a99e75b7de5f39c9": {
+      "name": "ramp",
+      "label": "Floor Num Variation",
+      "type": "Ramp",
+      "dataType": "Ramp",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "parmvop": "1",
+        "rampbasis_var": "ramp_the_basis_strings",
+        "rampbasisdefault": "linear",
+        "rampfloatdefault": "1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 0.8218262791633606 ) 2value ( 0 ) 2interp ( linear )",
+        "rampkeys_var": "ramp_the_key_positions",
+        "rampshowcontrolsdefault": "1",
+        "rampvalues_var": "ramp_the_key_values",
+        "shaderparmcontexts": "cvex"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 2,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "parmType": "Float",
+      "defaultBasis": "None",
+      "colorType": "None",
+      "children": [
+        "tpl_63f25bb18b4e079002f0b5dd",
+        "tpl_0c4d531e97a2390ba820687f",
+        "tpl_5588514c1a6b6c4880296f3d"
+      ],
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.RampParmTemplate(\"ramp\", \"Floor Num Variation\", hou.rampParmType.Float, default_value=2, default_basis=None, color_type=None)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"parmvop\": \"1\", \"rampbasis_var\": \"ramp_the_basis_strings\", \"rampbasisdefault\": \"linear\", \"rampfloatdefault\": \"1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 0.8218262791633606 ) 2value ( 0 ) 2interp ( linear )\", \"rampkeys_var\": \"ramp_the_key_positions\", \"rampshowcontrolsdefault\": \"1\", \"rampvalues_var\": \"ramp_the_key_values\", \"shaderparmcontexts\": \"cvex\"})\n"
+    },
+    "tpl_a966c5924b41b078cdb26a8d": {
+      "name": "labelparm5",
+      "label": "Type Controls",
+      "type": "Label",
+      "dataType": "String",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "sidefx::look": "heading"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.LabelParmTemplate(\"labelparm5\", \"Type Controls\", column_labels=([\"Heights\"]))\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\n"
+    },
+    "tpl_6d7803a9366b6f047e65ba0e": {
+      "name": "row_seed",
+      "label": "Floor Row Type Seed",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        20
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 1000,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"row_seed\", \"Floor Row Type Seed\", 1, default_value=([20]), min=0, max=1000, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_0ccfdbd659bc72ae437d3b30": {
+      "name": "col_seed",
+      "label": "Section Type Seed",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        3
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 1000,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"col_seed\", \"Section Type Seed\", 1, default_value=([3]), min=0, max=1000, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_e345efab2cee55e16fe2cb70": {
+      "name": "labelparm",
+      "label": "Heights",
+      "type": "Label",
+      "dataType": "String",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "sidefx::look": "heading"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.LabelParmTemplate(\"labelparm\", \"Heights\", column_labels=([\"Heights\"]))\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\n"
+    },
+    "tpl_0150d70b4e2eb4241aeed356": {
+      "name": "h_entr",
+      "label": "Entrance Height",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        4.5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 3.0,
+      "maxValue": 6.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"h_entr\", \"Entrance Height\", 1, default_value=([4.5]), min=3, max=6, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_22174530fd40ccc1004710e6": {
+      "name": "h_comm",
+      "label": "Commercial Height",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        2.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 2.0,
+      "maxValue": 5.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"h_comm\", \"Commercial Height\", 1, default_value=([2]), min=2, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_5a292af2ddeaf488ec32d1bc": {
+      "name": "h_resid",
+      "label": "Residents Height",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        2.5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 2.5,
+      "maxValue": 5.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"h_resid\", \"Residents Height\", 1, default_value=([2.5]), min=2.5, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_87ea93cd4c8e7bed0a82851d": {
+      "name": "h_tech",
+      "label": "Technical Height",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        1.5
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 2.5,
+      "maxValue": 5.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"h_tech\", \"Technical Height\", 1, default_value=([1.5]), min=2.5, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_3c1fba68e85a8a003f83d825": {
+      "name": "h_roof",
+      "label": "Roof Height",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.2
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 1.0,
+      "maxValue": 3.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"h_roof\", \"Roof Height\", 1, default_value=([0.2]), min=1, max=3, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_a8933440d41db05b06c32b99": {
+      "name": "folder0_3",
+      "label": "Shape",
+      "type": "Folder",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 0,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "isActualFolder": true,
+      "endsTabGroup": false,
+      "children": [
+        "tpl_757aab91c7a5dad0f37e36e5",
+        "tpl_44be10fe4e61cd03d91ef84e",
+        "tpl_b0c97feb629d543c6d314b3e",
+        "tpl_194e3400a99e75b7de5f39c9",
+        "tpl_a966c5924b41b078cdb26a8d",
+        "tpl_6d7803a9366b6f047e65ba0e",
+        "tpl_0ccfdbd659bc72ae437d3b30",
+        "tpl_e345efab2cee55e16fe2cb70",
+        "tpl_0150d70b4e2eb4241aeed356",
+        "tpl_22174530fd40ccc1004710e6",
+        "tpl_5a292af2ddeaf488ec32d1bc",
+        "tpl_87ea93cd4c8e7bed0a82851d",
+        "tpl_3c1fba68e85a8a003f83d825"
+      ],
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderParmTemplate(\"folder0_3\", \"Shape\", folder_type=hou.folderType.Tabs, default_value=0, ends_tab_group=False)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"floors\", \"Floors\", 1, default_value=([9]), min=4, max=20, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"input2\", \"Max Extra Floors\", 1, default_value=([5]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"parmvop\": \"1\", \"shaderparmcontexts\": \"cvex\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"bias\", \"Cascade Spin\", 1, default_value=([0.204]), min=0, max=1, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.RampParmTemplate(\"ramp\", \"Floor Num Variation\", hou.rampParmType.Float, default_value=2, default_basis=None, color_type=None)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"parmvop\": \"1\", \"rampbasis_var\": \"ramp_the_basis_strings\", \"rampbasisdefault\": \"linear\", \"rampfloatdefault\": \"1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 0.8218262791633606 ) 2value ( 0 ) 2interp ( linear )\", \"rampkeys_var\": \"ramp_the_key_positions\", \"rampshowcontrolsdefault\": \"1\", \"rampvalues_var\": \"ramp_the_key_values\", \"shaderparmcontexts\": \"cvex\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.LabelParmTemplate(\"labelparm5\", \"Type Controls\", column_labels=([\"Heights\"]))\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"row_seed\", \"Floor Row Type Seed\", 1, default_value=([20]), min=0, max=1000, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"col_seed\", \"Section Type Seed\", 1, default_value=([3]), min=0, max=1000, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.LabelParmTemplate(\"labelparm\", \"Heights\", column_labels=([\"Heights\"]))\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"h_entr\", \"Entrance Height\", 1, default_value=([4.5]), min=3, max=6, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"h_comm\", \"Commercial Height\", 1, default_value=([2]), min=2, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"h_resid\", \"Residents Height\", 1, default_value=([2.5]), min=2.5, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"h_tech\", \"Technical Height\", 1, default_value=([1.5]), min=2.5, max=5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"h_roof\", \"Roof Height\", 1, default_value=([0.2]), min=1, max=3, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n"
+    },
+    "tpl_57b8dd37350579a803eac06a": {
+      "name": "labelparm3",
+      "label": "Thickness",
+      "type": "Label",
+      "dataType": "String",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "sidefx::look": "heading"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.LabelParmTemplate(\"labelparm3\", \"Thickness\", column_labels=([\"Thickness\"]))\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\n"
+    },
+    "tpl_92368ee537b2c2c10303836f": {
+      "name": "th_slab",
+      "label": "Slab Thickness",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.2
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.1,
+      "maxValue": 0.5,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"th_slab\", \"Slab Thickness\", 1, default_value=([0.2]), min=0.1, max=0.5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_3c5c72f6784d54677cfd63f7": {
+      "name": "th_wall",
+      "label": "Wall Thickness",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.4
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.1,
+      "maxValue": 0.5,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"th_wall\", \"Wall Thickness\", 1, default_value=([0.4]), min=0.1, max=0.5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_c9d06e5991044cc928fec764": {
+      "name": "labelparm2",
+      "label": "Arcs",
+      "type": "Label",
+      "dataType": "String",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "sidefx::look": "heading"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.LabelParmTemplate(\"labelparm2\", \"Arcs\", column_labels=([\"Arcs\"]))\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\n"
+    },
+    "tpl_80c01600a9e41499530abb91": {
+      "name": "h_arcs",
+      "label": "Arcs Height (floor-wise)",
+      "type": "Int",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        2
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0,
+      "maxValue": 10,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "menuItems": [],
+      "menuLabels": [],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.IntParmTemplate(\"h_arcs\", \"Arcs Height (floor-wise)\", 1, default_value=([2]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_966859680f174bfa415a4730": {
+      "name": "labelparm4",
+      "label": "Stairs",
+      "type": "Label",
+      "dataType": "String",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "sidefx::look": "heading"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.LabelParmTemplate(\"labelparm4\", \"Stairs\", column_labels=([\"Stairs\"]))\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\n"
+    },
+    "tpl_7c8a75d8f5b4ca94f64ce875": {
+      "name": "w_stairs",
+      "label": "Stairs Width",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        3.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 2.2,
+      "maxValue": 6.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"w_stairs\", \"Stairs Width\", 1, default_value=([3]), min=2.2, max=6, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_6fa4c73c1e6f4426bf022d68": {
+      "name": "entr_outside",
+      "label": "Entrance Outside",
+      "type": "Toggle",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000",
+        "script_callback_language": "python"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": false,
+      "defaultExpression": "off",
+      "defaultExpressionLanguage": "Hscript",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Python",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.ToggleParmTemplate(\"entr_outside\", \"Entrance Outside\", default_value=False, default_expression='off', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\n"
+    },
+    "tpl_531a7b871f9dc7c3a605318b": {
+      "name": "sepparm5",
+      "label": "",
+      "type": "Separator",
+      "dataType": "String",
+      "numComponents": 0,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "autoscope": "0000000000000000"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.SeparatorParmTemplate(\"sepparm5\")\nhou_parm_template.setTags({\"autoscope\": \"0000000000000000\"})\n"
+    },
+    "tpl_b4af5f85817452e82c825cf9": {
+      "name": "folder0_4",
+      "label": "Structure",
+      "type": "Folder",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "sidefx::switcher": "folder0"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 0,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "isActualFolder": true,
+      "endsTabGroup": false,
+      "children": [
+        "tpl_57b8dd37350579a803eac06a",
+        "tpl_92368ee537b2c2c10303836f",
+        "tpl_3c5c72f6784d54677cfd63f7",
+        "tpl_c9d06e5991044cc928fec764",
+        "tpl_80c01600a9e41499530abb91",
+        "tpl_966859680f174bfa415a4730",
+        "tpl_7c8a75d8f5b4ca94f64ce875",
+        "tpl_6fa4c73c1e6f4426bf022d68",
+        "tpl_531a7b871f9dc7c3a605318b"
+      ],
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderParmTemplate(\"folder0_4\", \"Structure\", folder_type=hou.folderType.Tabs, default_value=0, ends_tab_group=False)\nhou_parm_template.setTags({\"sidefx::switcher\": \"folder0\"})\nhou_parm_template.setTabConditional(hou.parmCondType.DisableWhen, \"{ shape_ready == 0 }\")\nhou_parm_template.setTabConditional(hou.parmCondType.HideWhen, \"{ shape_ready == 0 }\")\n# Code for parameter template\nhou_parm_template2 = hou.LabelParmTemplate(\"labelparm3\", \"Thickness\", column_labels=([\"Thickness\"]))\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"th_slab\", \"Slab Thickness\", 1, default_value=([0.2]), min=0.1, max=0.5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"th_wall\", \"Wall Thickness\", 1, default_value=([0.4]), min=0.1, max=0.5, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.LabelParmTemplate(\"labelparm2\", \"Arcs\", column_labels=([\"Arcs\"]))\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.IntParmTemplate(\"h_arcs\", \"Arcs Height (floor-wise)\", 1, default_value=([2]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1, menu_items=([]), menu_labels=([]), icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.LabelParmTemplate(\"labelparm4\", \"Stairs\", column_labels=([\"Stairs\"]))\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"sidefx::look\": \"heading\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.FloatParmTemplate(\"w_stairs\", \"Stairs Width\", 1, default_value=([3]), min=2.2, max=6, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.ToggleParmTemplate(\"entr_outside\", \"Entrance Outside\", default_value=False, default_expression='off', default_expression_language=hou.scriptLanguage.Hscript)\nhou_parm_template2.setScriptCallbackLanguage(hou.scriptLanguage.Python)\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\", \"script_callback_language\": \"python\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n# Code for parameter template\nhou_parm_template2 = hou.SeparatorParmTemplate(\"sepparm5\")\nhou_parm_template2.setTags({\"autoscope\": \"0000000000000000\"})\nhou_parm_template.addParmTemplate(hou_parm_template2)\n"
+    },
+    "tpl_17e721d28e04683ff82da9a1": {
+      "name": "folder0",
+      "label": "",
+      "type": "FolderSet",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {
+        "sidefx::switcher:4": "folder0"
+      },
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "folderType": "Tabs",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FolderSetParmTemplate(\"folder0\", folder_names=([\"General\",\"UV\",\"Plan\",\"Shape\",\"Structure\"]), folder_type=hou.folderType.Tabs)\nhou_parm_template.setTags({\"sidefx::switcher:4\": \"folder0\"})\n"
+    },
+    "tpl_cce4aef5248b1311e3e2b56c": {
+      "name": "ramp1pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp1pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_7d3dedeedfa71ebd3daa0413": {
+      "name": "ramp1value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp1value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_6fea79d88ab0f7d4cf2d4a35": {
+      "name": "ramp1interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp1interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    },
+    "tpl_e494e355da27b1360c7509e2": {
+      "name": "ramp2pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp2pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_4e54b56e2369d7186ad0a0da": {
+      "name": "ramp2value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp2value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_73ece62ba88a97e09c734474": {
+      "name": "ramp2interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp2interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    },
+    "tpl_4f740ce997bc8b024401facc": {
+      "name": "ramp3pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp3pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_4300fdd3119b93a03673bde3": {
+      "name": "ramp3value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp3value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_4f17823047b30828a8112af3": {
+      "name": "ramp3interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp3interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    },
+    "tpl_90c00a4d2a47f435f577d2d9": {
+      "name": "ramp4pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp4pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_0b73da8779aeeb7d8849f663": {
+      "name": "ramp4value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp4value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_d159023dfbbe4cca70e65a3f": {
+      "name": "ramp4interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp4interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    },
+    "tpl_68fa74ddfaf1596b85083ea9": {
+      "name": "ramp5pos",
+      "label": "Position",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "minIsStrict": true,
+      "maxIsStrict": true,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp5pos\", \"Position\", 1, default_value=([0]), min=0, max=1, min_is_strict=True, max_is_strict=True, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_824320d5747fb8efd5cce9e0": {
+      "name": "ramp5value",
+      "label": "Value",
+      "type": "Float",
+      "dataType": "Float",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": [
+        0.0
+      ],
+      "defaultExpression": [
+        ""
+      ],
+      "defaultExpressionLanguage": [
+        "Hscript"
+      ],
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "minIsStrict": false,
+      "maxIsStrict": false,
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.FloatParmTemplate(\"ramp5value\", \"Value\", 1, default_value=([0]), min=0, max=10, min_is_strict=False, max_is_strict=False, look=hou.parmLook.Regular, naming_scheme=hou.parmNamingScheme.Base1)\n"
+    },
+    "tpl_4bf13596d37c23e0fcc20da8": {
+      "name": "ramp5interp",
+      "label": "Interpolation",
+      "type": "Menu",
+      "dataType": "Int",
+      "numComponents": 1,
+      "namingScheme": "Base1",
+      "look": "Regular",
+      "help": "",
+      "tags": {},
+      "conditionals": {},
+      "isHidden": false,
+      "isLabelHidden": false,
+      "joinsWithNext": false,
+      "defaultValue": 1,
+      "defaultExpression": "",
+      "defaultExpressionLanguage": "Hscript",
+      "menuItems": [
+        "constant",
+        "linear",
+        "catmull-rom",
+        "monotonecubic",
+        "bezier",
+        "bspline",
+        "hermite"
+      ],
+      "menuLabels": [
+        "Constant",
+        "Linear",
+        "Catmull-Rom",
+        "Monotone Cubic",
+        "Bezier",
+        "B-Spline",
+        "Hermite"
+      ],
+      "menuType": "Normal",
+      "menuUseToken": false,
+      "iconNames": [],
+      "itemGeneratorScript": "",
+      "itemGeneratorScriptLanguage": "Python",
+      "scriptCallback": "",
+      "scriptCallbackLanguage": "Hscript",
+      "isButtonStrip": false,
+      "houdiniPythonSource": "# Code for parameter template\nhou_parm_template = hou.MenuParmTemplate(\"ramp5interp\", \"Interpolation\", menu_items=([\"constant\",\"linear\",\"catmull-rom\",\"monotonecubic\",\"bezier\",\"bspline\",\"hermite\"]), menu_labels=([\"Constant\",\"Linear\",\"Catmull-Rom\",\"Monotone Cubic\",\"Bezier\",\"B-Spline\",\"Hermite\"]), default_value=1, icon_names=([]), item_generator_script=\"\", item_generator_script_language=hou.scriptLanguage.Python, menu_type=hou.menuType.Normal, menu_use_token=False, is_button_strip=False, strip_uses_icons=False)\n"
+    }
+  },
+  "definitions": {
+    "def_07ea7ce53d49ff63d3c724ad": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "copyinput",
+      "templateId": "tpl_664d52909a1fc6cdf102ec96",
+      "componentNames": [
+        "copyinput"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "copyinput",
+          "rawValue": "on",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_1d4dd6e206242880078ece57": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "cacheinput",
+      "templateId": "tpl_eb6f0fa3059315c92c9b672a",
+      "componentNames": [
+        "cacheinput"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "cacheinput",
+          "rawValue": "off",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_f96759d6606708f05420a045": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "enable_safety",
+      "templateId": "tpl_8a55a4c1a56a650eaa66c3cd",
+      "componentNames": [
+        "enable_safety"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "enable_safety",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 10.875,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.01388888888888869,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 10.916666666666666,
+              "value": 1.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.01388888888888869,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_376e9781bfa9a0884d3083d0": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "shape_ready",
+      "templateId": "tpl_b6505ac930f9c9a7f69448d5",
+      "componentNames": [
+        "shape_ready"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "shape_ready",
+          "rawValue": "constant()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 2.9583333333333335,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeUsed": 0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.01388888888888884,
+              "inAccel": 0.3333333333333333,
+              "accelUsed": 0,
+              "expression": "constant()",
+              "language": "Hscript"
+            },
+            {
+              "time": 3.0,
+              "value": 1.0,
+              "slope": 0.0,
+              "slopeUsed": 0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.6527777777777777,
+              "inAccel": 0.01388888888888884,
+              "accelUsed": 0,
+              "expression": "constant()",
+              "language": "Hscript"
+            },
+            {
+              "time": 4.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeUsed": 0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 1.3472222222222219,
+              "inAccel": 0.6527777777777777,
+              "accelUsed": 0,
+              "expression": "constant()",
+              "language": "Hscript"
+            },
+            {
+              "time": 9.0,
+              "value": 1.0,
+              "slope": 0.0,
+              "slopeUsed": 0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.31944444444444464,
+              "inAccel": 1.3472222222222219,
+              "accelUsed": 0,
+              "expression": "constant()",
+              "language": "Hscript"
+            },
+            {
+              "time": 9.958333333333334,
+              "value": 1.0,
+              "slope": 0.0,
+              "slopeUsed": 0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.31944444444444464,
+              "accelUsed": 0,
+              "expression": "constant()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_fd572bcdeb48b34032c3f6d5": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "struct_ready",
+      "templateId": "tpl_75a4592a70ffdc0918d5dc6a",
+      "componentNames": [
+        "struct_ready"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "struct_ready",
+          "rawValue": "off",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_148a7356df08407db1021dc1": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "make_uv",
+      "templateId": "tpl_182eb07cfdf2ffb880539b50",
+      "componentNames": [
+        "make_uv"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "make_uv",
+          "rawValue": "on",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_8510593e761ab6829aadf04d": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "folder0",
+      "templateId": "tpl_17e721d28e04683ff82da9a1",
+      "componentNames": [
+        "folder01"
+      ],
+      "folders": [],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "folder01",
+          "rawValue": "3",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_cb8ae0139e34109145781795": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "texturesize",
+      "templateId": "tpl_23c07dc3061160ca9425d411",
+      "componentNames": [
+        "texturesize"
+      ],
+      "folders": [
+        "UV"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "texturesize",
+          "rawValue": "2048",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_e887880c0047959e137ca154": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "length",
+      "templateId": "tpl_d1799269ae8a8a0135fc03e5",
+      "componentNames": [
+        "length"
+      ],
+      "folders": [
+        "UV"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "length",
+          "rawValue": "8",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_9dc850cc9a4f31af4c2d010a": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "base_size",
+      "templateId": "tpl_91b8a1a66b82480ffaa75a76",
+      "componentNames": [
+        "base_size"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "base_size",
+          "rawValue": "bezier()",
+          "expression": "bezier()",
+          "expressionLanguage": "Hscript",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 0.0,
+              "value": 15.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_adc5f9f3be1d96b6ecae8f11": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "rows",
+      "templateId": "tpl_48d00c180900c00c3cf0d4f7",
+      "componentNames": [
+        "rows"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "rows",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 0.0,
+              "value": 2.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3194444444444444,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 0.9583333333333334,
+              "value": 5.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.3194444444444444,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_830cc0b81cab9a25572638e0": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "cols",
+      "templateId": "tpl_9b7a0d4731904de25f486505",
+      "componentNames": [
+        "cols"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "cols",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 0.0,
+              "value": 2.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3194444444444444,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 0.9583333333333334,
+              "value": 5.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.3194444444444444,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_4b09ad577c499e8bfc2271db": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "count",
+      "templateId": "tpl_7d06366f3c52ebe30f00be82",
+      "componentNames": [
+        "count"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "count",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 1.9583333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.16666666666666674,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 2.4583333333333335,
+              "value": 4.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.16666666666666674,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_c50d6b4c3a22e4225fd85c92": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "randseed",
+      "templateId": "tpl_85d0a52951d5c396a4c2921b",
+      "componentNames": [
+        "randseed"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "randseed",
+          "rawValue": "0",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_74423e336307368aa0e7924b": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "percent",
+      "templateId": "tpl_4703d4075b0776a17a3b2706",
+      "componentNames": [
+        "percent"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "percent",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 7.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333336,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 8.958333333333334,
+              "value": 49.1,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.3333333333333336,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_0d195786a5ca51f13f24dd72": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "globalseed",
+      "templateId": "tpl_49bab9a76d2da2dee5b8da3b",
+      "componentNames": [
+        "globalseed"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "globalseed",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 7.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333336,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 8.958333333333334,
+              "value": 6.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.3333333333333336,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_30c6f3a12e5c3e43b4c06cc8": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "bevel",
+      "templateId": "tpl_4839284e6cc406bd3d487887",
+      "componentNames": [
+        "bevel"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "bevel",
+          "rawValue": "on",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_1494fdd1a7bdfe60c73a4853": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "divisions",
+      "templateId": "tpl_696aaa3531fa857c35573a99",
+      "componentNames": [
+        "divisions"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "divisions",
+          "rawValue": "2",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_ea8bbf77753d711b80df86f3": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "filletshape",
+      "templateId": "tpl_a2cc26416ecc7df96d0ce0c6",
+      "componentNames": [
+        "filletshape"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "filletshape",
+          "rawValue": "chamfer",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_b45884dd5f89f1bc94f9a3e6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "niche_size",
+      "templateId": "tpl_24f84cbbfeff5cc97dbee2af",
+      "componentNames": [
+        "niche_sizex",
+        "niche_sizey",
+        "niche_sizez"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "niche_sizex",
+          "rawValue": "3",
+          "alias": "",
+          "keyframes": []
+        },
+        {
+          "name": "niche_sizey",
+          "rawValue": "1",
+          "alias": "",
+          "keyframes": []
+        },
+        {
+          "name": "niche_sizez",
+          "rawValue": "5",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_647f10b4d830d594c81e239b": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "schm_custom",
+      "templateId": "tpl_0a21fde38abe4a33490c277a",
+      "componentNames": [
+        "schm_custom"
+      ],
+      "folders": [
+        "Plan"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "schm_custom",
+          "rawValue": "off",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_f9b71a86d9db4ea4386623f6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "floors",
+      "templateId": "tpl_757aab91c7a5dad0f37e36e5",
+      "componentNames": [
+        "floors"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "floors",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 0.0,
+              "value": 7.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3194444444444444,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 0.9583333333333334,
+              "value": 7.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.33333333333333326,
+              "inAccel": 0.3194444444444444,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 1.9583333333333333,
+              "value": 15.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.33333333333333326,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_17537a9ea0648d834ede7184": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "input2",
+      "templateId": "tpl_44be10fe4e61cd03d91ef84e",
+      "componentNames": [
+        "input2"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "input2",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 4.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 5.958333333333333,
+              "value": 6.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_f884a5f87cf5186ba977e962": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "bias",
+      "templateId": "tpl_b0c97feb629d543c6d314b3e",
+      "componentNames": [
+        "bias"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "bias",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 4.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.6666666666666666,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 6.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.6666666666666666,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 7.958333333333333,
+              "value": 0.538,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_d6b52fc32170a94ba4fef32a": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp",
+      "templateId": "tpl_194e3400a99e75b7de5f39c9",
+      "componentNames": [
+        "ramp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": true,
+      "multiparmStartOffset": 1,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp",
+          "rawValue": "5",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_d726c215d8063fe9ccccb905": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "labelparm5",
+      "templateId": "tpl_a966c5924b41b078cdb26a8d",
+      "componentNames": [
+        "labelparm5"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "labelparm5",
+          "rawValue": "Heights",
+          "unexpandedString": "Heights",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_939b498b1d5ed1e33874b171": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "row_seed",
+      "templateId": "tpl_6d7803a9366b6f047e65ba0e",
+      "componentNames": [
+        "row_seed"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "row_seed",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 3.0,
+              "value": 198.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.23611111111111116,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 3.7083333333333335,
+              "value": 200.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.23611111111111116,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_537efb8f2a4bb9ae4cfaaef7": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "col_seed",
+      "templateId": "tpl_0ccfdbd659bc72ae437d3b30",
+      "componentNames": [
+        "col_seed"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "col_seed",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 3.0,
+              "value": 227.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.23611111111111116,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 3.7083333333333335,
+              "value": 229.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.23611111111111116,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_a33aed5a4dcb94f85a7b9616": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "labelparm",
+      "templateId": "tpl_e345efab2cee55e16fe2cb70",
+      "componentNames": [
+        "labelparm"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "labelparm",
+          "rawValue": "Heights",
+          "unexpandedString": "Heights",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_826a0aa281062ec55f1b4534": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_entr",
+      "templateId": "tpl_0150d70b4e2eb4241aeed356",
+      "componentNames": [
+        "h_entr"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_entr",
+          "rawValue": "3",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_a2e3f63ce6814f12dfdad656": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_comm",
+      "templateId": "tpl_22174530fd40ccc1004710e6",
+      "componentNames": [
+        "h_comm"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_comm",
+          "rawValue": "2",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_e490cec7189bef205f02a7f1": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_resid",
+      "templateId": "tpl_5a292af2ddeaf488ec32d1bc",
+      "componentNames": [
+        "h_resid"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_resid",
+          "rawValue": "2.5",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_37ce62096b19f64d99df016e": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_tech",
+      "templateId": "tpl_87ea93cd4c8e7bed0a82851d",
+      "componentNames": [
+        "h_tech"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_tech",
+          "rawValue": "1.5",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_4783429f06056da500c7da89": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_roof",
+      "templateId": "tpl_3c1fba68e85a8a003f83d825",
+      "componentNames": [
+        "h_roof"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_roof",
+          "rawValue": "0.2",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_4becdc5cd16eaf39032fb4bd": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "labelparm3",
+      "templateId": "tpl_57b8dd37350579a803eac06a",
+      "componentNames": [
+        "labelparm3"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "labelparm3",
+          "rawValue": "Thickness",
+          "unexpandedString": "Thickness",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_0c417401a293cc6d4a96d306": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "th_slab",
+      "templateId": "tpl_92368ee537b2c2c10303836f",
+      "componentNames": [
+        "th_slab"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "th_slab",
+          "rawValue": "0.2",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_279c536077bb43ff05dd9dd3": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "th_wall",
+      "templateId": "tpl_3c5c72f6784d54677cfd63f7",
+      "componentNames": [
+        "th_wall"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "th_wall",
+          "rawValue": "0.4",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_afd47a83e4306b1d79f063ad": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "labelparm2",
+      "templateId": "tpl_c9d06e5991044cc928fec764",
+      "componentNames": [
+        "labelparm2"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "labelparm2",
+          "rawValue": "Arcs",
+          "unexpandedString": "Arcs",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_0556dd158c204e870dc2d887": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "h_arcs",
+      "templateId": "tpl_80c01600a9e41499530abb91",
+      "componentNames": [
+        "h_arcs"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "h_arcs",
+          "rawValue": "2",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_080c717d56c624a71ebf62bb": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "labelparm4",
+      "templateId": "tpl_966859680f174bfa415a4730",
+      "componentNames": [
+        "labelparm4"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "labelparm4",
+          "rawValue": "Stairs",
+          "unexpandedString": "Stairs",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_c3986b7b62a1f0996f47a72d": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "w_stairs",
+      "templateId": "tpl_7c8a75d8f5b4ca94f64ce875",
+      "componentNames": [
+        "w_stairs"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "w_stairs",
+          "rawValue": "3",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_cd27ac77f977809a0ec782f6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "entr_outside",
+      "templateId": "tpl_6fa4c73c1e6f4426bf022d68",
+      "componentNames": [
+        "entr_outside"
+      ],
+      "folders": [
+        "Structure"
+      ],
+      "parentMultiparm": null,
+      "multiparmIndices": [],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "entr_outside",
+          "rawValue": "off",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_a9823dde316fe83ddae3a831": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp1pos",
+      "templateId": "tpl_cce4aef5248b1311e3e2b56c",
+      "componentNames": [
+        "ramp1pos"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        1
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp1pos",
+          "rawValue": "0.06133332848548889",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_7db4a8e6ce6c906fc5785289": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp1value",
+      "templateId": "tpl_7d3dedeedfa71ebd3daa0413",
+      "componentNames": [
+        "ramp1value"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        1
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp1value",
+          "rawValue": "0",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_42a6efeb8cfbb2b62cbb4605": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp1interp",
+      "templateId": "tpl_6fea79d88ab0f7d4cf2d4a35",
+      "componentNames": [
+        "ramp1interp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        1
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp1interp",
+          "rawValue": "linear",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_abeeee34b516cc4aceb7eee6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp2pos",
+      "templateId": "tpl_e494e355da27b1360c7509e2",
+      "componentNames": [
+        "ramp2pos"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        2
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp2pos",
+          "rawValue": "0.2639999985694885",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_5028cfb27692df17b6e06e3c": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp2value",
+      "templateId": "tpl_4e54b56e2369d7186ad0a0da",
+      "componentNames": [
+        "ramp2value"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        2
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp2value",
+          "rawValue": "bezier()",
+          "expression": "bezier()",
+          "expressionLanguage": "Hscript",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 5.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_bfe7b6a9def17feaf3cf4b78": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp2interp",
+      "templateId": "tpl_73ece62ba88a97e09c734474",
+      "componentNames": [
+        "ramp2interp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        2
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp2interp",
+          "rawValue": "linear",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_dca0b48772df6dd174dc3491": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp3pos",
+      "templateId": "tpl_4f740ce997bc8b024401facc",
+      "componentNames": [
+        "ramp3pos"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        3
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp3pos",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 5.958333333333333,
+              "value": 0.46666666865348816,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.31944444444444464,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 6.916666666666667,
+              "value": 0.47631579637527466,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.31944444444444464,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_ef12cf68e3cc4cd7fe22d1d6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp3value",
+      "templateId": "tpl_4300fdd3119b93a03673bde3",
+      "componentNames": [
+        "ramp3value"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        3
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp3value",
+          "rawValue": "bezier()",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 5.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.31944444444444464,
+              "inAccel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            },
+            {
+              "time": 6.916666666666667,
+              "value": 1.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "inAccel": 0.31944444444444464,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_4d399f2b2404005b1e8498d6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp3interp",
+      "templateId": "tpl_4f17823047b30828a8112af3",
+      "componentNames": [
+        "ramp3interp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        3
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp3interp",
+          "rawValue": "linear",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_999bc6224ad506abb1d8b957": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp4pos",
+      "templateId": "tpl_90c00a4d2a47f435f577d2d9",
+      "componentNames": [
+        "ramp4pos"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        4
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp4pos",
+          "rawValue": "0.671999990940094",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_26268aa4cab11529fe707420": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp4value",
+      "templateId": "tpl_0b73da8779aeeb7d8849f663",
+      "componentNames": [
+        "ramp4value"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        4
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp4value",
+          "rawValue": "bezier()",
+          "expression": "bezier()",
+          "expressionLanguage": "Hscript",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 5.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_4ff71deb80b8dba069013e4f": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp4interp",
+      "templateId": "tpl_d159023dfbbe4cca70e65a3f",
+      "componentNames": [
+        "ramp4interp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        4
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp4interp",
+          "rawValue": "linear",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_dbde52329711e98316a69911": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp5pos",
+      "templateId": "tpl_68fa74ddfaf1596b85083ea9",
+      "componentNames": [
+        "ramp5pos"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        5
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp5pos",
+          "rawValue": "0.9013333320617676",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    },
+    "def_131c93e7699f052713c9428e": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp5value",
+      "templateId": "tpl_824320d5747fb8efd5cce9e0",
+      "componentNames": [
+        "ramp5value"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        5
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp5value",
+          "rawValue": "bezier()",
+          "expression": "bezier()",
+          "expressionLanguage": "Hscript",
+          "alias": "",
+          "keyframes": [
+            {
+              "time": 5.958333333333333,
+              "value": 0.0,
+              "slope": 0.0,
+              "slopeAuto": 1,
+              "inSlopeAuto": 1,
+              "accel": 0.3333333333333333,
+              "expression": "bezier()",
+              "language": "Hscript"
+            }
+          ],
+          "extrapolation": {
+            "before": "Extend",
+            "after": "Extend"
+          }
+        }
+      ]
+    },
+    "def_e2d93119f1ac6b3e0beab67b": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "name": "ramp5interp",
+      "templateId": "tpl_4bf13596d37c23e0fcc20da8",
+      "componentNames": [
+        "ramp5interp"
+      ],
+      "folders": [
+        "Shape"
+      ],
+      "parentMultiparm": "node_c36f8ac2d6f423279aba65df/ramp",
+      "multiparmIndices": [
+        5
+      ],
+      "isMultiparmParent": false,
+      "firstSeenFrame": 1.0,
+      "sourceChannels": [
+        {
+          "name": "ramp5interp",
+          "rawValue": "linear",
+          "alias": "",
+          "keyframes": []
+        }
+      ]
+    }
+  },
+  "layouts": {
+    "layout_609f00cb100a9f4d8b2bbca6": {
+      "nodeId": "node_c36f8ac2d6f423279aba65df",
+      "templateIds": [
+        "tpl_664d52909a1fc6cdf102ec96",
+        "tpl_eb6f0fa3059315c92c9b672a",
+        "tpl_8a55a4c1a56a650eaa66c3cd",
+        "tpl_b6505ac930f9c9a7f69448d5",
+        "tpl_75a4592a70ffdc0918d5dc6a",
+        "tpl_182eb07cfdf2ffb880539b50",
+        "tpl_208c0797064ba80a1a2831a9",
+        "tpl_976d0f037a5a96696c7e6744",
+        "tpl_7eabe8fc44696d7e2a4334e1",
+        "tpl_a8933440d41db05b06c32b99",
+        "tpl_b4af5f85817452e82c825cf9"
+      ],
+      "activeDefinitions": {
+        "node_c36f8ac2d6f423279aba65df/copyinput": "def_07ea7ce53d49ff63d3c724ad",
+        "node_c36f8ac2d6f423279aba65df/cacheinput": "def_1d4dd6e206242880078ece57",
+        "node_c36f8ac2d6f423279aba65df/enable_safety": "def_f96759d6606708f05420a045",
+        "node_c36f8ac2d6f423279aba65df/shape_ready": "def_376e9781bfa9a0884d3083d0",
+        "node_c36f8ac2d6f423279aba65df/struct_ready": "def_fd572bcdeb48b34032c3f6d5",
+        "node_c36f8ac2d6f423279aba65df/make_uv": "def_148a7356df08407db1021dc1",
+        "node_c36f8ac2d6f423279aba65df/folder0": "def_8510593e761ab6829aadf04d",
+        "node_c36f8ac2d6f423279aba65df/texturesize": "def_cb8ae0139e34109145781795",
+        "node_c36f8ac2d6f423279aba65df/length": "def_e887880c0047959e137ca154",
+        "node_c36f8ac2d6f423279aba65df/base_size": "def_9dc850cc9a4f31af4c2d010a",
+        "node_c36f8ac2d6f423279aba65df/rows": "def_adc5f9f3be1d96b6ecae8f11",
+        "node_c36f8ac2d6f423279aba65df/cols": "def_830cc0b81cab9a25572638e0",
+        "node_c36f8ac2d6f423279aba65df/count": "def_4b09ad577c499e8bfc2271db",
+        "node_c36f8ac2d6f423279aba65df/randseed": "def_c50d6b4c3a22e4225fd85c92",
+        "node_c36f8ac2d6f423279aba65df/percent": "def_74423e336307368aa0e7924b",
+        "node_c36f8ac2d6f423279aba65df/globalseed": "def_0d195786a5ca51f13f24dd72",
+        "node_c36f8ac2d6f423279aba65df/bevel": "def_30c6f3a12e5c3e43b4c06cc8",
+        "node_c36f8ac2d6f423279aba65df/divisions": "def_1494fdd1a7bdfe60c73a4853",
+        "node_c36f8ac2d6f423279aba65df/filletshape": "def_ea8bbf77753d711b80df86f3",
+        "node_c36f8ac2d6f423279aba65df/niche_size": "def_b45884dd5f89f1bc94f9a3e6",
+        "node_c36f8ac2d6f423279aba65df/schm_custom": "def_647f10b4d830d594c81e239b",
+        "node_c36f8ac2d6f423279aba65df/floors": "def_f9b71a86d9db4ea4386623f6",
+        "node_c36f8ac2d6f423279aba65df/input2": "def_17537a9ea0648d834ede7184",
+        "node_c36f8ac2d6f423279aba65df/bias": "def_f884a5f87cf5186ba977e962",
+        "node_c36f8ac2d6f423279aba65df/ramp": "def_d6b52fc32170a94ba4fef32a",
+        "node_c36f8ac2d6f423279aba65df/labelparm5": "def_d726c215d8063fe9ccccb905",
+        "node_c36f8ac2d6f423279aba65df/row_seed": "def_939b498b1d5ed1e33874b171",
+        "node_c36f8ac2d6f423279aba65df/col_seed": "def_537efb8f2a4bb9ae4cfaaef7",
+        "node_c36f8ac2d6f423279aba65df/labelparm": "def_a33aed5a4dcb94f85a7b9616",
+        "node_c36f8ac2d6f423279aba65df/h_entr": "def_826a0aa281062ec55f1b4534",
+        "node_c36f8ac2d6f423279aba65df/h_comm": "def_a2e3f63ce6814f12dfdad656",
+        "node_c36f8ac2d6f423279aba65df/h_resid": "def_e490cec7189bef205f02a7f1",
+        "node_c36f8ac2d6f423279aba65df/h_tech": "def_37ce62096b19f64d99df016e",
+        "node_c36f8ac2d6f423279aba65df/h_roof": "def_4783429f06056da500c7da89",
+        "node_c36f8ac2d6f423279aba65df/labelparm3": "def_4becdc5cd16eaf39032fb4bd",
+        "node_c36f8ac2d6f423279aba65df/th_slab": "def_0c417401a293cc6d4a96d306",
+        "node_c36f8ac2d6f423279aba65df/th_wall": "def_279c536077bb43ff05dd9dd3",
+        "node_c36f8ac2d6f423279aba65df/labelparm2": "def_afd47a83e4306b1d79f063ad",
+        "node_c36f8ac2d6f423279aba65df/h_arcs": "def_0556dd158c204e870dc2d887",
+        "node_c36f8ac2d6f423279aba65df/labelparm4": "def_080c717d56c624a71ebf62bb",
+        "node_c36f8ac2d6f423279aba65df/w_stairs": "def_c3986b7b62a1f0996f47a72d",
+        "node_c36f8ac2d6f423279aba65df/entr_outside": "def_cd27ac77f977809a0ec782f6",
+        "node_c36f8ac2d6f423279aba65df/ramp1pos": "def_a9823dde316fe83ddae3a831",
+        "node_c36f8ac2d6f423279aba65df/ramp1value": "def_7db4a8e6ce6c906fc5785289",
+        "node_c36f8ac2d6f423279aba65df/ramp1interp": "def_42a6efeb8cfbb2b62cbb4605",
+        "node_c36f8ac2d6f423279aba65df/ramp2pos": "def_abeeee34b516cc4aceb7eee6",
+        "node_c36f8ac2d6f423279aba65df/ramp2value": "def_5028cfb27692df17b6e06e3c",
+        "node_c36f8ac2d6f423279aba65df/ramp2interp": "def_bfe7b6a9def17feaf3cf4b78",
+        "node_c36f8ac2d6f423279aba65df/ramp3pos": "def_dca0b48772df6dd174dc3491",
+        "node_c36f8ac2d6f423279aba65df/ramp3value": "def_ef12cf68e3cc4cd7fe22d1d6",
+        "node_c36f8ac2d6f423279aba65df/ramp3interp": "def_4d399f2b2404005b1e8498d6",
+        "node_c36f8ac2d6f423279aba65df/ramp4pos": "def_999bc6224ad506abb1d8b957",
+        "node_c36f8ac2d6f423279aba65df/ramp4value": "def_26268aa4cab11529fe707420",
+        "node_c36f8ac2d6f423279aba65df/ramp4interp": "def_4ff71deb80b8dba069013e4f",
+        "node_c36f8ac2d6f423279aba65df/ramp5pos": "def_dbde52329711e98316a69911",
+        "node_c36f8ac2d6f423279aba65df/ramp5value": "def_131c93e7699f052713c9428e",
+        "node_c36f8ac2d6f423279aba65df/ramp5interp": "def_e2d93119f1ac6b3e0beab67b"
+      }
+    }
+  }
+}

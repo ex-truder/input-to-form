@@ -7,10 +7,10 @@ export default function Footer() {
   const locale = useLocale();
 
   return (
-    <footer className="border-t border-zinc-950/10 px-5 py-10 md:px-8">
+    <footer className="border-t border-zinc-950/10 bg-panel px-5 py-10 md:px-8">
       <div className="mx-auto grid max-w-[1600px] gap-8 md:grid-cols-[1fr_auto] md:items-end">
         <div>
-          <p className="max-w-xl text-zinc-600">
+          <p className="max-w-xl text-body">
             {getText(site.description, locale)}
           </p>
         </div>

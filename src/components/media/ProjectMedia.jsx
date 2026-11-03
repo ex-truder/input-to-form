@@ -23,10 +23,12 @@ export default function ProjectMedia({ media, project, className = "min-h-[420px
           autoPlay={media.autoPlay ?? true}
           muted={media.muted ?? true}
           loop={media.loop ?? true}
+
           playsInline
           controls={media.controls ?? false}
           onError={() => setFailed(true)}
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectFit: media.fit ?? "cover", backgroundColor: media.background }}
         />
       </div>
     );

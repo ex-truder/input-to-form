@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { HashRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 
 import Header from "./components/layout/Header";
@@ -8,8 +9,11 @@ import HomePage from "./pages/HomePage";
 import WorkIndexPage from "./pages/WorkIndexPage";
 import ProjectPage from "./pages/ProjectPage";
 import AboutPage from "./pages/AboutPage";
+import LabPage from "./pages/LabPage";
 
 import { DEFAULT_LOCALE, isValidLocale } from "./i18n/config";
+
+const HdaPreviewPage = import.meta.env.DEV ? lazy(() => import("./pages/HdaPreviewPage")) : null;
 
 function LocaleGuard({ children }) {
   const { locale } = useParams();
@@ -33,11 +37,16 @@ function AppShell() {
       <Header />
 
       <Routes>
+        {HdaPreviewPage && <Route path="/:locale/hda-preview" element={<LocaleGuard>
+          <Suspense fallback={<div className="p-8">Loading…</div>}><HdaPreviewPage /></Suspense>
+        </LocaleGuard>} />}
         <Route path="/" element={<Navigate to={`/${DEFAULT_LOCALE}`} replace />} />
 
         <Route path="/work" element={<Navigate to={`/${DEFAULT_LOCALE}/work`} replace />} />
         <Route path="/work/:slug" element={<LegacyProjectRedirect />} />
         <Route path="/about" element={<Navigate to={`/${DEFAULT_LOCALE}/about`} replace />} />
+        <Route path="/lab" element={<Navigate to={`/${DEFAULT_LOCALE}/lab`} replace />} />
+        <Route path="/:locale/lab" element={<LocaleGuard><LabPage /></LocaleGuard>} />
 
         <Route
           path="/:locale"

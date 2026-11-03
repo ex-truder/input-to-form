@@ -3,6 +3,7 @@ export const DEFAULT_THREE_SCENE = "flow-field";
 const sceneLoaders = {
   "flow-field": () => import("./flowField"),
   "orbital-grid": () => import("./orbitalGrid"),
+  "cursor-cubes": () => import("./cursorCubes"),
 };
 
 export async function loadThreeScene(sceneName = DEFAULT_THREE_SCENE) {

@@ -411,7 +411,7 @@ export default function PbrAnimatedModel({
           <button
             type="button"
             onClick={togglePlayback}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-sm text-black"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sm text-black"
             aria-label={playing ? (locale === "ru" ? "Пауза" : "Pause") : (locale === "ru" ? "Воспроизвести" : "Play")}
           >
             {playing ? "Ⅱ" : "▶"}
@@ -424,13 +424,13 @@ export default function PbrAnimatedModel({
             step="0.001"
             defaultValue="0"
             onInput={seek}
-            className="min-w-0 flex-1 accent-orange-500"
+            className="h-11 min-w-0 flex-1 accent-orange-500"
             aria-label={locale === "ru" ? "Положение анимации" : "Animation progress"}
           />
           <button
             type="button"
             onClick={toggleFullscreen}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/15"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/15"
             aria-label={fullscreenActive
               ? (locale === "ru" ? "Выйти из полноэкранного режима" : "Exit fullscreen")
               : (locale === "ru" ? "Открыть на весь экран" : "Open fullscreen")}

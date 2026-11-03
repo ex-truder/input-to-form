@@ -30,16 +30,12 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
     return () => observer.disconnect();
   }, [media?.type]);
 
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !shouldLoad) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isVisible && !reduceMotion) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
+    if (isVisible && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.play().catch(() => {});
+    else video.pause();
   }, [isVisible, shouldLoad]);
 
   if (!media || !media.src || failed) {
@@ -58,10 +54,12 @@ export default function ViewportMedia({ media, project, className = "min-h-[420p
           poster={poster}
           muted
           loop
+
           playsInline
           preload="none"
           onError={() => setFailed(true)}
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectFit: media.fit ?? "cover", backgroundColor: media.background }}
         />
       </div>
     );

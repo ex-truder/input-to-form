@@ -31,16 +31,12 @@ function VideoBackground({ background }) {
     return () => observer.disconnect();
   }, []);
 
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !shouldLoad) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isVisible && !reduceMotion) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
+    if (isVisible && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.play().catch(() => {});
+    else video.pause();
   }, [isVisible, shouldLoad]);
 
   if (failed) return null;

@@ -1,0 +1,64 @@
+.hda-demo { min-width: 0; }
+.hda-composition { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+.hda-stage { position: relative; min-width: 0; border-radius: 1.25rem; background: #1a1917; }
+.hda-stage > video { display: block; width: 100%; aspect-ratio: 16/9; border-radius: inherit; background: #161512; }
+.hda-empty-media { display: flex; min-height: 360px; aspect-ratio: 16/9; align-items: center; justify-content: center; padding: 2rem; border-radius: inherit; color: #c9c4bc; text-align: center; background-image: linear-gradient(#ffffff05 1px, transparent 1px), linear-gradient(90deg, #ffffff05 1px, transparent 1px); background-size: 32px 32px; }
+.hda-overlay { position: absolute; z-index: 2; max-width: calc(100% - 2.5rem); max-height: calc(100% - 2.5rem); overflow: auto; border-radius: 1rem; scrollbar-width: thin; }
+.hda-side { display: grid; gap: 1rem; min-width: 0; }
+.hda-below { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1rem; margin-top: 1rem; }
+.hda-panel { --hda-accent: #ff6633; --hda-text: #f0ece4; --hda-muted: #aaa49a; --hda-border: #ffffff14; --hda-bg: #24221ff2; --hda-row: #ffffff04; color: var(--hda-text); background: var(--hda-bg); border: 1px solid var(--hda-border); border-radius: 1rem; overflow: hidden; font-family: var(--font-sans); box-shadow: 0 8px 24px #00000009; }
+.hda-theme-light { --hda-text: #25231f; --hda-muted: #726d63; --hda-border: #16151214; --hda-bg: #fffdf8f5; --hda-row: #16151203; }
+.hda-panel-heading { display: flex; gap: .6rem; align-items: center; min-width: 0; padding: 1.1rem 1.1rem .95rem; border-bottom: 1px solid var(--hda-border); }
+.hda-panel-heading h3 { min-width: 0; margin: 0; font: 650 .88rem/1.4 var(--font-sans); letter-spacing: -.02em; overflow-wrap: anywhere; text-wrap: initial; }
+.hda-status-dot { flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--hda-accent); }
+.hda-frame-label { margin-left: auto; padding-left: .5rem; white-space: nowrap; color: var(--hda-muted); font-size: .65rem; font-variant-numeric: tabular-nums; }
+.hda-panel-subtitle { margin: 0; padding: .85rem 1.1rem 0; color: var(--hda-muted); font-size: .75rem; }
+.hda-fields { margin: 0; padding: .35rem 1.1rem .65rem; }
+.hda-field { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: .5rem; align-items: center; padding: .72rem 0; border-bottom: 1px solid var(--hda-border); font-size: .78rem; }
+.hda-variant-table .hda-field { min-height: var(--hda-row-height, 44px); padding: 2px 0; }
+.hda-field:last-child { border-bottom: 0; }
+.hda-field dt { color: var(--hda-muted); overflow-wrap: anywhere; line-height: 1.5; }
+.hda-field dd { min-width: 0; margin: 0; text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; animation: hda-value-change .55s ease-out; }
+.hda-field.is-disabled { opacity: .5; }
+.hda-field-ramp { grid-template-columns: 1fr; }
+.hda-field-ramp dd { color: var(--hda-accent); }
+.hda-ramp svg { display: block; width: 100%; height: auto; }
+.hda-ramp-grid { stroke: var(--hda-border); stroke-width: 1; }
+.hda-ramp-note { color: var(--hda-muted); font-size: .65rem; }
+.hda-gradient { height: 2.25rem; border-radius: .35rem; border: 1px solid var(--hda-border); }
+.hda-color-value { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: .4rem; }
+.hda-color-chip { flex: 0 0 1.25rem; width: 1.25rem; height: 1.25rem; border-radius: .3rem; border: 1px solid var(--hda-border); }
+.hda-value-checkbox { display: inline-flex; vertical-align: middle; align-items: center; justify-content: center; width: 1rem; height: 1rem; border: 1px solid var(--hda-muted); border-radius: .2rem; }
+.hda-value-checkbox.is-checked { border-color: var(--hda-accent); background: var(--hda-accent); }
+.hda-value-checkbox svg { width: .8rem; height: .8rem; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hda-bar-value { display: grid; gap: .4rem; }
+.hda-bar-track { display: block; height: 3px; border-radius: 2px; background: var(--hda-border); overflow: hidden; }
+.hda-bar-track > span { display: block; height: 100%; background: var(--hda-accent); }
+.hda-unavailable, .hda-panel-empty { color: var(--hda-muted); font-size: .75rem; }
+.hda-panel-empty { padding: 0 1.1rem 1rem; }
+.hda-variant-cards .hda-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; padding: .75rem; }
+.hda-variant-cards .hda-field { display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; background: var(--hda-row); border: 1px solid var(--hda-border); border-radius: .6rem; padding: .75rem; }
+.hda-variant-cards .hda-field dd { text-align: left; font-size: 1.2rem; }
+.hda-variant-cards .hda-field-ramp { grid-column: 1 / -1; }
+.hda-time-readout { display: flex; justify-content: space-between; margin-top: .65rem; color: #81796d; font-size: .7rem; font-variant-numeric: tabular-nums; }
+.hda-load-state { padding: 2rem; border: 1px solid #16151218; border-radius: 1rem; color: #726d63; }
+@keyframes hda-value-change { from { filter: brightness(1.35); } to { filter: brightness(1); } }
+@media (min-width: 1024px) {
+  .hda-composition.has-left { grid-template-columns: minmax(0, var(--hda-left-width)) minmax(0, 1fr); }
+  .hda-composition.has-right { grid-template-columns: minmax(0, 1fr) minmax(0, var(--hda-right-width)); }
+  .hda-composition.has-left.has-right { grid-template-columns: minmax(0, var(--hda-left-width)) minmax(0, 1fr) minmax(0, var(--hda-right-width)); }
+  .hda-side-left { grid-column: 1; grid-row: 1; }
+  .hda-stage { grid-row: 1; }
+  .hda-composition.has-left .hda-stage { grid-column: 2; }
+  .hda-side-right { grid-row: 1; }
+}
+@media (max-width: 1023px) {
+  .hda-stage { order: -1; }
+}
+@media (max-width: 767px) {
+  .hda-overlay { position: static; width: auto !important; max-width: none; max-height: none; margin-top: .75rem; overflow: visible; }
+  .hda-stage { background: transparent; }
+  .hda-empty-media { min-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) { .hda-field dd { animation: none; } }
+

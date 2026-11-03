@@ -25,31 +25,31 @@ function DirectionCase({ direction }) {
       isDark ? "border-white/15 bg-white/5" : "border-zinc-950/10 bg-surface"
     }`}>
       <div className="grid lg:grid-cols-[1.12fr_0.88fr]">
-        <Reveal variant="scale-in">
+        <Reveal variant="scale-in" className="relative min-w-0 lg:min-h-[500px]">
           <ViewportMedia
             media={media}
             project={mediaProject}
-            className="aspect-[4/3] min-h-0 rounded-none lg:aspect-auto lg:min-h-[500px]"
+            className="aspect-[4/3] min-h-0 rounded-none lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
           />
         </Reveal>
         <div className="flex flex-col justify-between gap-10 p-6 md:p-9">
           <div>
-            <p className={`text-xs font-semibold uppercase tracking-[0.16em] ${isDark ? "text-accent" : "text-zinc-500"}`}>
+            <p className={`text-xs font-semibold uppercase tracking-[0.16em] ${isDark ? "text-accent-light" : "text-muted"}`}>
               {getText(item.label, locale)}
             </p>
-            <h3 className="mobile-heading-lg mt-5 text-3xl font-black leading-[0.98] tracking-[-0.045em] md:text-5xl">
+            <h3 className="direction-case-title mt-5 font-black leading-[1.08] tracking-[-0.03em]">
               {getText(item.title, locale)}
             </h3>
-            <p className={`mt-6 max-w-xl text-lg leading-relaxed ${isDark ? "text-white/65" : "text-zinc-600"}`}>
+            <p className={`mt-6 max-w-xl text-lg leading-relaxed ${isDark ? "text-on-dark" : "text-body"}`}>
               {getText(item.summary, locale)}
             </p>
           </div>
           <div className={`border-t pt-5 ${isDark ? "border-white/15" : "border-zinc-950/10"}`}>
-            <p className={`font-mono text-sm ${isDark ? "text-white/65" : "text-zinc-700"}`}>
+            <p className={`font-mono text-sm ${isDark ? "text-on-dark" : "text-body"}`}>
               {getText(item.logic, locale)}
             </p>
             {item.action && (
-              <p className={`mt-6 text-sm font-semibold uppercase tracking-[0.1em] ${isDark ? "text-accent" : "text-zinc-950"}`}>
+              <p className={`mt-6 text-sm font-semibold uppercase tracking-[0.1em] ${isDark ? "text-accent-light" : "text-ink"}`}>
                 {getText(item.action, locale)} <span aria-hidden="true">↗</span>
               </p>
             )}
@@ -82,7 +82,8 @@ function DirectionSection({ direction, step }) {
     <section
       id={direction.id}
       data-logo-step={step}
-      className={`scroll-mt-24 border-t ${
+      data-direction={direction.id}
+      className={`direction-section scroll-mt-24 border-t ${
         isDark
           ? "border-white/10 bg-ink text-white"
           : isAccent
@@ -91,8 +92,8 @@ function DirectionSection({ direction, step }) {
       }`}
     >
       <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
-        <div className="mb-12 grid gap-7 md:grid-cols-[0.35fr_1fr]">
-          <p className={`font-mono text-sm ${isDark ? "text-accent" : "text-zinc-500"}`}>{direction.number}</p>
+        <div className="mb-12 grid gap-7 lg:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)]">
+          <p className={`font-mono text-sm ${isDark ? "text-accent-light" : "text-muted"}`}>{direction.number}</p>
           <div>
             <Reveal variant="mask-up">
               <h2 className="mobile-heading-xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.06em] md:text-8xl">
@@ -103,7 +104,7 @@ function DirectionSection({ direction, step }) {
               <p className="mt-6 max-w-4xl text-2xl font-semibold leading-tight md:text-4xl">
                 {getText(direction.statement, locale)}
               </p>
-              <p className={`mt-5 max-w-2xl text-lg leading-relaxed ${isDark ? "text-white/60" : "text-zinc-600"}`}>
+              <p className={`mt-5 max-w-2xl text-lg leading-relaxed ${isDark ? "text-on-dark" : "text-body"}`}>
                 {getText(direction.text, locale)}
               </p>
             </Reveal>
@@ -125,7 +126,7 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden">
         <SectionBackground background={content.hero.background} />
         <div className="relative z-10 mx-auto max-w-[1600px] px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-ink">
             {getText(content.hero.eyebrow, locale)}
           </p>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
@@ -136,7 +137,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal variant="fade-up" delay={120} className="max-w-xl lg:justify-self-end">
               <div>
-            <p className="text-balance text-xl leading-relaxed text-zinc-700 md:text-2xl">
+            <p className="text-balance text-xl leading-relaxed text-body md:text-2xl">
               {getText(content.hero.text, locale)}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -148,7 +149,7 @@ export default function HomePage() {
               </a>
               <a
                 href="#directions"
-                className="rounded-full border border-zinc-950/20 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition hover:border-accent hover:text-accent"
+                className="rounded-full border border-zinc-950/20 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition hover:border-accent hover:text-accent-ink"
               >
                 {getText(content.hero.secondaryAction, locale)}
               </a>
@@ -164,7 +165,7 @@ export default function HomePage() {
                 className="group flex items-center justify-between border-b border-zinc-950/10 py-5 text-lg font-black uppercase tracking-[-0.02em] last:border-b-0 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0"
               >
                 {getText(item.title, locale)}
-                <span className="text-accent transition-transform group-hover:translate-y-1">↓</span>
+                <span className="text-accent-ink transition-transform group-hover:translate-y-1">↓</span>
               </a>
             ))}
           </div>
@@ -176,20 +177,20 @@ export default function HomePage() {
       ))}
 
       <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-        <div className="grid gap-10 md:grid-cols-[0.35fr_1fr]">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)]">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
             {getText(content.process.eyebrow, locale)}
           </p>
           <div>
             <h2 className="mobile-heading-lg max-w-4xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
               {getText(content.process.title, locale)}
             </h2>
-            <div className="mt-10 grid gap-px overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-zinc-950/10 md:grid-cols-3">
+            <div className="mt-10 grid gap-px overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-ink/10 lg:grid-cols-3">
               {content.process.items.map((item, index) => (
                 <Reveal key={index} variant="fade-up" delay={index * 90} className="bg-surface p-6 md:p-8">
-                  <p className="font-mono text-sm text-accent">0{index + 1}</p>
+                  <p className="font-mono text-sm text-accent-ink">0{index + 1}</p>
                   <h3 className="mt-8 text-2xl font-black tracking-[-0.035em]">{getText(item.title, locale)}</h3>
-                  <p className="mt-4 leading-relaxed text-zinc-600">{getText(item.text, locale)}</p>
+                  <p className="mt-4 leading-relaxed text-body">{getText(item.text, locale)}</p>
                 </Reveal>
               ))}
             </div>
@@ -198,14 +199,14 @@ export default function HomePage() {
       </section>
 
       <section id="contact" data-logo-step="4" className="border-t border-zinc-950/10 bg-accent">
-        <div className="mx-auto grid max-w-[1600px] gap-8 px-5 py-16 md:grid-cols-[1fr_auto] md:items-end md:px-8 md:py-24">
+        <div className="mx-auto grid max-w-[1600px] gap-8 px-5 py-16 lg:grid-cols-[minmax(0,1fr)_auto] md:items-end md:px-8 md:py-24">
           <div>
             <Reveal variant="mask-up">
               <h2 className="mobile-heading-xl max-w-5xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.06em] md:text-8xl">
                 {getText(content.cta.title, locale)}
               </h2>
             </Reveal>
-            <p className="mt-7 max-w-3xl text-lg leading-relaxed text-ink/75 md:text-xl">{getText(content.cta.text, locale)}</p>
+            <p className="mt-7 max-w-3xl text-lg leading-relaxed text-ink md:text-xl">{getText(content.cta.text, locale)}</p>
           </div>
           <a
             href={`mailto:${site.email}?subject=${encodeURIComponent(emailSubject)}`}

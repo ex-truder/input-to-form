@@ -1,3 +1,5 @@
+import { buildingGen } from "./buildingGen";
+
 export const reusableProcess = [
   {
     title: {
@@ -33,6 +35,7 @@ export const reusableProcess = [
 ];
 
 export const projects = [
+  buildingGen,
   {
     slug: "arthritis",
     caseStudy: true,
@@ -74,7 +77,7 @@ export const projects = [
 
   cover: {
     type: "video",
-    src: "/projects/arthritis/hero.mp4",
+    src: "/projects/arthritis/hero.webm",
     poster: "/projects/arthritis/cover.png",
     alt: {
       en: "Animation visualizing the progression of arthritis",
@@ -84,7 +87,7 @@ export const projects = [
 
   hero: {
     type: "video",
-    src: "/projects/arthritis/hero.mp4",
+    src: "/projects/arthritis/hero.webm",
     poster: "/projects/arthritis/cover.png",
   },
 
@@ -176,21 +179,6 @@ items: [
       alt: {
         en: "Progression of arthritis",
         ru: "Развитие артрита",
-      },
-    },
-  },
-  {
-    title: { en: "Advanced stage", ru: "Поздняя стадия" },
-    note: {
-      en: "Most developed state",
-      ru: "Наиболее выраженное состояние",
-    },
-    media: {
-      type: "image",
-      src: "/projects/arthritis/stages/lumbar_03.webp",
-      alt: {
-        en: "Advanced stage of arthritis",
-        ru: "Поздняя стадия артрита",
       },
     },
   },

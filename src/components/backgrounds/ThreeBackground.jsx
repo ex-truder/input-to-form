@@ -44,6 +44,11 @@ export default function ThreeBackground({
     mount.appendChild(renderer.domElement);
 
     const pointer = new THREE.Vector2();
+    const clickPointer = new THREE.Vector2();
+    const lastClientPosition = new THREE.Vector2();
+    let hasPointerPosition = false;
+    let pointerActive = false;
+    let clickSequence = 0;
     let visible = true;
     let frameId;
     let elapsed = 0;
@@ -76,9 +81,54 @@ export default function ThreeBackground({
       );
     };
 
+    const updatePointer = () => {
+      if (!hasPointerPosition) {
+        pointerActive = false;
+        return;
+      }
+
+      const rect = mount.getBoundingClientRect();
+      pointerActive =
+        lastClientPosition.x >= rect.left &&
+        lastClientPosition.x <= rect.right &&
+        lastClientPosition.y >= rect.top &&
+        lastClientPosition.y <= rect.bottom;
+
+      if (!pointerActive) return;
+      pointer.x = ((lastClientPosition.x - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((lastClientPosition.y - rect.top) / rect.height) * 2 + 1;
+    };
+
     const onPointerMove = (event) => {
-      pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-      pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      if (event.pointerType === "touch") return;
+      hasPointerPosition = true;
+      lastClientPosition.set(event.clientX, event.clientY);
+      updatePointer();
+    };
+
+    const onPointerDown = (event) => {
+      lastClientPosition.set(event.clientX, event.clientY);
+      hasPointerPosition = event.pointerType !== "touch";
+      updatePointer();
+
+      const rect = mount.getBoundingClientRect();
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inside) return;
+
+      clickPointer.set(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+      clickSequence += 1;
+    };
+
+    const clearPointer = () => {
+      hasPointerPosition = false;
+      pointerActive = false;
     };
 
     const clock = new THREE.Clock();
@@ -86,15 +136,21 @@ export default function ThreeBackground({
       frameId = window.requestAnimationFrame(render);
       if (!visible || !sceneController) return;
 
-      const delta = reduceMotion ? 0 : Math.min(clock.getDelta(), 0.05);
+      const delta = Math.min(clock.getDelta(), 0.05);
       elapsed += delta;
       const progress = getScrollProgress();
+      if (interactive) updatePointer();
 
       sceneController.update({
         elapsed,
         delta,
         progress,
         pointer,
+        interaction: {
+          active: pointerActive,
+          clickPointer,
+          clickSequence,
+        },
         intensity,
         reducedMotion: reduceMotion,
       });
@@ -111,8 +167,11 @@ export default function ThreeBackground({
 
     visibilityObserver.observe(mount);
     resizeObserver.observe(mount);
-    if (interactive && !reduceMotion) {
+    if (interactive) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
+      window.addEventListener("pointerup", onPointerDown, { capture: true, passive: true });
+      window.addEventListener("blur", clearPointer);
+      document.documentElement.addEventListener("mouseleave", clearPointer);
     }
 
     resize();
@@ -139,6 +198,9 @@ export default function ThreeBackground({
       visibilityObserver.disconnect();
       resizeObserver.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerDown, { capture: true });
+      window.removeEventListener("blur", clearPointer);
+      document.documentElement.removeEventListener("mouseleave", clearPointer);
       sceneController?.dispose?.();
       renderer.dispose();
       renderer.domElement.remove();

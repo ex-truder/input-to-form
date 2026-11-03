@@ -80,7 +80,7 @@ export default function SocialLinks({ className = "", compact = false }) {
             title={label}
             target={social.href.startsWith("mailto:") ? undefined : "_blank"}
             rel={social.href.startsWith("mailto:") ? undefined : "noreferrer"}
-            className={`inline-flex items-center justify-center rounded-full border border-zinc-950/15 bg-white/35 text-zinc-700 transition hover:border-zinc-950/30 hover:bg-white/60 hover:text-zinc-950 ${
+            className={`inline-flex items-center justify-center rounded-full border border-zinc-950/15 bg-surface text-body transition hover:border-zinc-950/30 hover:bg-white/60 hover:text-ink ${
               compact ? "h-14 w-14 [&_svg]:h-8 [&_svg]:w-8" : "h-20 w-20"
             }`}
           >

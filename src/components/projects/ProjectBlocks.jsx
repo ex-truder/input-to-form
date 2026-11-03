@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import ProjectMedia from "../media/ProjectMedia";
 import PbrAnimatedModel from "../media/PbrAnimatedModel";
+import HdaDemo from "../hda/HdaDemo";
 import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
 import { publicAsset } from "../../utils/publicAsset";
@@ -10,7 +11,7 @@ function BlockLabel({ children, light = false }) {
   return (
     <p
       className={`text-sm font-semibold uppercase tracking-[0.16em] ${
-        light ? "text-white/45" : "text-zinc-500"
+        light ? "text-on-dark" : "text-muted"
       }`}
     >
       {children}
@@ -23,7 +24,7 @@ function TextBlock({ block }) {
   return (
     <section className="mx-auto grid max-w-[1600px] gap-10 px-5 py-16 md:grid-cols-[0.4fr_1.5fr] md:px-8 md:py-24">
       <BlockLabel>{getText(block.label, locale)}</BlockLabel>
-      <div className="grid gap-8 text-xl leading-relaxed text-zinc-700 md:grid-cols-2">
+      <div className="grid gap-8 text-xl leading-relaxed text-body md:grid-cols-2">
         {block.columns?.map((column, index) => (
           <p key={index}>{getText(column, locale)}</p>
         ))}
@@ -34,13 +35,13 @@ function TextBlock({ block }) {
 
 function MediaBlock({ block, project }) {
   const locale = useLocale();
-  const sizeClass = block.size === "large" ? "min-h-[72vh]" : "min-h-[520px]";
+  const sizeClass = block.size === "video" ? "aspect-video min-h-0" : block.size === "large" ? "aspect-[4/3] min-h-0 md:aspect-[16/9]" : "aspect-[4/3] min-h-0 lg:aspect-auto lg:min-h-[520px]";
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
       <ProjectMedia media={block.media} project={project} className={sizeClass} />
       {block.caption && (
-        <p className="mt-3 text-sm text-zinc-500">{getText(block.caption, locale)}</p>
+        <p className="mt-3 text-sm text-muted">{getText(block.caption, locale)}</p>
       )}
     </section>
   );
@@ -50,8 +51,20 @@ function MediaGridBlock({ block, project }) {
   return (
     <section className="mx-auto grid max-w-[1600px] gap-5 px-5 py-5 md:grid-cols-2 md:px-8">
       {block.items?.map((item, index) => (
-        <ProjectMedia key={index} media={item} project={project} className="min-h-[520px]" />
+        <ProjectMedia key={index} media={item} project={project} className="aspect-[4/3] min-h-0 lg:aspect-auto lg:min-h-[520px]" />
       ))}
+    </section>
+  );
+}
+
+function HdaDemoBlock({ block }) {
+  const locale = useLocale();
+  return (
+    <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
+      {block.title && <h2 className="mb-6 text-2xl font-bold tracking-tight">{getText(block.title, locale)}</h2>}
+      <HdaDemo parameters={block.parameters} animation={block.animation} video={block.video}
+        panels={block.panels} sync={block.sync} />
+      {block.caption && <p className="mt-3 text-sm text-muted">{getText(block.caption, locale)}</p>}
     </section>
   );
 }
@@ -67,10 +80,10 @@ function Model3DBlock({ block }) {
           poster={block.poster}
           animationConfig={block.animationConfig}
           alt={getText(block.alt, locale)}
-          className="h-[560px] rounded-[2rem] border border-zinc-950/10 md:h-[680px]"
+          className="h-[clamp(20rem,65svh,35rem)] rounded-[2rem] border border-zinc-950/10 lg:h-[680px]"
         />
         {block.caption && (
-          <p className="mt-3 text-sm text-zinc-500">{getText(block.caption, locale)}</p>
+          <p className="mt-3 text-sm text-muted">{getText(block.caption, locale)}</p>
         )}
       </section>
     );
@@ -79,7 +92,7 @@ function Model3DBlock({ block }) {
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-5 md:px-8">
       <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-site">
-        <div className="relative h-[560px] bg-site md:h-[680px]">
+        <div className="relative h-[clamp(20rem,65svh,35rem)] bg-site lg:h-[680px]">
           <model-viewer
             src={publicAsset(block.src)}
             poster={publicAsset(block.poster)}
@@ -99,7 +112,7 @@ function Model3DBlock({ block }) {
         </div>
       </div>
       {block.caption && (
-        <p className="mt-3 text-sm text-zinc-500">{getText(block.caption, locale)}</p>
+        <p className="mt-3 text-sm text-muted">{getText(block.caption, locale)}</p>
       )}
     </section>
   );
@@ -111,14 +124,14 @@ function ProcessBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
+      <div className="rounded-[2rem] border border-zinc-950/10 bg-surface p-6 md:p-10">
         <h2 className="mobile-heading-lg mb-6 text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale) || ui.process}
         </h2>
-        <div className="grid gap-6 text-zinc-700 md:grid-cols-3">
+        <div className="grid gap-6 text-body md:grid-cols-3">
           {block.items?.map((item, index) => (
             <p key={index}>
-              <strong className="text-zinc-950">
+              <strong className="text-ink">
                 {String(index + 1).padStart(2, "0")}. {getText(item.title, locale)}
               </strong>
               <br />
@@ -136,7 +149,7 @@ function QuoteBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <blockquote className="mobile-heading-lg max-w-5xl text-4xl font-black leading-none tracking-[-0.06em] text-zinc-950 md:text-8xl">
+      <blockquote className="mobile-heading-lg max-w-5xl text-4xl font-black leading-none tracking-[-0.06em] text-ink md:text-8xl">
         “{getText(block.text, locale)}”
       </blockquote>
     </section>
@@ -148,7 +161,7 @@ function CreditsBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <div className="grid gap-3 rounded-[2rem] bg-zinc-950 p-6 text-white md:grid-cols-2 md:p-10">
+      <div className="grid gap-3 rounded-[2rem] bg-ink p-6 text-white md:grid-cols-2 md:p-10">
         {block.items?.map((item, index) => (
           <div key={index} className="border-t border-white/15 pt-4">
             <BlockLabel light>{getText(item.label, locale)}</BlockLabel>
@@ -165,25 +178,25 @@ function CaseSummaryBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <div className="grid gap-10 rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10 lg:grid-cols-[0.75fr_1.25fr]">
+      <div className="grid gap-10 rounded-[2rem] border border-zinc-950/10 bg-surface p-6 md:p-10 lg:grid-cols-[0.75fr_1.25fr]">
         <div>
           <BlockLabel>{getText(block.label, locale)}</BlockLabel>
           <h2 className="mobile-heading-lg mt-5 text-4xl font-black leading-[0.95] tracking-[-0.05em] md:text-6xl">
             {getText(block.title, locale)}
           </h2>
           {block.intro && (
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-body">
               {getText(block.intro, locale)}
             </p>
           )}
         </div>
-        <dl className="grid gap-px overflow-hidden rounded-[1.5rem] bg-zinc-950/10 sm:grid-cols-2">
+        <dl className="grid gap-px overflow-hidden rounded-[1.5rem] bg-ink/10 sm:grid-cols-2">
           {block.items?.map((item, index) => (
             <div key={index} className="bg-site p-5 md:p-6">
-              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 {getText(item.label, locale)}
               </dt>
-              <dd className="mt-3 leading-relaxed text-zinc-800">
+              <dd className="mt-3 leading-relaxed text-ink">
                 {getText(item.value, locale)}
               </dd>
             </div>
@@ -209,7 +222,7 @@ function ComparisonSide({ side, project, accent = false }) {
       <h3 className="text-2xl font-black tracking-[-0.035em]">
         {getText(side.title, locale)}
       </h3>
-      <p className={`mt-4 leading-relaxed ${accent ? "text-white/70" : "text-zinc-600"}`}>
+      <p className={`mt-4 leading-relaxed ${accent ? "text-on-dark" : "text-body"}`}>
         {getText(side.text, locale)}
       </p>
     </div>
@@ -238,23 +251,23 @@ function PipelineBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <div className="rounded-[2rem] bg-zinc-950 p-6 text-white md:p-10">
+      <div className="rounded-[2rem] bg-ink p-6 text-white md:p-10">
         <BlockLabel light>{getText(block.label, locale)}</BlockLabel>
         <h2 className="mobile-heading-lg mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale)}
         </h2>
-        <div className="mt-10 grid gap-px overflow-hidden rounded-[1.5rem] bg-white/15 md:grid-cols-5">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-[1.5rem] bg-white/15 sm:grid-cols-2 xl:grid-cols-5">
           {block.items?.map((item, index) => (
-            <div key={index} className="relative bg-zinc-950 p-5">
-              <p className="font-mono text-xs text-white/35">
+            <div key={index} className="relative bg-ink p-5">
+              <p className="font-mono text-xs text-on-dark">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-6 font-bold">{getText(item.title, locale)}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">
+              <p className="mt-3 text-sm leading-relaxed text-on-dark">
                 {getText(item.text, locale)}
               </p>
               {index < block.items.length - 1 && (
-                <span className="absolute -bottom-3 right-5 z-10 text-accent md:-right-2 md:bottom-auto md:top-1/2">
+                <span className="absolute -bottom-3 right-5 z-10 text-accent-light md:-right-2 md:bottom-auto md:top-1/2">
                   →
                 </span>
               )}
@@ -262,7 +275,7 @@ function PipelineBlock({ block }) {
           ))}
         </div>
         {block.note && (
-          <p className="mt-6 max-w-3xl border-l border-accent pl-4 text-sm leading-relaxed text-white/60">
+          <p className="mt-6 max-w-3xl border-l border-accent pl-4 text-sm leading-relaxed text-on-dark">
             {getText(block.note, locale)}
           </p>
         )}
@@ -278,14 +291,14 @@ function EvidenceColumn({ title, items, accent = false }) {
     <div>
       <p
         className={`text-sm font-semibold uppercase tracking-[0.14em] ${
-          accent ? "text-orange-700" : "text-zinc-500"
+          accent ? "text-accent-ink" : "text-muted"
         }`}
       >
         {getText(title, locale)}
       </p>
       <ul className="mt-4 divide-y divide-zinc-950/10">
         {items?.map((item, index) => (
-          <li key={index} className="py-4 leading-relaxed text-zinc-700">
+          <li key={index} className="py-4 leading-relaxed text-body">
             {getText(item, locale)}
           </li>
         ))}
@@ -299,7 +312,7 @@ function EvidenceBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-24">
-      <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
+      <div className="rounded-[2rem] border border-zinc-950/10 bg-surface p-6 md:p-10">
         <BlockLabel>{getText(block.label, locale)}</BlockLabel>
         <h2 className="mobile-heading-lg mt-5 max-w-5xl text-4xl font-black tracking-[-0.05em] md:text-7xl">
           {getText(block.title, locale)}
@@ -326,14 +339,14 @@ function FinalCtaBlock({ block }) {
         <h2 className="mobile-heading-lg max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
           {getText(block.title, locale)}
         </h2>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-800">
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink">
           {getText(block.text, locale)}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           {block.primaryAction && (
             <a
               href={block.primaryAction.href.replace(":locale", locale)}
-              className="rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
+              className="rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white"
             >
               {getText(block.primaryAction.label, locale)}
             </a>
@@ -357,16 +370,16 @@ function CaseHeading({ block, light = false }) {
 
   return (
     <div className="grid gap-5 md:grid-cols-[0.4fr_1.5fr] md:gap-10">
-      <div className={`flex items-start gap-3 text-sm font-semibold uppercase tracking-[0.16em] ${light ? "text-white/45" : "text-zinc-500"}`}>
-        {block.number && <span className={light ? "text-accent" : "text-zinc-950"}>{block.number}</span>}
+      <div className={`flex items-start gap-3 text-sm font-semibold uppercase tracking-[0.16em] ${light ? "text-on-dark" : "text-muted"}`}>
+        {block.number && <span className={light ? "text-accent-light" : "text-ink"}>{block.number}</span>}
         <span>{getText(block.label, locale)}</span>
       </div>
       <div>
-        <h2 className={`max-w-5xl text-4xl font-black leading-[0.98] tracking-[-0.05em] md:text-7xl ${light ? "text-white" : "text-zinc-950"}`}>
+        <h2 className={`max-w-5xl text-4xl font-black leading-[0.98] tracking-[-0.05em] md:text-7xl ${light ? "text-white" : "text-ink"}`}>
           {getText(block.title, locale)}
         </h2>
         {block.intro && (
-          <p className={`mt-6 max-w-3xl text-lg leading-relaxed ${light ? "text-white/60" : "text-zinc-600"}`}>
+          <p className={`mt-6 max-w-3xl text-lg leading-relaxed ${light ? "text-on-dark" : "text-body"}`}>
             {getText(block.intro, locale)}
           </p>
         )}
@@ -419,7 +432,7 @@ function MediaSlot({ item, project, className = "aspect-[4/3] min-h-0" }) {
       <ProjectMedia media={item.media} project={project} className={className} />
       {isPlaceholder && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6 text-center">
-          <span className="rounded-full border border-zinc-950/15 bg-[#f6f3ec]/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-600 backdrop-blur-sm">
+          <span className="rounded-full border border-zinc-950/15 bg-[#f6f3ec]/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-body backdrop-blur-sm">
             {getText(item.title, locale)} {locale === "ru" ? "медиа" : "media"}
           </span>
         </div>
@@ -430,14 +443,26 @@ function MediaSlot({ item, project, className = "aspect-[4/3] min-h-0" }) {
 
 function CaseSectionBlock({ block }) {
   const locale = useLocale();
+  const hasBackground = Boolean(block.backgroundImages?.length);
 
   return (
-    <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+    <section className={hasBackground ? "case-variations relative isolate overflow-hidden" : ""}>
+      {hasBackground && (
+        <div className="case-variations__background pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          <div className="case-variations__buildings">
+            {block.backgroundImages.map((src) => (
+              <img key={src} src={publicAsset(src)} alt="" loading="lazy" decoding="async" width="1024" height="1024" />
+            ))}
+          </div>
+        </div>
+      )}
+      <div className={`mx-auto max-w-[1600px] px-5 md:px-8 ${hasBackground ? "py-36 md:py-48" : "py-16 md:py-28"}`}>
       <CaseHeading block={block} />
-      <div className="mt-10 grid gap-8 text-lg leading-relaxed text-zinc-700 md:ml-[calc(21%+2.5rem)] md:grid-cols-2 md:text-xl">
+      <div className="mt-10 grid gap-8 text-lg leading-relaxed text-body lg:ml-[calc(21%+2.5rem)] md:grid-cols-2 md:text-xl">
         {block.paragraphs?.map((paragraph, index) => (
           <p key={index}>{getText(paragraph, locale)}</p>
         ))}
+      </div>
       </div>
     </section>
   );
@@ -480,7 +505,7 @@ function StageSystemBlock({ block, project }) {
     <>
       <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
         <CaseHeading block={block} />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="stage-card-grid mt-12 grid sm:grid-cols-2 lg:grid-cols-4">
           {block.items?.map((item, index) => {
             const openIndex = imageItems.indexOf(item);
             const media = (
@@ -488,7 +513,7 @@ function StageSystemBlock({ block, project }) {
             );
 
             return (
-              <article key={index} className="overflow-hidden rounded-[1.5rem] border border-zinc-950/10 bg-white/35 p-3">
+              <article key={index} className="stage-card overflow-hidden rounded-[1.5rem] border border-zinc-950/10 bg-surface p-3">
                 {openIndex >= 0 ? (
                   <button
                     type="button"
@@ -499,13 +524,9 @@ function StageSystemBlock({ block, project }) {
                     {media}
                   </button>
                 ) : media}
-                <div className="flex items-end justify-between gap-4 px-2 pb-2 pt-5">
-                  <div>
-                    <p className="font-mono text-xs text-zinc-400">{String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="mt-2 text-xl font-black tracking-[-0.03em]">{getText(item.title, locale)}</h3>
-                  </div>
-                  <p className="max-w-28 text-right text-xs leading-relaxed text-zinc-500">{getText(item.note, locale)}</p>
-                </div>
+                <p className="px-2 pt-5 font-mono text-xs leading-relaxed text-muted">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="px-2 pt-2 text-xl font-black leading-tight tracking-[-0.03em]">{getText(item.title, locale)}</h3>
+                <p className="px-2 pb-2 pt-3 text-sm leading-relaxed text-muted">{getText(item.note, locale)}</p>
               </article>
             );
           })}
@@ -557,7 +578,7 @@ function StageSystemBlock({ block, project }) {
             <img
               src={publicAsset(activeItem.media.src)}
               alt={getText(activeItem.media.alt, locale) || getText(activeItem.title, locale)}
-              className="max-h-[calc(100vh-7rem)] max-w-full object-contain"
+              className="max-h-[calc(100dvh-9rem)] max-w-full object-contain"
             />
             <figcaption className="text-center text-sm font-semibold text-white/75">
               {String(activeIndex + 1).padStart(2, "0")} / {String(imageItems.length).padStart(2, "0")} · {getText(activeItem.title, locale)}
@@ -573,18 +594,16 @@ function FormatSplitBlock({ block, project }) {
   const locale = useLocale();
 
   return (
-    <section className="bg-zinc-950 py-16 text-white md:py-28">
+    <section className="bg-ink py-16 text-white md:py-28">
       <div className="mx-auto max-w-[1600px] px-5 md:px-8">
         <CaseHeading block={block} light />
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="format-card-grid mt-12 grid gap-5 md:grid-cols-2">
           {block.items?.map((item, index) => (
-            <article key={index} className="rounded-[1.5rem] border border-white/15 p-3">
+            <article key={index} className="format-card rounded-[1.5rem] border border-white/15 p-3">
               <MediaSlot item={item} project={project} className="aspect-video min-h-0 rounded-[1rem]" />
-              <div className="p-3 pb-5 pt-6 md:p-5 md:pb-7">
-                <p className="font-mono text-xs text-accent">0{index + 1}</p>
-                <h3 className="mt-3 text-3xl font-black tracking-[-0.04em]">{getText(item.title, locale)}</h3>
-                <p className="mt-4 max-w-xl leading-relaxed text-white/60">{getText(item.text, locale)}</p>
-              </div>
+              <p className="px-3 pt-6 font-mono text-xs text-accent-light md:px-5">0{index + 1}</p>
+              <h3 className="px-3 pt-3 text-3xl font-black tracking-[-0.04em] md:px-5">{getText(item.title, locale)}</h3>
+              <p className="max-w-xl px-3 pb-5 pt-4 leading-relaxed text-on-dark md:px-5 md:pb-7">{getText(item.text, locale)}</p>
             </article>
           ))}
         </div>
@@ -603,9 +622,9 @@ function BreakdownGridBlock({ block, project }) {
         {block.items?.map((item, index) => (
           <article key={index}>
             <MediaSlot item={item} project={project} className="aspect-[4/3] min-h-0 rounded-[1.5rem]" />
-            <div className="mt-4 flex items-center justify-between border-t border-zinc-950/10 pt-3">
+            <div className="mt-4 flex items-start justify-between gap-4 border-t border-zinc-950/10 pt-3">
               <h3 className="font-semibold">{getText(item.title, locale)}</h3>
-              <span className="font-mono text-xs text-zinc-400">{String(index + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-xs text-muted">{String(index + 1).padStart(2, "0")}</span>
             </div>
           </article>
         ))}
@@ -619,12 +638,12 @@ function OutcomeBlock({ block }) {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
-      <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 md:p-10">
+      <div className="rounded-[2rem] border border-zinc-950/10 bg-surface p-6 md:p-10">
         <CaseHeading block={block} />
-        <div className="mt-10 grid gap-8 md:ml-[calc(21%+2.5rem)] md:grid-cols-[1.4fr_0.6fr]">
-          <p className="text-xl leading-relaxed text-zinc-700 md:text-2xl">{getText(block.text, locale)}</p>
+        <div className="mt-10 grid gap-8 lg:ml-[calc(21%+2.5rem)] md:grid-cols-[1.4fr_0.6fr]">
+          <p className="text-xl leading-relaxed text-body md:text-2xl">{getText(block.text, locale)}</p>
           {block.note && (
-            <p className="border-l border-zinc-950/15 pl-4 text-sm leading-relaxed text-zinc-500">{getText(block.note, locale)}</p>
+            <p className="border-l border-zinc-950/15 pl-4 text-sm leading-relaxed text-muted">{getText(block.note, locale)}</p>
           )}
         </div>
       </div>
@@ -634,6 +653,7 @@ function OutcomeBlock({ block }) {
 
 export default function ProjectBlocks({ project }) {
   return project.blocks?.map((block, index) => {
+    if (block.type === "hdaDemo") return <HdaDemoBlock key={index} block={block} />;
     if (block.type === "text") return <TextBlock key={index} block={block} />;
     if (block.type === "media") {
       return <MediaBlock key={index} block={block} project={project} />;

@@ -41,27 +41,27 @@ export default function AboutPage() {
 
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-12 md:px-8 md:py-20">
-      <div className="grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
-        <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-white/35">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] lg:items-center">
+        <div className="overflow-hidden rounded-[2rem] border border-zinc-950/10 bg-surface">
           <img
             src={publicAsset("/about/portrait.jpg")}
             alt={getText(aboutCopy.portraitAlt, locale)}
-            className="aspect-[4/5] h-full w-full object-cover grayscale"
+            className="aspect-[4/3] h-full w-full lg:aspect-[4/5] object-cover grayscale"
           />
         </div>
 
-        <div className="rounded-[2rem] border border-zinc-950/10 bg-white/35 p-6 backdrop-blur md:p-10 lg:p-12">
-          <h1 className="mobile-heading-xl max-w-4xl text-6xl font-black uppercase leading-[0.82] tracking-[-0.07em] text-zinc-950 md:text-8xl lg:text-9xl">
+        <div className="rounded-[2rem] border border-zinc-950/10 bg-panel p-6 backdrop-blur md:p-10 lg:p-12">
+          <h1 className="mobile-heading-xl max-w-4xl text-6xl font-black uppercase leading-[0.82] tracking-[-0.07em] text-ink md:text-8xl lg:text-9xl">
             {getText(aboutCopy.title, locale)}
           </h1>
 
-          <div className="mt-8 max-w-4xl space-y-6 text-xl leading-relaxed text-zinc-700 md:text-2xl">
+          <div className="mt-8 max-w-4xl space-y-6 text-xl leading-relaxed text-body md:text-2xl">
             <p>{getText(aboutCopy.lead, locale)}</p>
             <p>{getText(aboutCopy.paragraph, locale)}</p>
           </div>
 
           <div className="mt-10">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-muted">
               {getText(aboutCopy.roleLabel, locale)}
             </p>
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
               {roles.map((role) => (
                 <span
                   key={role}
-                  className="rounded-full border border-zinc-950/10 bg-accent px-4 py-2 text-sm font-medium text-zinc-950"
+                  className="rounded-full border border-zinc-950/10 bg-accent-soft px-4 py-2 text-sm font-medium text-accent-ink"
                 >
                   {role}
                 </span>
