@@ -83,8 +83,6 @@ export default function Header() {
             {ui.work}
           </NavLink>
 
-          <NavLink to={`/${locale}/lab`} className={navLinkClass}>{ui.lab}</NavLink>
-
           <Link to={{ pathname: `/${locale}`, hash: "#directions" }} className="opacity-70 hover:opacity-50">
             {directionsLabel}
           </Link>
@@ -123,7 +121,6 @@ export default function Header() {
           </summary>
           <div className="absolute inset-x-5 top-full mt-2 grid gap-1 rounded-2xl border border-ink/15 bg-surface p-4 text-ink [&_a]:flex [&_a]:min-h-11 [&_a]:items-center [&_a]:rounded-lg [&_a]:px-3 [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-2 [&_a]:hover:bg-site">
             <NavLink to={`/${locale}/work`} className={navLinkClass}>{ui.work}</NavLink>
-            <NavLink to={`/${locale}/lab`} className={navLinkClass}>{ui.lab}</NavLink>
             <NavLink to={`/${locale}/about`} className={navLinkClass}>{ui.about}</NavLink>
             <Link to={{ pathname: `/${locale}`, hash: "#directions" }}>{directionsLabel}</Link>
             <Link to={{ pathname: `/${locale}`, hash: "#contact" }}>{discussLabel}</Link>
