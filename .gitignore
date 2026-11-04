@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 *.zip
-/ios/SpineAR/Generated/
 
 # Editor directories and files
 .vscode/*

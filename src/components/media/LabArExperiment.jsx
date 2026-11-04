@@ -4,7 +4,6 @@ import { ModelViewerElement } from "@google/model-viewer";
 import { getText } from "../../i18n/config";
 import { publicAsset } from "../../utils/publicAsset";
 import "./labAr.css";
-import LabModelPlayback from "./LabModelPlayback";
 
 // The GLBs use Draco. Keep the decoder on the same host as the site.
 ModelViewerElement.dracoDecoderLocation = publicAsset("/draco/");
@@ -12,7 +11,7 @@ ModelViewerElement.dracoDecoderLocation = publicAsset("/draco/");
 const models = [
   { id: "knit-horse", src: "/projects/knit-horse/model.glb", name: { ru: "Вязаная лошадка", en: "Knitted horse" }, size: "13.5 MB" },
   { id: "arthritis", src: "/projects/arthritis/model.glb", name: { ru: "Позвоночник", en: "Spine" }, size: "3.7 MB" },
-  { id: "medznat_mascott_foxie", src: "/lab/models/medznat_mascott_foxie.glb", iosSrc: "/lab/models/medznat_mascott_foxie.usdz", autoplay: true, name: { ru: "Лисёнок Foxie · Medznat", en: "Foxie mascot · Medznat" }, size: "1.1 MB" },
+  { id: "medznat_mascott_foxie", src: "/lab/models/medznat_mascott_foxie.glb", iosSrc: "/lab/models/medznat_mascott_foxie.usdz", name: { ru: "Лисёнок Foxie · Medznat", en: "Foxie mascot · Medznat" }, size: "1.1 MB" },
 ];
 
 const copy = {
@@ -22,7 +21,7 @@ const copy = {
     select: "Модель", loading: "Загружаем 3D-модель…", slow: "Загрузка занимает больше времени. Проверьте соединение или повторите попытку.",
     error: "Не удалось открыть 3D-модель. Проверьте соединение и поддержку WebGL в браузере.",
     retry: "Повторить загрузку", gesture: "Вращайте перетаскиванием. Приближайте двумя пальцами или колесом мыши.",
-    ar: "Разместить в AR", arSnapshot: "Текущая стадия в AR", preparing: "Открываем AR…", available: "Наведите камеру на освещённую поверхность и следуйте подсказкам телефона.",
+    ar: "Разместить в AR", preparing: "Открываем AR…", available: "Наведите камеру на освещённую поверхность и следуйте подсказкам телефона.",
     unavailable: "AR недоступна в этом браузере или на этом устройстве. 3D-просмотр остаётся доступен. Попробуйте Safari на iPhone/iPad или Chrome на совместимом Android.",
     insecure: "Для AR откройте эту страницу по HTTPS на совместимом телефоне. По обычному HTTP доступен 3D-просмотр.",
     arError: "AR не запустилась. Проверьте разрешение камеры, откройте страницу в Safari на iOS или Chrome на Android и попробуйте снова. Можно продолжить просмотр в 3D.",
@@ -30,7 +29,7 @@ const copy = {
     tracking: "Медленно перемещайте телефон, чтобы найти поверхность.",
     phone: "Открыть на телефоне", link: "Ссылка на выбранную модель", copy: "Скопировать ссылку", copied: "Ссылка скопирована", copyError: "Не удалось скопировать. Выделите ссылку и скопируйте вручную.",
     local: "Это локальный адрес компьютера. Для телефона нужна опубликованная HTTPS-версия или HTTPS-предпросмотр с доступом по сети.",
-    limits: "Android: WebXR или Scene Viewer. iPhone/iPad: Quick Look. Foxie использует готовый анимированный USDZ; для остальных моделей обычная кнопка AR создаёт USDZ из текущего кадра. Материалы могут выглядеть иначе. Масштаб можно менять — это не измерительный инструмент.",
+    limits: "Android: WebXR или Scene Viewer. iPhone/iPad: Quick Look; для Foxie используется готовый USDZ, для остальных моделей он создаётся при запуске. Анимация, blend shapes и переходы материалов в нативном AR не проверены; материалы могут выглядеть иначе. Масштаб можно менять — это не измерительный инструмент.",
   },
   en: {
     title: "From browser to your space",
@@ -38,7 +37,7 @@ const copy = {
     select: "Model", loading: "Loading the 3D model…", slow: "Loading is taking longer than usual. Check your connection or try again.",
     error: "The 3D model could not be opened. Check your connection and browser WebGL support.",
     retry: "Reload model", gesture: "Drag to rotate. Pinch or use the mouse wheel to zoom.",
-    ar: "Place in AR", arSnapshot: "Current stage in AR", preparing: "Opening AR…", available: "Point the camera at a well-lit surface and follow your phone’s instructions.",
+    ar: "Place in AR", preparing: "Opening AR…", available: "Point the camera at a well-lit surface and follow your phone’s instructions.",
     unavailable: "AR is unavailable in this browser or on this device. You can still explore in 3D. Try Safari on iPhone/iPad or Chrome on a compatible Android phone.",
     insecure: "For AR, open this page over HTTPS on a compatible phone. 3D viewing is available over plain HTTP.",
     arError: "AR could not start. Check camera permission, open the page in Safari on iOS or Chrome on Android, and try again. You can continue in 3D.",
@@ -46,7 +45,7 @@ const copy = {
     tracking: "Move your phone slowly to find a surface.",
     phone: "Open on your phone", link: "Link to the selected model", copy: "Copy link", copied: "Link copied", copyError: "Could not copy. Select the link and copy it manually.",
     local: "This address is local to your computer. Your phone needs a published HTTPS version or a network-accessible HTTPS preview.",
-    limits: "Android: WebXR or Scene Viewer. iPhone/iPad: Quick Look. Foxie uses the supplied animated USDZ; for other models, the standard AR button generates USDZ from the current frame. Materials may look different. Scale is adjustable — this is not a measuring tool.",
+    limits: "Android: WebXR or Scene Viewer. iPhone/iPad: Quick Look; Foxie uses the supplied USDZ, while other models generate it on launch. Animation, blend shapes and material transitions have not been verified in native AR; materials may look different. Scale is adjustable — this is not a measuring tool.",
   },
 };
 
@@ -57,7 +56,6 @@ function ArViewer({ model, locale }) {
   const [supported, setSupported] = useState(false);
   const [arState, setArState] = useState("");
   const [busy, setBusy] = useState(false);
-  const [materialsReady, setMaterialsReady] = useState(false);
 
   useEffect(() => {
     const viewer = ref.current;
@@ -92,7 +90,6 @@ function ArViewer({ model, locale }) {
     if (!viewer?.canActivateAR || !window.isSecureContext) return;
     setBusy(true);
     setArState("");
-    viewer.dispatchEvent(new Event("lab-export-start"));
     try {
       // Call directly from the tap; Quick Look and Scene Viewer need user activation.
       await viewer.activateAR();
@@ -100,7 +97,6 @@ function ArViewer({ model, locale }) {
     } catch {
       setArState("arError");
     } finally {
-      viewer.dispatchEvent(new Event("lab-export-end"));
       setBusy(false);
     }
   }
@@ -110,7 +106,6 @@ function ArViewer({ model, locale }) {
     <>
       <div className="lab-ar__stage" aria-busy={state === "loading" || state === "slow"}>
         <model-viewer ref={ref} src={publicAsset(model.src)} alt={getText(model.name, locale)}
-          autoplay={model.autoplay || undefined}
           ios-src={model.iosSrc ? publicAsset(model.iosSrc) : undefined}
           camera-controls touch-action="pan-y" environment-image="neutral" shadow-intensity="1"
           ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor" ar-scale="auto"
@@ -122,11 +117,9 @@ function ArViewer({ model, locale }) {
       </div>
       <div className="lab-ar__viewer-footer">
         <p className="text-sm leading-relaxed text-body">{t.gesture}</p>
-        {ready && (model.autoplay || model.id === "arthritis") && <LabModelPlayback
-          viewerRef={ref} spine={model.id === "arthritis"} locale={locale} onMaterialsReady={setMaterialsReady} />}
         <button type="button" className="lab-ar__button" onClick={launchAR}
-          disabled={!ready || (model.id === "arthritis" && !materialsReady) || !supported || !window.isSecureContext || busy}>
-          {busy ? t.preparing : model.id === "arthritis" ? t.arSnapshot : t.ar}
+          disabled={!ready || !supported || !window.isSecureContext || busy}>
+          {busy ? t.preparing : t.ar}
         </button>
         <p className="text-sm leading-relaxed text-body" role="status">
           {arState ? t[arState] : !window.isSecureContext ? t.insecure : supported ? t.available : t.unavailable}
@@ -174,17 +167,6 @@ export default function LabArExperiment({ locale }) {
             {models.map(item => <option key={item.id} value={item.id}>{getText(item.name, locale)} · {item.size}</option>)}
           </select>
           <button type="button" className="lab-ar__text-button" onClick={() => setAttempt(value => value + 1)}>{t.retry}</button>
-          {model.id === "arthritis" && <div className="lab-ar__native-probe">
-            <h3 className="text-xl font-bold">{locale === "ru" ? "AR на iPhone" : "AR on iPhone"}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-body">
-              {locale === "ru" ? "USDZ с анимацией формы и текстурами исходного разрешения. Фактура в нём фиксирована: непрерывный переход текстур не сработал в проверенной версии Quick Look."
-                : "USDZ with shape animation and original-resolution textures. Textures remain fixed: continuous texture playback did not work in the tested version of Quick Look."}
-            </p>
-            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-animated-hq-v3.usdz")}>
-              <img src={publicAsset("/projects/arthritis/stages/lumbar_00.webp")} alt="" width="48" height="48" />
-              <span>{locale === "ru" ? "Открыть HQ в Quick Look · 12.6 MB" : "Open HQ in Quick Look · 12.6 MB"}</span>
-            </a>
-          </div>}
           <div className="lab-ar__share">
             <h3 className="text-xl font-bold">{t.phone}</h3>
             <p className="mt-3 text-sm leading-relaxed text-body">{local ? t.local : t.link}</p>
