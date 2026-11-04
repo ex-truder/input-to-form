@@ -6,6 +6,8 @@ Live site: https://kustart.pro/
 
 Lab WebAR experiment and phone testing: [docs/lab-ar.md](docs/lab-ar.md).
 
+Native iOS AR prototype (RealityKit/Metal, Xcode validation pending): [ios/SpineAR/README.md](ios/SpineAR/README.md).
+
 ## Local development
 
 ```bash

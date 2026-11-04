@@ -175,18 +175,14 @@ export default function LabArExperiment({ locale }) {
           </select>
           <button type="button" className="lab-ar__text-button" onClick={() => setAttempt(value => value + 1)}>{t.retry}</button>
           {model.id === "arthritis" && <div className="lab-ar__native-probe">
-            <h3 className="text-xl font-bold">{locale === "ru" ? "Переходы в Quick Look" : "Transitions in Quick Look"}</h3>
+            <h3 className="text-xl font-bold">{locale === "ru" ? "AR на iPhone" : "AR on iPhone"}</h3>
             <p className="mt-3 text-sm leading-relaxed text-body">
-              {locale === "ru" ? "В v2 исправлены материалы. Сравните переход текстур с контрольной версией: в ней форма движется, а фактура остаётся постоянной. Смена текстур на iPhone ещё требует проверки."
-                : "Materials are corrected in v2. Compare texture transitions with the reference: its shape animates while textures stay fixed. Texture playback on iPhone still needs verification."}
+              {locale === "ru" ? "USDZ с анимацией формы и текстурами исходного разрешения. Фактура в нём фиксирована: непрерывный переход текстур не сработал в проверенной версии Quick Look."
+                : "USDZ with shape animation and original-resolution textures. Textures remain fixed: continuous texture playback did not work in the tested version of Quick Look."}
             </p>
-            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-texture-probe-v2.usdz")}>
+            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-animated-hq-v3.usdz")}>
               <img src={publicAsset("/projects/arthritis/stages/lumbar_00.webp")} alt="" width="48" height="48" />
-              <span>{locale === "ru" ? "Переход текстур · v2 · 14.5 MB" : "Texture transitions · v2 · 14.5 MB"}</span>
-            </a>
-            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-texture-reference-v2.usdz")}>
-              <img src={publicAsset("/projects/arthritis/stages/lumbar_00.webp")} alt="" width="48" height="48" />
-              <span>{locale === "ru" ? "Контроль: фиксированные текстуры · 7.1 MB" : "Reference: fixed textures · 7.1 MB"}</span>
+              <span>{locale === "ru" ? "Открыть HQ в Quick Look · 12.6 MB" : "Open HQ in Quick Look · 12.6 MB"}</span>
             </a>
           </div>}
           <div className="lab-ar__share">

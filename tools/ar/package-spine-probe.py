@@ -1,18 +1,24 @@
-"""Build matched animated/static-texture v2 probes with Blender's pxr Python."""
+"""Build native HQ geometry animation (--hq), or reproduce failed v2 probes."""
 from pathlib import Path
 import json
 import shutil
+import sys
 from pxr import Usd, UsdGeom, UsdShade, UsdUtils, Sdf, Gf
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'ar-exports.local/probe'
-SEQUENCES = json.loads((OUT / 'sequence.json').read_text())
+HQ = '--hq' in sys.argv
+OUT = ROOT / ('ar-exports.local/hq' if HQ else 'ar-exports.local/probe')
+if HQ:
+    HQ_MATERIALS = json.loads((OUT / 'materials.json').read_text())
+    SEQUENCES = {name: [{'frame': 0, 'files': item['files']}] for name, item in HQ_MATERIALS.items()}
+else:
+    SEQUENCES = json.loads((OUT / 'sequence.json').read_text())
 MANIFEST = json.loads((ROOT / 'public/projects/arthritis/model-animation.json').read_text())
 DEFINITIONS = {item['target']: item for item in MANIFEST['materials']}
 
 
 def build_package(animated_textures):
-    stem = 'spine-v2' if animated_textures else 'spine-reference-v2'
+    stem = 'spine-hq-v3' if HQ else 'spine-v2' if animated_textures else 'spine-reference-v2'
     layer_path = OUT / f'{stem}.usdc'
     shutil.copyfile(ROOT / 'ar-exports.local/spine.usdc', layer_path)
     stage = Usd.Stage.Open(str(layer_path))
@@ -23,7 +29,7 @@ def build_package(animated_textures):
     stage.SetEndTimeCode(208)
     UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.y)
     UsdGeom.SetStageMetersPerUnit(stage, 1)
-    stage.GetDefaultPrim().SetCustomDataByKey('testStatus', 'v2: metallic factors corrected; Quick Look texture animation requires device verification')
+    stage.GetDefaultPrim().SetCustomDataByKey('testStatus', 'HQ v3: animated geometry with fixed full-resolution textures; no texture animation' if HQ else 'v2: texture sequence failed on tested iPhone; retained for reproduction only')
 
     # Both packages have identical geometry animation; only texture time samples differ.
     for prim in stage.Traverse():
@@ -80,7 +86,7 @@ def build_package(animated_textures):
             surface.CreateInput(input_name, input_type).ConnectToSource(shader.ConnectableAPI(), output)
 
     stage.GetRootLayer().Save()
-    filename = 'arthritis-texture-probe-v2.usdz' if animated_textures else 'arthritis-texture-reference-v2.usdz'
+    filename = 'arthritis-animated-hq-v3.usdz' if HQ else 'arthritis-texture-probe-v2.usdz' if animated_textures else 'arthritis-texture-reference-v2.usdz'
     target = ROOT / 'public/lab/models' / filename
     with Sdf.ZipFileWriter.CreateNew(str(target)) as package:
         package.AddFile(str(layer_path), layer_path.name)
@@ -99,8 +105,11 @@ def build_package(animated_textures):
     checker.CheckCompliance(str(target))
     assert not checker.GetErrors(), checker.GetErrors()
     assert not checker.GetFailedChecks(), checker.GetFailedChecks()
-    print('USDZ_V2_OK', target.name, target.stat().st_size, 'bytes;', len(animated_maps), 'animated texture inputs')
+    print('USDZ_HQ_OK' if HQ else 'USDZ_V2_OK', target.name, target.stat().st_size, 'bytes;', len(animated_maps), 'animated texture inputs')
 
 
-build_package(animated_textures=True)
-build_package(animated_textures=False)
+if HQ:
+    build_package(animated_textures=False)
+else:
+    build_package(animated_textures=True)
+    build_package(animated_textures=False)

@@ -95,8 +95,8 @@ export default function LabModelPlayback({ viewerRef, spine, locale, onMaterials
           }} />
       </label>}
       {spine && <p className="text-sm leading-relaxed text-body">
-        {ru ? "Переход текстур воспроизводится здесь и в WebXR. В обычном Quick Look экспортируется только текущий кадр; непрерывный переход проверяется отдельно в USDZ-прототипе. Scene Viewer загружает исходный GLB без этих изменений."
-          : "Texture transitions play here and in WebXR. Standard Quick Look exports the current frame; continuous playback is tested separately in a USDZ prototype. Scene Viewer loads the original GLB without these changes."}
+        {ru ? "Переход текстур воспроизводится здесь и в WebXR. Кнопка ниже экспортирует текущую стадию для Quick Look. Отдельный HQ-файл для iPhone анимирует форму с фиксированными текстурами. Scene Viewer загружает исходный GLB без этих изменений."
+          : "Texture transitions play here and in WebXR. The button below exports the current stage for Quick Look. The separate HQ file for iPhone animates the shape with fixed textures. Scene Viewer loads the original GLB without these changes."}
       </p>}
     </div>
   );
