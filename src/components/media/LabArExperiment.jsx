@@ -177,12 +177,16 @@ export default function LabArExperiment({ locale }) {
           {model.id === "arthritis" && <div className="lab-ar__native-probe">
             <h3 className="text-xl font-bold">{locale === "ru" ? "Переходы в Quick Look" : "Transitions in Quick Look"}</h3>
             <p className="mt-3 text-sm leading-relaxed text-body">
-              {locale === "ru" ? "Экспериментальный USDZ с запечёнными кадрами текстур. Совместимость с iPhone ещё не подтверждена. Проверьте, меняются ли текстуры вместе с формой модели."
-                : "Experimental USDZ with baked texture frames. iPhone compatibility is not yet confirmed. Check whether the textures change along with the model’s shape."}
+              {locale === "ru" ? "В v2 исправлены материалы. Сравните переход текстур с контрольной версией: в ней форма движется, а фактура остаётся постоянной. Смена текстур на iPhone ещё требует проверки."
+                : "Materials are corrected in v2. Compare texture transitions with the reference: its shape animates while textures stay fixed. Texture playback on iPhone still needs verification."}
             </p>
-            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-texture-probe.usdz")}>
+            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-texture-probe-v2.usdz")}>
               <img src={publicAsset("/projects/arthritis/stages/lumbar_00.webp")} alt="" width="48" height="48" />
-              <span>{locale === "ru" ? "Проверить USDZ на iPhone · 14 MB" : "Test USDZ on iPhone · 14 MB"}</span>
+              <span>{locale === "ru" ? "Переход текстур · v2 · 14.5 MB" : "Texture transitions · v2 · 14.5 MB"}</span>
+            </a>
+            <a rel="ar" className="lab-ar__probe-link" href={publicAsset("/lab/models/arthritis-texture-reference-v2.usdz")}>
+              <img src={publicAsset("/projects/arthritis/stages/lumbar_00.webp")} alt="" width="48" height="48" />
+              <span>{locale === "ru" ? "Контроль: фиксированные текстуры · 7.1 MB" : "Reference: fixed textures · 7.1 MB"}</span>
             </a>
           </div>}
           <div className="lab-ar__share">
