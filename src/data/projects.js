@@ -136,8 +136,8 @@ export const projects = [
       label: { en: "Visual System", ru: "Визуальная система" },
       title: { en: "One visual language. Four readable stages.", ru: "Один визуальный язык. Четыре понятные стадии." },
       intro: {
-        en: "The sequence is designed as a visual comparison system. The final media can be dropped into these containers without changing the narrative structure.",
-        ru: "Последовательность построена как система визуального сравнения. Финальные материалы можно добавить в эти контейнеры, не меняя структуру истории.",
+        en: "Consistent framing and materials make it possible to compare the four stages and follow the changes in the joint.",
+        ru: "Единые ракурс и материалы позволяют сравнить четыре стадии и проследить изменения в суставе.",
       },
 items: [
   {
@@ -211,7 +211,8 @@ items: [
             en: "An AR-ready 3D asset allowed the progression to be experienced spatially and viewed in context.",
             ru: "Подготовленный для AR 3D-ассет позволил рассматривать развитие заболевания в пространстве и в контексте.",
           },
-          media: { type: "placeholder" },
+          media: { type: "image", src: "/projects/arthritis/cover.png",
+            alt: { en: "Anatomical model of the spine", ru: "Анатомическая модель позвоночника" } },
         },
         {
           title: { en: "Web Communication", ru: "Коммуникация на сайте" },
@@ -233,26 +234,8 @@ items: [
       ],
     },
     {
-      type: "breakdownGrid",
-      number: "05",
-      label: { en: "Behind the Solution", ru: "Как устроено решение" },
-      title: { en: "The production system behind the final explanation.", ru: "Производственная система за финальным объяснением." },
-      intro: {
-        en: "These slots are ready for process images, short clips or annotated breakdowns as the case materials are added.",
-        ru: "Эти блоки подготовлены для изображений процесса, коротких видео и разборов по мере добавления материалов кейса.",
-      },
-      items: [
-        { title: { en: "Model & anatomy", ru: "Модель и анатомия" }, media: { type: "placeholder" } },
-        { title: { en: "Materials", ru: "Материалы" }, media: { type: "placeholder" } },
-        { title: { en: "Disease stages", ru: "Стадии заболевания" }, media: { type: "placeholder" } },
-        { title: { en: "Animation", ru: "Анимация" }, media: { type: "placeholder" } },
-        { title: { en: "AR asset", ru: "AR-ассет" }, media: { type: "placeholder" } },
-        { title: { en: "Render breakdown", ru: "Разбор рендера" }, media: { type: "placeholder" } },
-      ],
-    },
-    {
       type: "outcome",
-      number: "06",
+      number: "05",
       label: { en: "Outcome", ru: "Результат" },
       title: {
         en: "A reusable visual explanation for two commercial touchpoints.",

@@ -27,13 +27,10 @@ export const UI = {
     backToWork: "Back to work",
     nextProject: "Next project",
     goToProjects: "Go to Projects",
-    featuredOpening: "Featured Opening",
+    featuredOpening: "Featured project",
     projectNote: "Project note",
     process: "Process",
     all: "All",
-    mostlyNda: "Mostly NDA-friendly",
-    mostlyNdaText:
-      "The public version focuses on process, taste and production logic. Real client materials can be swapped in later as images, videos or protected case studies.",
   },
 
   ru: {
@@ -55,9 +52,6 @@ export const UI = {
     projectNote: "О проекте",
     process: "Процесс",
     all: "Все",
-    mostlyNda: "Можно показывать при NDA",
-    mostlyNdaText:
-      "Публичная версия портфолио фокусируется на процессе, визуальном мышлении и производственной логике. Реальные клиентские материалы можно добавлять позже как изображения, видео или закрытые кейсы.",
   },
 };
 

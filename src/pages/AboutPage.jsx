@@ -14,8 +14,8 @@ const aboutCopy = {
   },
 
   paragraph: {
-    en: "A lot of my production work is unique, technical or NDA-constrained, so this portfolio focuses on visual taste, systems thinking and the quality of outputs.",
-    ru: "Многие рабочие проекты уникальны, технически сложны или ограничены NDA, поэтому это портфолио фокусируется на визуальном вкусе, системном мышлении и качестве результата.",
+    en: "I build pipelines and take projects from the initial task through to delivery. My work combines systems thinking, visual development and technical implementation.",
+    ru: "Я создаю пайплайны и довожу проекты от исходной задачи до передачи результата. В работе объединяю системное мышление, разработку визуального стиля и техническую реализацию.",
   },
 
   roleLabel: {

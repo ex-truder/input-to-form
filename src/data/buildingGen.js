@@ -87,11 +87,13 @@ export const buildingGen = {
         en: "Three moments from the demo show how the parameters build the result: a section grid, a height profile and facade details." },
       items: [
         { title: { ru: "Общий объём", en: "Building volume" }, note: { ru: "Сетка секций и этажность", en: "Section grid and floor count" },
-          media: { type: "image", src: `${asset}/volume.jpg`, alt: { ru: "Базовый объём здания до добавления деталей", en: "The building volume before facade details" } } },
-        { title: { ru: "Высотный профиль", en: "Height profile" }, note: { ru: "Каскад и вариация высоты секций", en: "Cascade and section height variation" },
-          media: { type: "image", src: `${asset}/cascade.jpg`, alt: { ru: "Разная высота секций процедурного здания", en: "Procedural building sections with different heights" } } },
+          media: { type: "image", src: `${asset}/volume.png`, alt: { ru: "Базовый объём здания до добавления деталей", en: "The building volume before facade details" } } },
+        { title: { ru: "Фасады", en: "Facades" }, note: { ru: "Генерация фасадов по ранее заданным правилам", en: "Rules driven facades generation" },
+          media: { type: "image", src: `${asset}/cascade.png`, alt: { ru: "Разная высота секций процедурного здания", en: "Procedural building sections with different heights" } } },
         { title: { ru: "Детализация", en: "Detail" }, note: { ru: "Окна, входы и элементы фасада", en: "Windows, entrances and facade elements" },
-          media: { type: "image", src: `${asset}/cover.jpg`, alt: { ru: "Здание с фасадными деталями", en: "The building with facade details" } } },
+          media: { type: "image", src: `${asset}/details.png`, alt: { ru: "Здание с фасадными деталями", en: "The building with facade details" } } },
+        { title: { ru: "Материалы", en: "Materials" }, note: { ru: "Создание материалов", en: "Material creation" },
+          media: { type: "image", src: `${asset}/final.png`, alt: { ru: "Процедурные или детерминированные материалы", en: "Procedural or library materials" } } },
       ],
     },
     {

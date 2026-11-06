@@ -10,18 +10,8 @@ const pageTitle = {
 };
 
 const pageDescription = {
-  en: "A curated project list: personal studies, commercial-looking systems, procedural experiments and asset pipelines. Some projects are visual, some are technical, most are somewhere in between.",
+  en: "Selected projects: personal studies, commercial visual systems, procedural experiments and asset pipelines. Some projects are visual, some are technical, most combine both.",
   ru: "Подборка проектов: личные исследования, коммерческие визуальные системы, процедурные эксперименты и пайплайны ассетов. Часть проектов визуальные, часть технические, большинство — где-то между.",
-};
-
-const ndaTitle = {
-  en: "Mostly NDA-friendly",
-  ru: "Можно показывать при NDA",
-};
-
-const ndaText = {
-  en: "The public version focuses on process, taste and production logic. Real client materials can be swapped in later as images, videos or protected case studies.",
-  ru: "Публичная версия портфолио фокусируется на процессе, визуальном мышлении и производственной логике. Реальные клиентские материалы можно добавить позже как изображения, видео или закрытые кейсы.",
 };
 
 export default function WorkIndexPage() {
@@ -50,7 +40,7 @@ export default function WorkIndexPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-5 md:px-8">
+      <section className="mx-auto max-w-[1600px] px-5 pb-16 md:px-8 md:pb-24">
         <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
           <Link to={`/${locale}/work/${featuredProject.slug}`} className="min-w-0 text-left">
             <ProjectMedia
@@ -61,7 +51,7 @@ export default function WorkIndexPage() {
             />
 
             <div className="mt-5 grid gap-2 md:grid-cols-[auto_1fr] md:items-baseline md:gap-8">
-              <p className="font-mono text-sm text-muted">00:00</p>
+              {featuredProject.duration && <p className="font-mono text-sm text-muted">{featuredProject.duration}</p>}
 
               <div>
                 <h2 className="text-3xl font-black tracking-[-0.04em] md:text-5xl">
@@ -117,19 +107,6 @@ export default function WorkIndexPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-5 py-24 md:px-8">
-        <div className="rounded-[2rem] bg-ink p-6 text-white md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
-            <h2 className="mobile-heading-lg text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-8xl">
-              {getText(ndaTitle, locale)}
-            </h2>
-
-            <p className="max-w-2xl text-lg leading-relaxed text-on-dark">
-              {getText(ndaText, locale)}
-            </p>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

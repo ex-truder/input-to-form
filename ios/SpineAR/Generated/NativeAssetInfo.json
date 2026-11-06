@@ -1,0 +1,30 @@
+{
+  "halfDuration": 4.333333333333333,
+  "cycleDuration": 8.666666666666666,
+  "entityMaterials": {
+    "mesh_006": "lumbar_disk",
+    "mesh_011": "lumbar_disk",
+    "mesh_007": "lumbar_disk",
+    "mesh_009": "lumbar_disk",
+    "mesh_010": "lumbar_disk",
+    "Cube_001": "disk_internals",
+    "mesh_014": "lumbar_bone",
+    "mesh_015": "lumbar_bone",
+    "mesh_017": "lumbar_bone",
+    "mesh_018": "lumbar_bone",
+    "mesh_025": "lumbar_bone",
+    "mesh_016": "lumbar_bone",
+    "lumbar disc_001_tri": "lumbar_disk",
+    "lumbar disc_002tear_tri": "lumbar_disk",
+    "lumbar disc_003_tri": "lumbar_disk",
+    "lumbar disc_004_tri": "lumbar_disk",
+    "lumbar disc_005_tri": "lumbar_disk",
+    "lumbar rupture_001_tri": "disk_internals",
+    "lumbar bone_001b_tri": "lumbar_bone",
+    "lumbar bone_002b_tri": "lumbar_bone",
+    "lumbar bone_003b_tri": "lumbar_bone",
+    "lumbar bone_004b_tri": "lumbar_bone",
+    "lumbar bone_005b_tri": "lumbar_bone",
+    "lumbar bone_006b_tri": "lumbar_bone"
+  }
+}

@@ -38,7 +38,7 @@ export const homeContent = {
         },
         case: {
           slug: "building-gen",
-          label: { en: "Build case", ru: "Кейс «Создаю»" },
+          label: { en: "Procedural generation", ru: "Процедурная генерация" },
           title: { en: "Residential building generator", ru: "Генератор жилых домов" },
           summary: {
             en: "Client-provided or generated source data becomes buildings for presentations and assembly or destruction simulations.",
@@ -62,7 +62,7 @@ export const homeContent = {
         },
         case: {
           slug: "arthritis",
-          label: { en: "Explain case", ru: "Кейс «Объясняю»" },
+          label: { en: "Medical visualization", ru: "Медицинская визуализация" },
           title: { en: "Visualizing arthritis progression", ru: "Визуализация развития артрита" },
           summary: {
             en: "A commercial medical visualization that makes disease progression readable across AR and web content.",
@@ -85,7 +85,7 @@ export const homeContent = {
           ru: "Нахожу повторяемые решения и собираю ассеты или системы, которые сокращают подготовку производства.",
         },
         case: {
-          label: { en: "Save Time case", ru: "Кейс «Ускоряю»" },
+          label: { en: "Production automation", ru: "Автоматизация производства" },
           title: { en: "Device disassembly animation asset", ru: "Ассет для анимации разборки устройств" },
           summary: {
             en: "A reusable asset for creating disassembly animations of complex devices without setting up every part by hand.",
@@ -95,7 +95,6 @@ export const homeContent = {
             en: "Complex assembly → reusable controls → repeatable animation",
             ru: "Сложная сборка → переиспользуемое управление → повторяемая анимация",
           },
-          status: { en: "Case materials coming soon", ru: "Материалы кейса скоро появятся" },
           media: { type: "placeholder", accent: "from-orange-100 via-orange-300 to-amber-200", shape: "orb" },
         },
       },

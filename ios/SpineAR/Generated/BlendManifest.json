@@ -1,0 +1,257 @@
+{
+  "$schema": "/schemas/pbr-model-animation.schema.json",
+  "version": 1,
+  "timeline": {
+    "clips": "*",
+    "loop": "ping-pong",
+    "autoplay": true,
+    "speed": 1,
+    "duration": 4.333333
+  },
+  "viewer": {
+    "background": "transparent",
+    "showEnvironment": false,
+    "environmentIntensity": 1,
+    "exposure": 1,
+    "autoRotate": false
+  },
+  "materials": [
+    {
+      "target": "lumbar_bone",
+      "from": {
+        "factors": {
+          "baseColor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "roughness": 1.0,
+          "metalness": 0.0,
+          "normalScale": [
+            1.0,
+            1.0
+          ],
+          "emissive": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_bone/from/basecolor.ktx2",
+          "normal": "textures/lumbar_bone/from/normal.ktx2",
+          "orm": "textures/lumbar_bone/from/orm.ktx2"
+        }
+      },
+      "to": {
+        "factors": {
+          "baseColor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "roughness": 1.0,
+          "metalness": 0.0,
+          "normalScale": [
+            1.0,
+            1.0
+          ],
+          "emissive": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_bone/to/basecolor.ktx2",
+          "normal": "textures/lumbar_bone/to/normal.ktx2",
+          "orm": "textures/lumbar_bone/to/orm.ktx2"
+        }
+      },
+      "blend": {
+        "easing": "smoothstep",
+        "keyframes": [
+          {
+            "progress": 0.0,
+            "value": 0.0
+          },
+          {
+            "progress": 0.461538,
+            "value": 0.0
+          },
+          {
+            "progress": 0.923077,
+            "value": 0.999
+          },
+          {
+            "progress": 1.0,
+            "value": 0.999
+          }
+        ]
+      }
+    },
+    {
+      "target": "lumbar_disk",
+      "from": {
+        "factors": {
+          "baseColor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "roughness": 1.0,
+          "metalness": 0.0,
+          "normalScale": [
+            1.0,
+            1.0
+          ],
+          "emissive": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissiveIntensity": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_disk/from/basecolor.ktx2",
+          "normal": "textures/lumbar_disk/from/normal.ktx2",
+          "orm": "textures/lumbar_disk/from/orm.ktx2"
+        }
+      },
+      "to": {
+        "factors": {
+          "baseColor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "roughness": 1.0,
+          "metalness": 0.0,
+          "normalScale": [
+            1.0,
+            1.0
+          ],
+          "emissive": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissiveIntensity": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.029999999329447746,
+          "transmission": 0.0,
+          "thickness": 0.0,
+          "ior": 1.4500000476837158
+        },
+        "maps": {
+          "baseColor": "textures/lumbar_disk/to/basecolor.ktx2",
+          "normal": "textures/lumbar_disk/to/normal.ktx2",
+          "orm": "textures/lumbar_disk/to/orm.ktx2"
+        }
+      },
+      "blend": {
+        "easing": "smoothstep",
+        "keyframes": [
+          {
+            "progress": 0.0,
+            "value": 0.0
+          },
+          {
+            "progress": 0.153846,
+            "value": 0.0
+          },
+          {
+            "progress": 0.230769,
+            "value": 1.0
+          },
+          {
+            "progress": 0.461538,
+            "value": 1.0
+          },
+          {
+            "progress": 1.0,
+            "value": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "target": "disk_internals",
+      "from": {
+        "factors": {
+          "baseColor": [
+            0.6710885763168335,
+            0.44018954038619995,
+            0.4510197043418884,
+            1.0
+          ],
+          "roughness": 0.10999983549118042,
+          "metalness": 0.0,
+          "normalScale": [
+            1.0,
+            1.0
+          ],
+          "emissive": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissiveIntensity": 1.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.7936363816261292,
+          "transmission": 1.0,
+          "thickness": 0.0,
+          "ior": 1.2999999523162842
+        }
+      },
+      "shader": {
+        "type": "glass-refraction",
+        "parameters": {
+          "color": [
+            0.6710885763168335,
+            0.44018954038619995,
+            0.4510197043418884
+          ],
+          "roughness": 0.10999983549118042,
+          "metalness": 0.0,
+          "transmission": 1.0,
+          "thickness": 0.35,
+          "ior": 1.2999999523162842,
+          "attenuationColor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "attenuationDistance": 10.0,
+          "dispersion": 0.0,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.7936363816261292,
+          "envMapIntensity": 1.0,
+          "doubleSided": true
+        }
+      },
+      "side": "double"
+    }
+  ]
+}
