@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import ProjectMedia from "../media/ProjectMedia";
 import PbrAnimatedModel from "../media/PbrAnimatedModel";
 import HdaDemo from "../hda/HdaDemo";
+import { ArthritisAnatomy, OsteophyteProcess } from "./ArthritisDetails";
 import { getText, UI } from "../../i18n/config";
 import { useLocale } from "../../i18n/useLocale";
 import { publicAsset } from "../../utils/publicAsset";
@@ -533,7 +535,7 @@ function StageSystemBlock({ block, project }) {
         </div>
       </section>
 
-      {activeItem && (
+      {activeItem && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm md:p-8"
           role="dialog"
@@ -584,7 +586,7 @@ function StageSystemBlock({ block, project }) {
               {String(activeIndex + 1).padStart(2, "0")} / {String(imageItems.length).padStart(2, "0")} · {getText(activeItem.title, locale)}
             </figcaption>
           </figure>
-        </div>
+        </div>, document.body
       )}
     </>
   );
@@ -653,6 +655,12 @@ function OutcomeBlock({ block }) {
 
 export default function ProjectBlocks({ project }) {
   return project.blocks?.map((block, index) => {
+    if (block.type === "arthritisAnatomy" || block.type === "arthritisOsteophytes") return (
+      <section key={index} className="mx-auto max-w-[1600px] px-5 py-16 md:px-8 md:py-28">
+        <CaseHeading block={block} />
+        {block.type === "arthritisAnatomy" ? <ArthritisAnatomy items={block.items} /> : <OsteophyteProcess items={block.items} />}
+      </section>
+    );
     if (block.type === "hdaDemo") return <HdaDemoBlock key={index} block={block} />;
     if (block.type === "text") return <TextBlock key={index} block={block} />;
     if (block.type === "media") {

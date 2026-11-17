@@ -1,0 +1,67 @@
+.arthritis-case { position: relative; isolation: isolate; }
+.arthritis-case > section { position: relative; z-index: 1; }
+.arthritis-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: clip;
+}
+.arthritis-backdrop-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: clip;
+}
+.arthritis-backdrop img {
+  position: absolute;
+  top: 0;
+  left: 65%;
+  display: block;
+  width: auto;
+  max-width: none;
+  height: 320vh;
+  object-fit: contain;
+  opacity: .32;
+  transform: translate3d(-50%, var(--skeleton-drift, 0px), 0);
+}
+.anatomy-regions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.anatomy-regions button {
+  min-height: 48px;
+  padding: .75rem 1.25rem;
+  border: 1px solid var(--color-muted);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-body);
+  cursor: pointer;
+  font-weight: 600;
+}
+.anatomy-regions button:hover { background: var(--color-accent-soft); }
+.anatomy-regions button[aria-pressed="true"] { background: var(--color-ink); color: var(--color-surface); border-color: var(--color-ink); }
+.anatomy-regions button:focus-visible { outline: 2px solid var(--color-accent-ink); outline-offset: 4px; }
+.anatomy-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+.anatomy-region-title { grid-column: 1 / -1; margin: 0 0 .5rem; font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.2; letter-spacing: -.03em; }
+.anatomy-comparison figure { min-width: 0; margin: 0; }
+.anatomy-comparison img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 1rem; background: #000; }
+.anatomy-comparison figcaption { margin-top: 1rem; color: var(--color-body); font-weight: 600; line-height: 1.5; }
+.osteophyte-process { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding: 0; list-style: none; }
+.osteophyte-process > li { min-width: 0; display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-items: start; }
+.osteophyte-media { display: flex; gap: .5rem; padding: 1rem; border-radius: 1rem; background: var(--color-night); }
+.osteophyte-media figure { flex: 1; min-width: 0; margin: 0; }
+.osteophyte-media img { display: block; width: 100%; height: clamp(220px, 24vw, 380px); object-fit: contain; }
+.osteophyte-media figcaption { padding-top: .75rem; font-size: .75rem; line-height: 1.5; color: var(--color-on-dark); }
+.osteophyte-process h3 { margin: 0; padding-top: 1.5rem; font-size: 1.5rem; line-height: 1.25; letter-spacing: -.03em; }
+.osteophyte-step { color: var(--color-accent-ink); }
+.osteophyte-process > li > p { margin: 0; padding-top: 1rem; color: var(--color-body); line-height: 1.7; }
+@media (max-width: 63.999rem) {
+  .osteophyte-process { grid-template-columns: 1fr; gap: 2rem; }
+  .osteophyte-media img { height: clamp(240px, 50vw, 420px); }
+}
+@media (max-width: 47.999rem) {
+  .arthritis-backdrop img { left: 60%; opacity: .26; }
+  .anatomy-comparison { gap: .75rem; }
+  .anatomy-regions button { padding: .65rem 1rem; font-size: .875rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arthritis-backdrop img { transform: translate3d(-50%, -60vh, 0); }
+}

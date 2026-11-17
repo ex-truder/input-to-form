@@ -6,6 +6,7 @@ import { getText, UI } from "../i18n/config";
 import { useLocale } from "../i18n/useLocale";
 import NextProjectBlock from "../components/projects/NextProjectBlock";
 import HdaDemo from "../components/hda/HdaDemo";
+import { ArthritisBackdrop } from "../components/projects/ArthritisDetails";
 
 export default function ProjectPage() {
   const locale = useLocale();
@@ -21,6 +22,8 @@ export default function ProjectPage() {
 
   return (
     <>
+      <div className={project.slug === "arthritis" ? "arthritis-case" : undefined}>
+      {project.slug === "arthritis" && <ArthritisBackdrop />}
       <section className="mx-auto max-w-[1600px] px-5 pb-4 pt-12 md:px-8 md:pb-5 md:pt-20">
         <Link to={`/${locale}/work`}>
           ← {ui.backToWork}
@@ -69,6 +72,7 @@ export default function ProjectPage() {
       </section>
 
       <ProjectBlocks project={project} />
+      </div>
       <NextProjectBlock project={nextProject} />
 
     </>

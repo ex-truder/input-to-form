@@ -1,4 +1,5 @@
 import { buildingGen } from "./buildingGen";
+import { arthritisAnatomy, arthritisOsteophytes } from "./arthritisDetails";
 
 export const reusableProcess = [
   {
@@ -199,9 +200,11 @@ items: [
   },
 ],
     },
+    arthritisAnatomy,
+    arthritisOsteophytes,
     {
       type: "formatSplit",
-      number: "04",
+      number: "06",
       label: { en: "One Solution, Multiple Formats", ru: "Одно решение — несколько форматов" },
       title: { en: "Built once, adapted to the context.", ru: "Одна система, адаптированная под разные задачи." },
       items: [
@@ -235,7 +238,7 @@ items: [
     },
     {
       type: "outcome",
-      number: "05",
+      number: "07",
       label: { en: "Outcome", ru: "Результат" },
       title: {
         en: "A reusable visual explanation for two commercial touchpoints.",
