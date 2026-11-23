@@ -12,7 +12,7 @@ const models = [
   { id: "knit-horse", src: "/projects/knit-horse/model.glb", name: { ru: "Вязаная лошадка", en: "Knitted horse" }, size: "13.5 MB" },
   { id: "arthritis", src: "/projects/arthritis/model.glb", name: { ru: "Позвоночник", en: "Spine" }, size: "3.7 MB" },
   { id: "medznat_mascott_foxie", src: "/lab/models/medznat_mascott_foxie.glb", iosSrc: "/lab/models/medznat_mascott_foxie.usdz", name: { ru: "Лисёнок Foxie · Medznat", en: "Foxie mascot · Medznat" }, size: "1.1 MB" },
-  { id: "RTK2027_v08", src: "/lab/models/rtk2027_v08.glb", iosSrc: "/lab/models/rtk2027_v08.usdz", name: { ru: "Ростелеком 2027, v08", en: "RTK 2027, v08" }, size: "9 MB" },
+  { id: "RTK2027_v08", src: "/lab/models/rtk2027_v08.glb", iosSrc: "/lab/models/rtk2027_v08.usdz", name: { ru: "Ростелеком 2027, v08", en: "RTK 2027, v08" }, size: "5 MB" },
 ];
 
 const copy = {
