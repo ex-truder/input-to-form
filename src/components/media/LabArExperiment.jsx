@@ -18,6 +18,7 @@ const models = [
   { id: "RTK2027_v11", src: "/lab/models/rtk2027_v11.glb", iosSrc: "/lab/models/rtk2027_v11.usdz", name: { ru: "Ростелеком 2027, v11", en: "RTK 2027, v11" }, size: "11 MB" },
   { id: "RTK2027_v12", src: "/lab/models/rtk2027_v12.glb", iosSrc: "/lab/models/rtk2027_v12.usdz", name: { ru: "Ростелеком 2027, v12", en: "RTK 2027, v12" }, size: "11 MB" },
   { id: "RTK2027_v13", src: "/lab/models/rtk2027_v13.glb", iosSrc: "/lab/models/rtk2027_v13.usdz", name: { ru: "Ростелеком 2027, v13", en: "RTK 2027, v13" }, size: "9 MB" },
+  { id: "RTK2027_v15", src: "/lab/models/rtk2027_v15.glb", iosSrc: "/lab/models/rtk2027_v15.usdz", name: { ru: "Ростелеком 2027, v15", en: "RTK 2027, v15" }, size: "4 MB" }
 ];
 
 const copy = {
